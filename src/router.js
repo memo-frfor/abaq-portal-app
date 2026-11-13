@@ -49,7 +49,7 @@ export function navigate(path, { replace = false } = {}) {
   if (!ROUTES[path]) path = '/login';
 
   const target = ROUTES[path];
-  const role = portalStore.state.role;
+  const role = portalStore.session?.role || portalStore.state.role;
 
   // Strict role guard
   if (target.role === 'teacher' && role !== 'teacher') {

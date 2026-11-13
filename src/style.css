@@ -119,6 +119,16 @@
   border-top: 1px solid rgba(226, 232, 240, 0.9);
 }
 
+html.dark body {
+  background-color: #020617;
+  color: #f8fafc;
+}
+
+html.dark .glass-nav {
+  background: rgba(15, 23, 42, 0.95);
+  border-top: 1px solid rgba(30, 41, 59, 0.9);
+}
+
 /* Bottom Sheet Modal animation */
 .sheet-backdrop {
   background: rgba(15, 23, 42, 0.55);

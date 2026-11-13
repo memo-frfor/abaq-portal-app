@@ -8,6 +8,8 @@ import { Capacitor } from '@capacitor/core';
 import { App } from '@capacitor/app';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { initRouter, goBack } from './router.js';
+import { initTheme } from './services/theme.js';
+import { initLanguage } from './services/i18n.js';
 
 async function initNativeShell() {
   if (!Capacitor.isNativePlatform()) return;
@@ -26,6 +28,8 @@ async function initNativeShell() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initLanguage();
   initNativeShell();
   initRouter();
 });

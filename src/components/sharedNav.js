@@ -1,14 +1,14 @@
 import { portalStore } from '../store/portalStore.js';
-
-const PARENT_TABS = [
-  { route: '/home', icon: 'cottage', label: 'الرئيسية' },
-  { route: '/homework', icon: 'assignment', label: 'الواجبات' },
-  { route: '/grades', icon: 'bar_chart', label: 'التقارير' },
-  { route: '/schedule', icon: 'calendar_month', label: 'الجدول' },
-  { route: '/account', icon: 'person', label: 'حسابي' },
-];
+import { t } from '../services/i18n.js';
 
 export function renderSharedParentBottomNav(activeRoute, navigate) {
+  const PARENT_TABS = [
+    { route: '/home', icon: 'cottage', label: t('home') },
+    { route: '/homework', icon: 'assignment', label: t('homework') },
+    { route: '/grades', icon: 'bar_chart', label: t('grades') },
+    { route: '/schedule', icon: 'calendar_month', label: t('schedule') },
+    { route: '/account', icon: 'person', label: t('account') },
+  ];
   const student = portalStore.getActiveStudent();
   const nav = document.createElement('nav');
   nav.className =

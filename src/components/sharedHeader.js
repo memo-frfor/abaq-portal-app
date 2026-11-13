@@ -93,50 +93,32 @@ export function openStudentSwitchSheet(navigate) {
         </button>
       </div>
 
-      <div class="flex flex-col gap-2.5">
-        <!-- Abdulrahman -->
-        <button type="button" data-switch-to="abdulrahman" class="w-full flex items-center justify-between p-3.5 rounded-2xl border transition-all press-snappy ${
-          currentId === 'abdulrahman'
-            ? 'bg-blue-50/80 border-blue-500 ring-2 ring-blue-500/20 text-slate-900'
-            : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
-        }">
-          <div class="flex items-center gap-3">
-            <img src="./assets/images/img-2.jpg" alt="عبدالرحمن" class="w-11 h-11 rounded-full object-cover ring-2 ${
-              currentId === 'abdulrahman' ? 'ring-blue-500' : 'ring-slate-300'
-            }" />
-            <div class="flex flex-col text-start">
-              <span class="text-sm font-bold text-slate-800">عبدالرحمن محمد العتيبي</span>
-              <span class="text-xs text-slate-500">الصف الثالث المتوسط - أ • حافلة 14</span>
-            </div>
-          </div>
-          ${
-            currentId === 'abdulrahman'
-              ? '<span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-600 text-white"><span class="material-symbols-outlined text-[16px]">check</span></span>'
-              : '<span class="text-xs text-slate-400 font-medium">اختيار</span>'
-          }
-        </button>
-
-        <!-- Sara -->
-        <button type="button" data-switch-to="sara" class="w-full flex items-center justify-between p-3.5 rounded-2xl border transition-all press-snappy ${
-          currentId === 'sara'
-            ? 'bg-blue-50/80 border-blue-500 ring-2 ring-blue-500/20 text-slate-900'
-            : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
-        }">
-          <div class="flex items-center gap-3">
-            <img src="./assets/images/img-16.jpg" alt="سارة" class="w-11 h-11 rounded-full object-cover ring-2 ${
-              currentId === 'sara' ? 'ring-blue-500' : 'ring-slate-300'
-            }" />
-            <div class="flex flex-col text-start">
-              <span class="text-sm font-bold text-slate-800">سارة محمد العتيبي</span>
-              <span class="text-xs text-slate-500">الصف الرابع الابتدائي - ب • حافلة 08</span>
-            </div>
-          </div>
-          ${
-            currentId === 'sara'
-              ? '<span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-600 text-white"><span class="material-symbols-outlined text-[16px]">check</span></span>'
-              : '<span class="text-xs text-slate-400 font-medium">اختيار</span>'
-          }
-        </button>
+      <div class="flex flex-col gap-2.5 max-h-72 overflow-y-auto">
+        ${Object.values(state.students).map((s) => {
+          const isSelected = s.id === currentId;
+          return `
+            <button type="button" data-switch-to="${s.id}" class="w-full flex items-center justify-between p-3.5 rounded-2xl border transition-all press-snappy ${
+              isSelected
+                ? 'bg-blue-50/80 border-blue-500 ring-2 ring-blue-500/20 text-slate-900'
+                : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+            }">
+              <div class="flex items-center gap-3">
+                <img src="${s.avatar}" alt="${s.fullName}" class="w-11 h-11 rounded-full object-cover ring-2 ${
+                  isSelected ? 'ring-blue-500' : 'ring-slate-300'
+                }" />
+                <div class="flex flex-col text-start">
+                  <span class="text-sm font-bold text-slate-800">${s.fullName}</span>
+                  <span class="text-xs text-slate-500">${s.gradeLevel} - ${s.section} • كود: ${s.studentCode}</span>
+                </div>
+              </div>
+              ${
+                isSelected
+                  ? '<span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-600 text-white"><span class="material-symbols-outlined text-[16px]">check</span></span>'
+                  : '<span class="text-xs text-slate-400 font-medium">اختيار</span>'
+              }
+            </button>
+          `;
+        }).join('')}
       </div>
 
       <button type="button" id="btn-add-dependent" class="w-full py-3 rounded-xl border border-dashed border-blue-400 hover:bg-blue-50/50 text-blue-600 font-bold text-xs flex items-center justify-center gap-1.5 press-snappy transition-colors">
