@@ -1,0 +1,115 @@
+<header class="fixed top-0 w-full z-50 pt-safe bg-primary-container text-on-primary rounded-b-xl shadow-[0_10px_25px_-5px_rgba(15,23,42,0.18)]"><div class="h-48 px-margin flex flex-col justify-between py-space-sm"><div class="flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Abaq Logo" class="h-8 w-auto object-contain" src="./assets/images/img-1.jpg"/><div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-lowest/10 backdrop-blur-md"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span><span class="font-label-sm text-label-sm text-on-primary">متصل</span></div></div><div class="flex items-center gap-space-xs"><button class="min-w-[44px] min-h-[44px] px-2 flex items-center justify-center gap-1 text-on-primary-container hover:text-on-primary bg-surface-container-lowest/10 rounded-full transition-colors font-label-sm text-label-sm"><span class="material-symbols-outlined text-[18px]">notifications_active</span><span><br/></span></button><button class="relative min-w-[44px] min-h-[44px] flex items-center justify-center text-on-primary-container hover:text-on-primary transition-colors"><span class="material-symbols-outlined">notifications</span><span class="absolute top-2 left-2 flex h-4 w-4 items-center justify-center rounded-full bg-error text-on-error font-label-sm text-[10px]">3</span></button><button class="min-w-[44px] min-h-[44px] flex items-center justify-center text-on-primary-container hover:text-on-primary transition-colors"><span class="material-symbols-outlined">menu</span></button></div></div><div class="flex items-center justify-between bg-surface-container-lowest/10 backdrop-blur-md p-space-sm rounded-DEFAULT"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-secondary" src="./assets/images/img-2.jpg"/><div class="flex flex-col"><div class="flex items-center gap-1.5"><span class="font-headline-sm text-headline-sm text-on-primary leading-tight">عبدالرحمن محمد العتيبي</span><span class="hidden">الواجبات والاختبارات   بوابة عبق</span></div><span class="font-label-sm text-label-sm text-on-primary-container">الصف الثالث المتوسط - أ • مدارس النور الأهلية</span></div></div><button class="min-h-[44px] px-3 flex items-center gap-1 bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 rounded-full text-on-primary font-label-sm text-label-sm transition-colors"><span class="material-symbols-outlined text-[16px]">sync_alt</span><span>سارة (ابتدائي)</span></button></div></div></header><main class="flex flex-col relative w-full pt-48 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin space-y-space-md pb-12">
+<!-- Student Switcher Bar (Bi-directional Sub-selector) -->
+<div class="flex items-center justify-between p-space-xs bg-surface-container-low rounded-2xl shadow-sm mt-space-sm">
+<div class="flex items-center gap-space-xs w-full">
+<!-- Active Child: Abdulrahman -->
+<button class="flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-surface-container-lowest text-on-surface shadow-sm transition-all duration-200" id="btn-child-1" onclick="switchChild(1)">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<div class="flex flex-col text-right">
+<span class="font-label-lg text-label-lg leading-tight">عبدالرحمن العتيبي</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">3 متوسط • حافلة 14</span>
+</div>
+</button>
+<!-- Inactive Child: Sarah -->
+<button class="flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-on-surface-variant hover:text-on-surface transition-all duration-200" id="btn-child-2" onclick="switchChild(2)">
+<span class="w-2 h-2 rounded-full bg-surface-variant"></span>
+<div class="flex flex-col text-right">
+<span class="font-label-lg text-label-lg leading-tight">سارة العتيبي</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">4 ابتدائي • حافلة 08</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Active Transit Telemetry & Map Card -->
+<!-- Quick Action: Today's Attendance Intent Toggle -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">person_cancel</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">تأكيد عدم ركوب الحافلة اليوم</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">إشعار السائق والمشرفة فوراً لتجاوز المحطة</span>
+</div>
+</div>
+<!-- Simple Custom Switch Button -->
+<button class="w-13 h-7 px-0.5 bg-surface-container-highest rounded-full transition-colors relative flex items-center" id="absence-toggle" onclick="toggleAbsence()">
+<div class="w-6 h-6 rounded-full bg-surface-container-lowest shadow-sm transform transition-transform" id="absence-thumb"></div>
+</button>
+</div>
+<!-- Transport Team Contact Cards -->
+<div class="space-y-space-xs">
+<span class="font-label-lg text-label-lg text-on-surface-variant px-1">فريق إشراف الحافلة المباشر</span>
+<div class="grid grid-cols-2 gap-space-xs">
+<!-- Driver Card -->
+<div class="flex flex-col bg-surface-container-lowest rounded-2xl p-3 shadow-sm justify-between space-y-2">
+<div class="flex items-center gap-2">
+<img class="w-10 h-10 rounded-full object-cover shadow-xs" data-alt="Portrait of an experienced Saudi driver in professional uniform smiling respectfully inside school transportation depot, warm lighting, deep slate tones" src="./assets/images/img-7.jpg"/>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">أبو فهد الشمري</span>
+<div class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px] text-amber-500" style='font-variation-settings: "FILL" 1;'>star</span>
+<span class="font-numeric-data text-label-sm text-on-surface-variant">4.9 (كابتن الحافلة)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 pt-1">
+<a class="flex-1 h-9 rounded-xl bg-surface-container-high text-on-surface flex items-center justify-center gap-1 hover:bg-surface-variant transition-colors" href="tel:0500000000">
+<span class="material-symbols-outlined text-[16px]">call</span>
+<span class="font-label-sm text-label-sm">اتصال</span>
+</a>
+<a class="w-9 h-9 rounded-xl bg-surface-container-high text-on-surface flex items-center justify-center hover:bg-surface-variant transition-colors" href="https://wa.me/">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+</a>
+</div>
+</div>
+<!-- Supervisor Card -->
+<div class="flex flex-col bg-surface-container-lowest rounded-2xl p-3 shadow-sm justify-between space-y-2">
+<div class="flex items-center gap-2">
+<img class="w-10 h-10 rounded-full object-cover shadow-xs" data-alt="Portrait of a friendly Arab female school bus supervisor wearing respectful educational attire, professional atmosphere, gentle soft lighting" src="./assets/images/img-8.jpg"/>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">أ. نورة السبيعي</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">مشرفة السلامة</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 pt-1">
+<a class="flex-1 h-9 rounded-xl bg-surface-container-high text-on-surface flex items-center justify-center gap-1 hover:bg-surface-variant transition-colors" href="tel:0511111111">
+<span class="material-symbols-outlined text-[16px]">support_agent</span>
+<span class="font-label-sm text-label-sm">تواصل</span>
+</a>
+<button class="w-9 h-9 rounded-xl bg-surface-container-high text-on-surface flex items-center justify-center hover:bg-surface-variant transition-colors" onclick="alert('تم إرسال تنبيه تأكيد وصول سريع للمشرفة')">
+<span class="material-symbols-outlined text-[16px]">notifications</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Subscription Tier Management -->
+<!-- Route Stop Progression Timeline -->
+<!-- Today's Boarding Log Telemetry -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm flex items-center justify-between gap-3 border border-surface-container"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-surface-container-low text-secondary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[22px]">card_membership</span></div><div class="flex flex-col"><div class="flex items-center gap-2"><span class="font-headline-sm text-headline-sm text-on-surface">اشتراك فصلي</span><span class="px-2 py-0.5 rounded-full bg-emerald-400/15 text-emerald-400 font-label-sm text-label-sm font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>نشط</span></div><div class="flex items-center gap-1 mt-0.5 text-on-surface-variant font-body-sm text-body-sm"><span class="material-symbols-outlined text-[14px] text-amber-500">schedule</span><span>متبقي 6 أيام على التجديد</span></div></div></div><button class="h-9 px-3 rounded-xl bg-secondary text-on-secondary font-label-sm text-label-sm flex items-center justify-center gap-1.5 shadow-sm hover:opacity-90 transition-all shrink-0"></button></div><div class="flex flex-col bg-surface-container-lowest rounded-2xl p-space-md shadow-sm space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface">سجل ركوب ونزول الطالب الموثق</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">اليوم • الخميس</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="flex flex-col p-3 rounded-xl bg-surface-container-low space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">ركوب الصباح</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">login</span>
+</div>
+<span class="font-numeric-data text-label-md font-bold text-on-surface">06:47 ص</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">تم المسح الذكي (NFC)</span>
+</div>
+<div class="flex flex-col p-3 rounded-xl bg-surface-container-low space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">وصول المدرسة</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">school</span>
+</div>
+<span class="font-numeric-data text-label-md font-bold text-on-surface-variant">-- : -- ص</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">في انتظار الوصول</span>
+</div>
+</div>
+</div>
+</div>
+</main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)]" data-active-classes="text-secondary"><div class="flex justify-around items-center h-16 px-space-sm"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] w-14 text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="#"><span class="material-symbols-outlined text-[22px]">cottage</span><span class="font-label-sm text-label-sm mt-0.5">الرئيسية</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] w-14 text-on-surface-variant hover:text-on-surface transition-colors" data-path="homework-and-quizzes" href="#"><span class="material-symbols-outlined text-[22px]">assignment</span><span class="font-label-sm text-label-sm mt-0.5">الواجبات</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] w-14 text-on-surface-variant hover:text-on-surface transition-colors" data-path="grades-reports" href="#"><span class="material-symbols-outlined text-[22px]">bar_chart</span><span class="font-label-sm text-label-sm mt-0.5">التقارير</span></a><a class="relative flex flex-col items-center justify-center min-w-[44px] min-h-[44px] w-14 text-on-surface-variant hover:text-on-surface transition-colors" data-path="notifications" href="#"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 left-3.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-error text-on-error font-label-sm text-[9px]">3</span><span class="font-label-sm text-label-sm mt-0.5">الإشعارات</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] w-14 text-on-surface-variant hover:text-on-surface transition-colors" data-path="more-menu" href="#"><span class="material-symbols-outlined text-[22px]">widgets</span><span class="font-label-sm text-label-sm mt-0.5">المزيد</span></a></div></nav>

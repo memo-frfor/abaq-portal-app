@@ -1,0 +1,355 @@
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col text-right"><div class="flex items-center gap-space-xs"><span class="font-label-lg text-label-lg text-on-surface leading-tight">أ. خالد الشهري</span><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface-variant">معلم رياضيات</span></div><span class="font-label-sm text-label-sm text-on-surface-variant leading-none mt-0.5">بوابة عبق • مساحة المعلم</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="التقويم الأكاديمي والتبديل" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[22px]">calendar_month</span></button><div class="relative flex items-center justify-center"><button aria-label="التنبيهات والإشعارات" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span></button><span class="absolute top-2 left-2 flex h-4 min-w-[16px] px-1 items-center justify-center rounded-full bg-error text-on-error font-label-sm text-[10px] font-bold leading-none pointer-events-none">4</span></div></div></div></header><main class="flex flex-col relative w-full px-margin pt-20 pb-28 bg-surface min-h-screen"><div class="flex flex-col w-full gap-space-md">
+<!-- Week Context Header Card -->
+<section class="bg-primary-container text-on-primary rounded-lg p-space-md shadow-md relative overflow-hidden">
+<!-- Subtle architectural background glow -->
+<div class="absolute -top-10 -left-10 w-44 h-44 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-on-tertiary-container/15 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-space-sm">
+<!-- Week Navigation Bar -->
+<div class="flex items-center justify-between">
+<button aria-label="الأسبوع السابق" class="w-9 h-9 rounded-full bg-surface-container-highest/15 text-surface flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+<div class="flex flex-col items-center">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px]">calendar_today</span>
+<span class="font-headline-sm text-headline-sm text-surface font-bold tracking-tight">الأسبوع السابع</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim">الفصل الدراسي الثاني • 1445هـ</span>
+</div>
+<button aria-label="الأسبوع القادم" class="w-9 h-9 rounded-full bg-surface-container-highest/15 text-surface flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+</div>
+<!-- Preparation Progress Gauge -->
+<div class="bg-surface/10 rounded-DEFAULT p-space-sm flex flex-col gap-1.5 mt-1 backdrop-blur-sm">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-surface-container-low flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">analytics</span>
+            جاهزية الحصص الدراسية
+          </span>
+<span class="font-numeric-data text-numeric-data text-tertiary-fixed font-bold">18 من 20 حصة (90%)</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest/20 overflow-hidden flex">
+<div class="h-full bg-gradient-to-l from-secondary-container to-tertiary-fixed rounded-full transition-all duration-700" style="width: 90%;"></div>
+</div>
+</div>
+<!-- Fast Action Pills -->
+<div class="grid grid-cols-2 gap-space-xs mt-1">
+<button class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full bg-gradient-to-r from-secondary-container to-secondary text-on-secondary font-label-md text-label-md shadow-sm active:opacity-90 transition-all" id="aiPrepBtn">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span>تحضير ذكي بالذكاء الاصطناعي</span>
+</button>
+<button class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full bg-surface-container-highest/15 hover:bg-surface-container-highest/25 text-surface font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+<span>تصدير الخطة PDF</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Interactive Weekday Strip (Sunday - Thursday) -->
+<section class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">جدول الأسبوع</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">اليوم: الثلاثاء 18 رجب</span>
+</div>
+<div class="grid grid-cols-5 gap-2">
+<!-- Sunday (Done) -->
+<button class="flex flex-col items-center justify-between p-2 rounded-DEFAULT bg-surface-container-lowest shadow-sm text-on-surface hover:bg-surface-container transition-all">
+<span class="font-label-sm text-label-sm text-on-surface-variant">الأحد</span>
+<span class="font-numeric-data text-numeric-data font-bold my-0.5">16</span>
+<span class="w-5 h-5 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-on-surface">check</span>
+</span>
+</button>
+<!-- Monday (Done) -->
+<button class="flex flex-col items-center justify-between p-2 rounded-DEFAULT bg-surface-container-lowest shadow-sm text-on-surface hover:bg-surface-container transition-all">
+<span class="font-label-sm text-label-sm text-on-surface-variant">الاثنين</span>
+<span class="font-numeric-data text-numeric-data font-bold my-0.5">17</span>
+<span class="w-5 h-5 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-on-surface">check</span>
+</span>
+</button>
+<!-- Tuesday (Active - In progress) -->
+<button class="flex flex-col items-center justify-between p-2 rounded-DEFAULT bg-primary-container text-on-primary shadow-md transform scale-[1.02] relative">
+<div class="absolute -top-1 w-2 h-2 rounded-full bg-secondary-fixed"></div>
+<span class="font-label-sm text-label-sm text-primary-fixed">الثلاثاء</span>
+<span class="font-numeric-data text-numeric-data font-extrabold text-surface my-0.5">18</span>
+<span class="w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-[13px]">pending</span>
+</span>
+</button>
+<!-- Wednesday (Upcoming) -->
+<button class="flex flex-col items-center justify-between p-2 rounded-DEFAULT bg-surface-container-lowest shadow-sm text-on-surface-variant hover:bg-surface-container transition-all opacity-80">
+<span class="font-label-sm text-label-sm">الأربعاء</span>
+<span class="font-numeric-data text-numeric-data font-bold my-0.5 text-on-surface">19</span>
+<span class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-outline">schedule</span>
+</span>
+</button>
+<!-- Thursday (Upcoming) -->
+<button class="flex flex-col items-center justify-between p-2 rounded-DEFAULT bg-surface-container-lowest shadow-sm text-on-surface-variant hover:bg-surface-container transition-all opacity-80">
+<span class="font-label-sm text-label-sm">الخميس</span>
+<span class="font-numeric-data text-numeric-data font-bold my-0.5 text-on-surface">20</span>
+<span class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-outline">schedule</span>
+</span>
+</button>
+</div>
+</section>
+<!-- Featured Prepared Lesson Card -->
+<section class="bg-surface-container-lowest rounded-lg p-space-md shadow-sm flex flex-col gap-space-sm relative overflow-hidden">
+<!-- Top badge bar -->
+<div class="flex items-center justify-between gap-2">
+<div class="flex items-center gap-1.5 bg-surface-container-high px-2.5 py-1 rounded-full text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-secondary">school</span>
+<span class="font-label-sm text-label-sm font-bold">الحصة الثانية • 08:15 ص - 09:00 ص</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded-full text-on-surface">
+<span class="material-symbols-outlined text-[14px] text-secondary">verified</span>
+<span class="font-label-sm text-label-sm font-semibold">معتمد من المشرف التربوي</span>
+</div>
+</div>
+<!-- Lesson Subject & Title -->
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md text-on-surface-variant">الصف الثالث متوسط (شعبة أ) • الرياضيات</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-extrabold leading-snug">
+        حل المعادلات الخطية بيانيّاً وجبريّاً
+      </h2>
+</div>
+<!-- Visual lesson banner placeholder with prompt -->
+<div class="relative w-full h-28 rounded-DEFAULT overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A clean modern high school mathematics classroom blackboard scene in Riyadh Saudi Arabia, featuring hand-drawn neat geometric coordinate planes, linear equations, graphs in chalk, with a digital tablet displaying GeoGebra software, soft morning classroom lighting, editorial educational photography." src="./assets/images/img-10.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-transparent to-transparent flex items-end p-2.5">
+<span class="font-label-sm text-label-sm text-surface font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">calculate</span>
+          الوحدة الثالثة: الدوال الخطية وميل المستقيم
+        </span>
+</div>
+</div>
+<!-- Learning Objectives -->
+<div class="bg-surface-container-low rounded-DEFAULT p-space-sm flex flex-col gap-1.5">
+<div class="flex items-center gap-1 text-on-surface font-label-md text-label-md font-bold">
+<span class="material-symbols-outlined text-[18px] text-secondary">flag</span>
+<span>الأهداف التعليمية ونواتج التعلم:</span>
+</div>
+<ul class="flex flex-col gap-1 pr-1 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-start gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mt-1.5 shrink-0"></span>
+<span>أن يميّز الطالب بين مفهوم الميل ونقطة المقطع الصادي بدقة إجرائية.</span>
+</li>
+<li class="flex items-start gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mt-1.5 shrink-0"></span>
+<span>تمثيل المعادلة الخطية جبرياً ورسمها على المستوى الإحداثي وحساب نقطة التقاطع.</span>
+</li>
+</ul>
+</div>
+<!-- Teaching Strategies & Tools -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold">الاستراتيجيات والوسائل المقررة:</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">groups</span>
+          التعلم التعاوني (مجموعات)
+        </span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">desktop_windows</span>
+          الشاشة التفاعلية الذكية
+        </span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">functions</span>
+          برمجية جيوجبرا GeoGebra
+        </span>
+</div>
+</div>
+<!-- Classroom Assessment & Homework -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<div class="bg-surface-container-high/40 rounded-DEFAULT p-2 flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center shrink-0 text-on-surface">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+</div>
+<div class="flex flex-col overflow-hidden">
+<span class="font-label-sm text-label-sm text-on-surface-variant">التقييم الصفي</span>
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">تمرين ص 45 بالكتاب</span>
+</div>
+</div>
+<div class="bg-surface-container-high/40 rounded-DEFAULT p-2 flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center shrink-0 text-secondary">
+<span class="material-symbols-outlined text-[18px]">cloud_done</span>
+</div>
+<div class="flex flex-col overflow-hidden">
+<span class="font-label-sm text-label-sm text-on-surface-variant">الواجب الإلكتروني</span>
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">مرفوع للطلاب (تلقائي)</span>
+</div>
+</div>
+</div>
+<!-- Attached Documents & Resources -->
+<div class="flex items-center justify-between gap-2 p-2 bg-surface-container-low rounded-DEFAULT">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-error text-[24px]">description</span>
+<div class="flex flex-col truncate">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">ورقة_عمل_المعادلات_الخطية.pdf</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2.4 ميجابايت • ورقة نشاط صفي</span>
+</div>
+</div>
+<button class="px-2.5 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold shrink-0 flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">slideshow</span>
+<span>العرض</span>
+</button>
+</div>
+<!-- Action Buttons for Current Card -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="h-11 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+<span>تعديل التحضير</span>
+</button>
+<button class="h-11 rounded-full bg-secondary text-on-secondary font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span>بدء الحصة الآن</span>
+</button>
+</div>
+</section>
+<!-- Rest of Day's Schedule (List View) -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-1">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">باقي حصص اليوم (الثلاثاء)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">3 حصص متبقية</span>
+</div>
+<!-- Lesson 1 (Done) -->
+<div class="bg-surface-container-lowest rounded-DEFAULT p-3 flex items-center justify-between gap-3 shadow-sm">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface flex flex-col items-center justify-center shrink-0">
+<span class="font-numeric-data text-numeric-data font-extrabold leading-none">1</span>
+<span class="font-label-sm text-[9px] leading-none text-on-surface-variant mt-0.5">حصة</span>
+</div>
+<div class="flex flex-col truncate">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">أول متوسط (ب)</span>
+<span class="font-label-sm text-[10px] px-1.5 py-0.2 rounded-full bg-surface-container text-on-surface">مكتمل</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">العمليات على الأعداد الصحيحة</span>
+</div>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+</div>
+</div>
+<!-- Lesson 3 (Draft / In progress) -->
+<div class="bg-surface-container-lowest rounded-DEFAULT p-3 flex items-center justify-between gap-3 shadow-sm">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-fixed flex flex-col items-center justify-center shrink-0">
+<span class="font-numeric-data text-numeric-data font-extrabold leading-none">3</span>
+<span class="font-label-sm text-[9px] leading-none mt-0.5">حصة</span>
+</div>
+<div class="flex flex-col truncate">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">ثاني متوسط (ج)</span>
+<span class="font-label-sm text-[10px] px-1.5 py-0.2 rounded-full bg-secondary-fixed text-secondary font-semibold">مسودة</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">الهندسة والقياس: نظرية فيثاغورس</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm font-semibold shrink-0 flex items-center gap-1 hover:opacity-95 transition-opacity">
+<span>استكمال</span>
+<span class="material-symbols-outlined text-[14px]">arrow_back</span>
+</button>
+</div>
+<!-- Lesson 5 (Not prepared yet) -->
+<div class="bg-surface-container-lowest rounded-DEFAULT p-3 flex items-center justify-between gap-3 shadow-sm">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-full bg-surface-container text-on-surface-variant flex flex-col items-center justify-center shrink-0">
+<span class="font-numeric-data text-numeric-data font-extrabold leading-none">5</span>
+<span class="font-label-sm text-[9px] leading-none mt-0.5">حصة</span>
+</div>
+<div class="flex flex-col truncate">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">ثالث متوسط (ب)</span>
+<span class="font-label-sm text-[10px] px-1.5 py-0.2 rounded-full bg-error-container text-on-error-container font-semibold">غير محضر</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">حصة إثرائية: مهارات اختبار القدرات</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-sm text-label-sm font-semibold shrink-0 flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[14px]">add</span>
+<span>تحضير</span>
+</button>
+</div>
+</section>
+<!-- Quick Tools & Educational Resource Bank -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-1">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">أدوات وبنك التحضير السريع</span>
+<span class="font-label-sm text-label-sm text-secondary">خدمات المعلم</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<!-- Tool 1: Ein National Portal -->
+<button class="bg-surface-container-lowest rounded-DEFAULT p-3 flex flex-col items-center text-center gap-1.5 shadow-sm hover:bg-surface-container transition-all">
+<div class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">cloud_sync</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface leading-tight">استيراد من «عين»</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">الخطة الرسمية</span>
+</button>
+<!-- Tool 2: Activity Bank -->
+<button class="bg-surface-container-lowest rounded-DEFAULT p-3 flex flex-col items-center text-center gap-1.5 shadow-sm hover:bg-surface-container transition-all">
+<div class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">lightbulb</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface leading-tight">بنك الأنشطة</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">تهيئة حافزة وتحديات</span>
+</button>
+<!-- Tool 3: Sync & Attendance Link -->
+<button class="bg-surface-container-lowest rounded-DEFAULT p-3 flex flex-col items-center text-center gap-1.5 shadow-sm hover:bg-surface-container transition-all">
+<div class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">how_to_reg</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface leading-tight">ربط الحضور</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">رصد فوري متزامن</span>
+</button>
+</div>
+</section>
+<!-- Interactive AI Assistant Modal (Simulated interactive trigger) -->
+<div class="fixed inset-0 z-50 bg-primary-container/60 backdrop-blur-sm hidden items-end justify-center p-0 transition-opacity" id="aiModal">
+<div class="bg-surface-container-lowest w-full max-w-lg rounded-t-xl p-space-lg flex flex-col gap-space-sm shadow-2xl">
+<div class="w-12 h-1.5 bg-outline-variant rounded-full mx-auto mb-1"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">المساعد الذكي لعبق</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">توليد نواتج تعلم وأوراق عمل مخصصة</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface" id="closeAiModal">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="bg-surface-container-low p-3 rounded-DEFAULT flex flex-col gap-2">
+<span class="font-label-md text-label-md font-bold text-on-surface">حدد معايير التحضير الآلي:</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm font-semibold">مراعاة الفروق الفردية</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">أنشطة تفاعلية 10 دقائق</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">تقييم ختامي تكويني</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-full bg-primary-container text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-md" id="applyAiPrep">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed">smart_toy</span>
+<span>توليد وتضمين في خطة الأسبوع</span>
+</button>
+</div>
+</div>
+<!-- Primary Bottom Sticky Action Bar -->
+<div class="pt-2">
+<button class="w-full h-14 rounded-full bg-primary-container hover:bg-inverse-surface text-on-primary font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-2.5 shadow-lg active:scale-[0.99] transition-all">
+<span class="material-symbols-outlined text-[22px] text-tertiary-fixed">cloud_upload</span>
+<span>اعتماد وحفظ الخطة الأسبوعية</span>
+</button>
+<div class="flex items-center justify-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm mt-2">
+<span class="material-symbols-outlined text-[15px] text-secondary">lock</span>
+<span>يتم إرسال نسخة معتمدة فورياً إلى المشرف التربوي ومدير المدرسة</span>
+</div>
+</div>
+</div>
+</main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]" data-active-classes="text-secondary"><div class="flex justify-around items-center h-20 px-space-xs"><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[24px]">grid_view</span><span class="font-label-sm text-label-sm">الرئيسية</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 text-on-surface-variant hover:text-on-surface transition-colors" data-path="classes-and-schedule" href="#"><span class="material-symbols-outlined text-[24px]">event_note</span><span class="font-label-sm text-label-sm">الجدول والحصص</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 text-on-surface-variant hover:text-on-surface transition-colors" data-path="assignments-and-grading" href="#"><span class="material-symbols-outlined text-[24px]">assignment_turned_in</span><span class="font-label-sm text-label-sm">الواجبات والتصحيح</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 text-on-surface-variant hover:text-on-surface transition-colors" data-path="messages-and-parent-chat" href="#"><span class="material-symbols-outlined text-[24px]">forum</span><span class="font-label-sm text-label-sm">المحادثات</span></a></div></nav>

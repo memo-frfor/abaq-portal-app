@@ -1,0 +1,58 @@
+{
+  "1": {
+    "bodyClass": "bg-surface font-body-md text-body-md text-on-surface flex flex-col antialiased selection:bg-secondary-fixed",
+    "hasScript": true
+  },
+  "2": {
+    "bodyClass": "bg-surface font-body-md text-body-md text-on-surface flex flex-col antialiased selection:bg-secondary-fixed",
+    "hasScript": true
+  },
+  "3": {
+    "bodyClass": "bg-surface font-body-md text-body-md text-on-surface flex flex-col antialiased selection:bg-secondary-fixed",
+    "hasScript": false
+  },
+  "4": {
+    "bodyClass": "bg-surface font-body-md text-body-md text-on-surface flex flex-col antialiased selection:bg-secondary-fixed",
+    "hasScript": true
+  },
+  "5": {
+    "bodyClass": "bg-surface font-body-md text-on-surface flex flex-col min-h-screen",
+    "hasScript": true
+  },
+  "6": {
+    "bodyClass": "bg-surface font-body-md text-body-md text-on-surface flex flex-col antialiased selection:bg-secondary-fixed",
+    "hasScript": true
+  },
+  "7": {
+    "bodyClass": "bg-surface font-body-md text-body-md text-on-surface flex flex-col antialiased selection:bg-secondary-fixed",
+    "hasScript": false
+  },
+  "8": {
+    "bodyClass": "bg-surface font-body-md text-body-md text-on-surface flex flex-col antialiased selection:bg-secondary-fixed",
+    "hasScript": true
+  },
+  "9": {
+    "bodyClass": "bg-surface font-body-md text-body-md text-on-surface flex flex-col antialiased selection:bg-secondary-fixed",
+    "hasScript": true
+  },
+  "10": {
+    "bodyClass": "bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen selection:bg-secondary-fixed",
+    "hasScript": true
+  },
+  "11": {
+    "bodyClass": "bg-surface font-body-md text-body-md text-on-surface pt-safe pb-safe flex flex-col antialiased selection:bg-secondary-fixed",
+    "hasScript": true
+  },
+  "12": {
+    "bodyClass": "bg-surface font-body-md text-body-md text-on-surface flex flex-col antialiased selection:bg-secondary-fixed",
+    "hasScript": false
+  },
+  "13": {
+    "bodyClass": "bg-surface font-body text-on-surface min-h-screen flex flex-col",
+    "hasScript": false
+  },
+  "14": {
+    "bodyClass": "bg-surface font-body text-on-surface flex flex-col min-h-screen",
+    "hasScript": true
+  }
+}

@@ -1,0 +1,370 @@
+<header class="fixed top-0 w-full z-50 pt-safe bg-primary-container text-on-primary rounded-b-xl shadow-[0_10px_25px_-5px_rgba(15,23,42,0.18)]"><div class="h-48 px-margin flex flex-col justify-between py-space-sm"><div class="flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Abaq Logo" class="h-8 w-auto object-contain" src="./assets/images/img-1.jpg"/><div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-lowest/10 backdrop-blur-md"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span><span class="font-label-sm text-label-sm text-on-primary">متصل</span></div></div><div class="flex items-center gap-space-xs"><button class="min-w-[44px] min-h-[44px] px-2 flex items-center justify-center gap-1 text-on-primary-container hover:text-on-primary bg-surface-container-lowest/10 rounded-full transition-colors font-label-sm text-label-sm"><span class="material-symbols-outlined text-[18px]">notifications_active</span></button><button class="relative min-w-[44px] min-h-[44px] flex items-center justify-center text-on-primary-container hover:text-on-primary transition-colors"><span class="material-symbols-outlined">notifications</span><span class="absolute top-2 left-2 flex h-4 w-4 items-center justify-center rounded-full bg-error text-on-error font-label-sm text-[10px]">3</span></button><button class="min-w-[44px] min-h-[44px] flex items-center justify-center text-on-primary-container hover:text-on-primary transition-colors"><span class="material-symbols-outlined">menu</span></button></div></div><div class="flex items-center justify-between bg-surface-container-lowest/10 backdrop-blur-md p-space-sm rounded-DEFAULT"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-secondary" src="./assets/images/img-2.jpg"/><div class="flex flex-col"><div class="flex items-center gap-1.5"><span class="font-headline-sm text-headline-sm text-on-primary leading-tight">عبدالرحمن محمد العتيبي</span><span class="hidden">الواجبات والاختبارات   بوابة عبق</span></div><span class="font-label-sm text-label-sm text-on-primary-container">الصف الثالث المتوسط - أ • مدارس النور الأهلية</span></div></div><button class="min-h-[44px] px-3 flex items-center gap-1 bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 rounded-full text-on-primary font-label-sm text-label-sm transition-colors"><span class="material-symbols-outlined text-[16px]">sync_alt</span><span>سارة (ابتدائي)</span></button></div></div></header><main class="flex flex-col relative w-full pt-48 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Dynamic Student Quick Switcher Floating Strip -->
+<div class="px-margin -mt-3 mb-space-md z-10">
+<div class="bg-surface-container-lowest p-space-xs rounded-xl shadow-md flex items-center justify-between gap-space-xs">
+<!-- Active Child: Abdulrahman -->
+<button class="flex-1 flex items-center gap-2 p-1.5 rounded-DEFAULT bg-primary-container text-on-primary transition-all text-start">
+<div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-on-secondary font-headline-sm text-headline-sm flex-shrink-0">
+          ع
+        </div>
+<div class="flex flex-col min-w-0 pr-0.5">
+<span class="font-label-lg text-label-lg truncate text-on-primary">عبدالرحمن العتيبي</span>
+<span class="font-label-sm text-label-sm text-on-primary-container truncate">3 متوسط - أ</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed ms-auto pl-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<!-- Sibling Child: Sarah -->
+<button class="flex-1 flex items-center gap-2 p-1.5 rounded-DEFAULT hover:bg-surface-container-low text-on-surface-variant transition-all text-start">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface font-headline-sm text-headline-sm flex-shrink-0">
+          س
+        </div>
+<div class="flex flex-col min-w-0 pr-0.5">
+<span class="font-label-lg text-label-lg truncate text-on-surface">سارة العتيبي</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">4 ابتدائي - ب</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Main View Heading & Term Context -->
+<div class="px-margin mb-space-md">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">الجدول والخطة الأسبوعية</h1>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-body-sm text-body-sm text-on-surface-variant">متابعة الحصص والمتطلبات الدراسية المباشرة</span>
+</div>
+</div>
+<div class="bg-secondary-fixed text-on-secondary-fixed px-2.5 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+<span class="font-label-sm text-label-sm">الأسبوع 8 • ف2</span>
+</div>
+</div>
+</div>
+<!-- Segmented Switcher (Daily Timeline vs Weekly Curriculum) -->
+<div class="px-margin mb-space-md">
+<div class="bg-surface-container p-1 rounded-DEFAULT flex items-center gap-1">
+<button class="flex-1 py-2 px-3 rounded-DEFAULT bg-surface-container-lowest text-primary shadow-sm font-label-lg text-label-lg flex items-center justify-center gap-1.5 transition-all" id="tab-daily" onclick="switchScheduleView('daily')">
+<span class="material-symbols-outlined text-[18px]">view_timeline</span>
+<span>جدول الحصص اليومي</span>
+</button>
+<button class="flex-1 py-2 px-3 rounded-DEFAULT text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg flex items-center justify-center gap-1.5 transition-all" id="tab-weekly" onclick="switchScheduleView('weekly')">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+<span>الخطة الأسبوعية للمواد</span>
+</button>
+</div>
+</div>
+<!-- SECTION: DAILY SCHEDULE VIEW CONTAINER -->
+<div class="flex flex-col w-full" id="view-daily">
+<!-- Weekdays Selector Strip -->
+<div class="px-margin mb-space-md">
+<div class="grid grid-cols-5 gap-1.5 bg-surface-container-lowest p-2 rounded-xl shadow-sm">
+<!-- Sunday -->
+<button class="flex flex-col items-center justify-center py-2 px-1 rounded-DEFAULT hover:bg-surface-container-low transition-colors">
+<span class="font-label-sm text-label-sm text-on-surface-variant">الأحد</span>
+<span class="font-numeric-data text-numeric-data text-on-surface mt-0.5">12</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant">رجب</span>
+</button>
+<!-- Monday -->
+<button class="flex flex-col items-center justify-center py-2 px-1 rounded-DEFAULT hover:bg-surface-container-low transition-colors">
+<span class="font-label-sm text-label-sm text-on-surface-variant">الإثنين</span>
+<span class="font-numeric-data text-numeric-data text-on-surface mt-0.5">13</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant">رجب</span>
+</button>
+<!-- Tuesday (Active Day) -->
+<button class="flex flex-col items-center justify-center py-2 px-1 rounded-DEFAULT bg-primary-container text-on-primary shadow-sm ring-2 ring-secondary-container">
+<span class="font-label-sm text-label-sm text-secondary-fixed">الثلاثاء</span>
+<span class="font-numeric-data text-numeric-data text-on-primary font-bold mt-0.5">14</span>
+<span class="font-body-sm text-[10px] text-secondary-fixed">اليوم</span>
+</button>
+<!-- Wednesday -->
+<button class="flex flex-col items-center justify-center py-2 px-1 rounded-DEFAULT hover:bg-surface-container-low transition-colors">
+<span class="font-label-sm text-label-sm text-on-surface-variant">الأربعاء</span>
+<span class="font-numeric-data text-numeric-data text-on-surface mt-0.5">15</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant">رجب</span>
+</button>
+<!-- Thursday -->
+<button class="flex flex-col items-center justify-center py-2 px-1 rounded-DEFAULT hover:bg-surface-container-low transition-colors">
+<span class="font-label-sm text-label-sm text-on-surface-variant">الخميس</span>
+<span class="font-numeric-data text-numeric-data text-on-surface mt-0.5">16</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant">رجب</span>
+</button>
+</div>
+<!-- Telemetry status pill -->
+<div class="flex items-center justify-between mt-2.5 px-1">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface">اليوم الدراسي جارٍ الآن</span>
+</div>
+<div class="bg-surface-container-high px-2 py-0.5 rounded-full">
+<span class="font-numeric-data text-body-sm text-on-surface-variant">أُنجزت 3 من أصل 6 حصص</span>
+</div>
+</div>
+</div>
+<!-- Timeline of Classes -->
+<div class="px-margin flex flex-col gap-space-sm mb-space-xl">
+<!-- 1. Completed Class: Arabic -->
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex items-center justify-between opacity-80">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex flex-col items-center justify-center text-on-surface-variant">
+<span class="font-numeric-data text-label-md">1</span>
+<span class="font-body-sm text-[9px] -mt-1">08:00</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">لغتي الخالدة</span>
+<span class="bg-surface-container px-1.5 py-0.5 rounded text-[10px] font-label-sm text-on-surface-variant">قاعة 302</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">تم شرح: علامات الإعراب الأصلية والفرعية</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-primary-fixed-variant bg-surface-container-high px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-sm text-label-sm">منتهية</span>
+</div>
+</div>
+<!-- 2. Completed Class: Science -->
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex items-center justify-between opacity-80">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex flex-col items-center justify-center text-on-surface-variant">
+<span class="font-numeric-data text-label-md">2</span>
+<span class="font-body-sm text-[9px] -mt-1">08:45</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">العلوم العامة</span>
+<span class="bg-surface-container px-1.5 py-0.5 rounded text-[10px] font-label-sm text-on-surface-variant">المختبر 1</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">تم تطبيق تجربة: التفاعلات والروابط الكيميائية</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-primary-fixed-variant bg-surface-container-high px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-sm text-label-sm">منتهية</span>
+</div>
+</div>
+<!-- 3. Completed Class: Computer -->
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex items-center justify-between opacity-80">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex flex-col items-center justify-center text-on-surface-variant">
+<span class="font-numeric-data text-label-md">3</span>
+<span class="font-body-sm text-[9px] -mt-1">09:30</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">الحاسب وتقنية المعلومات</span>
+<span class="bg-surface-container px-1.5 py-0.5 rounded text-[10px] font-label-sm text-on-surface-variant">معمل 2</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">أساسيات تعلم الآلة والذكاء الاصطناعي</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-primary-fixed-variant bg-surface-container-high px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-sm text-label-sm">منتهية</span>
+</div>
+</div>
+<!-- 4. ACTIVE HERO CLASS: Math (Currently Live) -->
+<div class="bg-primary-container text-on-primary p-space-md rounded-xl shadow-lg relative overflow-hidden">
+<!-- Ambient subtle visual glow -->
+<div class="absolute -left-10 -bottom-10 w-36 h-36 bg-secondary-container/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-error text-on-error font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-lowest animate-ping"></span>
+              الحصة الجارية الآن
+            </span>
+<span class="font-numeric-data text-label-md text-secondary-fixed">10:15 ص - 11:00 ص</span>
+</div>
+<span class="bg-surface-container-lowest/15 text-on-primary px-2 py-0.5 rounded-full font-label-sm text-label-sm">
+            الحصة 4
+          </span>
+</div>
+<div class="flex items-start justify-between my-2">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-primary">الرياضيات المتقدمة</span>
+<span class="font-body-md text-body-md text-on-primary-container mt-0.5">الدرس (3-4): حل أنظمة المعادلات الخطية بيانياً</span>
+<div class="flex items-center gap-3 mt-2 text-on-primary-container font-label-sm text-label-sm">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">person</span>
+                أ. خالد الشهري
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                قاعة 302
+              </span>
+</div>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center gap-2">
+<button class="flex-1 min-h-[44px] bg-secondary-container hover:bg-secondary text-on-secondary rounded-DEFAULT font-label-lg text-label-lg flex items-center justify-center gap-2 transition-all shadow-md">
+<span class="material-symbols-outlined text-[18px]">videocam</span>
+<span>انضمام للبث المباشر للشرح</span>
+</button>
+<button class="min-w-[44px] min-h-[44px] bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 text-on-primary rounded-DEFAULT flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-[20px]">assignment</span>
+</button>
+</div>
+</div>
+<!-- BREAK / RECESS CARD -->
+<div class="bg-surface-container-low p-space-sm rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]">lunch_dining</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">فسحة الإفطار وصلاة الظهر</span>
+<span class="bg-secondary-fixed text-on-secondary-fixed px-1.5 py-0.5 rounded text-[10px] font-label-sm">استراحة 30 دقيقة</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">وجبة خفيفة، وأداء صلاة الظهر جماعة في مصلى المدرسة</span>
+</div>
+</div>
+<span class="font-numeric-data text-label-sm text-on-surface-variant">11:00 ص</span>
+</div>
+<!-- 5. Upcoming Class: English -->
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex flex-col items-center justify-center text-on-surface">
+<span class="font-numeric-data text-label-md">5</span>
+<span class="font-body-sm text-[9px] -mt-1">11:30</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">اللغة الإنجليزية</span>
+<span class="bg-surface-container px-1.5 py-0.5 rounded text-[10px] font-label-sm text-on-surface-variant">قاعة 302</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Unit 4: Supermarket &amp; Global Markets Reading</span>
+</div>
+</div>
+<div class="bg-surface-container px-2 py-1 rounded-full text-on-surface font-label-sm text-label-sm">
+          الحصة القادمة
+        </div>
+</div>
+<!-- 6. Upcoming Class: Physical Ed -->
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex flex-col items-center justify-center text-on-surface">
+<span class="font-numeric-data text-label-md">6</span>
+<span class="font-body-sm text-[9px] -mt-1">12:15</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">التربية البدنية</span>
+<span class="bg-surface-container px-1.5 py-0.5 rounded text-[10px] font-label-sm text-on-surface-variant">الصالة الرياضية</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">تمارين اللياقة البدنية ومناورة كرة السلة</span>
+</div>
+</div>
+<div class="bg-surface-container-low px-2 py-1 rounded-full text-on-surface-variant font-label-sm text-label-sm">
+          12:15 م
+        </div>
+</div>
+</div>
+</div>
+<!-- SECTION: WEEKLY CURRICULUM & HOME STUDY HIGHLIGHTS -->
+<div class="hidden flex-col w-full" id="view-weekly">
+<!-- Approved PDF Download Action Card -->
+<div class="px-margin mb-space-md">
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-DEFAULT bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[28px]">picture_as_pdf</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">الخطة الأسبوعية المعتمدة (PDF)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">نسخة الإدارة الأكاديمية للأسبوع 8 • حجم 1.4 ميجابايت</span>
+</div>
+</div>
+<button class="min-w-[44px] min-h-[44px] px-3 bg-primary-container text-on-primary rounded-DEFAULT font-label-sm text-label-sm flex items-center gap-1 hover:bg-inverse-surface transition-all">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>تحميل</span>
+</button>
+</div>
+</div>
+<!-- Weekly Requirements & Subjects Bento Cards -->
+<div class="px-margin flex flex-col gap-space-sm mb-space-md">
+<div class="flex items-center justify-between mb-0.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">متطلبات وواجبات المواد لهذا الأسبوع</span>
+<span class="font-label-sm text-label-sm text-secondary">4 مواد تتطلب متابعة</span>
+</div>
+<!-- Subject 1: Mathematics -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary-container"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface">الرياضيات</span>
+</div>
+<span class="bg-error-container text-on-error-container px-2 py-0.5 rounded font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">event_upcoming</span>
+            اختبار قصير: الخميس
+          </span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-DEFAULT flex flex-col gap-1 text-on-surface">
+<div class="flex items-start gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary mt-0.5">menu_book</span>
+<span class="font-body-sm text-body-sm"><strong class="font-label-lg">الدروس المقررة:</strong> الدرس (3-4) حل أنظمة المعادلات والدرس (3-5) التعويض الجبري.</span>
+</div>
+<div class="flex items-start gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary mt-0.5">edit_note</span>
+<span class="font-body-sm text-body-sm"><strong class="font-label-lg">الواجب المنزلي:</strong> كتاب التمارين صفحة 64 التمارين (1 إلى 8).</span>
+</div>
+</div>
+</div>
+<!-- Subject 2: Science -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface">العلوم العامة</span>
+</div>
+<span class="bg-surface-container-high text-on-surface px-2 py-0.5 rounded font-label-sm text-label-sm">
+            تسليم دفتر التجارب
+          </span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-DEFAULT flex flex-col gap-1 text-on-surface">
+<div class="flex items-start gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary mt-0.5">biotech</span>
+<span class="font-body-sm text-body-sm"><strong class="font-label-lg">التطبيق المخبري:</strong> تجهيز تقرير تفاعل الأحماض مع القواعد في مختبر المدرسة.</span>
+</div>
+<div class="flex items-start gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary mt-0.5">task_alt</span>
+<span class="font-body-sm text-body-sm"><strong class="font-label-lg">المشروع الفصلي:</strong> استكمال مجسم الخلية الحيوية وتسليمه يوم الأربعاء.</span>
+</div>
+</div>
+</div>
+<!-- Subject 3: Computer Science -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-on-tertiary-container"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface">الحاسب والذكاء الاصطناعي</span>
+</div>
+<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded font-label-sm text-label-sm">
+            تطبيق عملي
+          </span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-DEFAULT flex flex-col gap-1 text-on-surface">
+<div class="flex items-start gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary mt-0.5">terminal</span>
+<span class="font-body-sm text-body-sm"><strong class="font-label-lg">المعمل:</strong> كتابة كود بايثون بسيط لفرز البيانات في منصة عبق كود.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Direct Notes & Instructions for Guardian -->
+<div class="px-margin mb-space-xl">
+<div class="bg-surface-container-high p-space-md rounded-xl flex items-start gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">lightbulb</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">توجيهات الإرشاد الأكاديمي للأسبوع</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
+            نرجو الحرص على إحضار الزي الرياضي الكامل يوم الثلاثاء، وتخصيص 30 دقيقة يوم الأربعاء لمراجعة مسائل الرياضيات استعداداً للاختبار القصير الدوري.
+          </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive JavaScript for Dynamic Tab Switching -->
+
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)]" data-active-classes="text-secondary"><div class="flex justify-around items-center h-16 px-space-sm"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] w-14 text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="#"><span class="material-symbols-outlined text-[22px]">cottage</span><span class="font-label-sm text-label-sm mt-0.5">الرئيسية</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] w-14 text-on-surface-variant hover:text-on-surface transition-colors" data-path="homework-and-quizzes" href="#"><span class="material-symbols-outlined text-[22px]">assignment</span><span class="font-label-sm text-label-sm mt-0.5">الواجبات</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] w-14 text-on-surface-variant hover:text-on-surface transition-colors" data-path="grades-reports" href="#"><span class="material-symbols-outlined text-[22px]">bar_chart</span><span class="font-label-sm text-label-sm mt-0.5">التقارير</span></a><a class="relative flex flex-col items-center justify-center min-w-[44px] min-h-[44px] w-14 text-on-surface-variant hover:text-on-surface transition-colors" data-path="notifications" href="#"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 left-3.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-error text-on-error font-label-sm text-[9px]">3</span><span class="font-label-sm text-label-sm mt-0.5">الإشعارات</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] w-14 text-on-surface-variant hover:text-on-surface transition-colors" data-path="more-menu" href="#"><span class="material-symbols-outlined text-[22px]">widgets</span><span class="font-label-sm text-label-sm mt-0.5">المزيد</span></a></div></nav>

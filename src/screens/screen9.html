@@ -1,0 +1,249 @@
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><button class="min-w-[44px] min-h-[44px] flex items-center justify-center text-on-surface hover:text-secondary transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward_ios</span></button><img alt="Abaq Logo" class="h-8 w-auto object-contain" src="./assets/images/img-1.jpg"/><h1 class="font-headline-sm text-headline-sm text-on-surface">Subject Details</h1></div><div class="flex items-center gap-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="./assets/images/img-2.jpg"/></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface min-h-screen"><div class="flex flex-col w-full pb-10 select-none">
+<!-- Top Quiz Header Meta -->
+<div class="bg-primary-container text-on-primary rounded-b-2xl p-margin shadow-md space-y-space-md">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container animate-pulse inline-block"></span>
+<span class="font-label-sm text-label-sm text-surface-container-high font-medium">جلسة اختبار رقمي مؤمنة</span>
+</div>
+<!-- Timer -->
+<div class="flex items-center gap-space-xs bg-surface-container-low/10 px-space-md py-1.5 rounded-full shadow-inner" id="quizTimerWrapper">
+<span class="material-symbols-outlined text-[18px] text-tertiary-fixed-dim animate-spin" style="animation-duration: 9s;">timer</span>
+<div class="flex items-center gap-1 font-numeric-data text-numeric-data text-surface-bright dir-ltr">
+<span id="timerMin">11</span>:<span id="timerSec">42</span>
+</div>
+<span class="font-label-sm text-label-sm text-surface-container-high mr-1">متبقية</span>
+</div>
+<!-- Safe Exit Button -->
+<button class="flex items-center gap-1 text-on-primary-container hover:text-surface-bright transition-colors bg-white/5 px-2.5 py-1.5 rounded-full min-h-[36px]" onclick="confirmExit()">
+<span class="material-symbols-outlined text-[16px]">logout</span>
+<span class="font-label-sm text-label-sm">خروج آمن</span>
+</button>
+</div>
+<div>
+<div class="flex items-center gap-space-xs text-on-primary-container font-label-md text-label-md mb-0.5">
+<span class="material-symbols-outlined text-[15px] text-tertiary-fixed-dim">school</span>
+<span>الحاسب وتقنية المعلومات • أ. سلطان القرني</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-surface-bright leading-tight">
+        اختبار قصير: مبادئ الذكاء الاصطناعي والبرمجة
+      </h2>
+</div>
+<!-- Question Stepper Tracker -->
+<div class="bg-surface-container-low/10 rounded-DEFAULT p-space-sm space-y-space-xs">
+<div class="flex items-center justify-between text-surface-bright font-label-sm text-label-sm">
+<span class="flex items-center gap-1">
+<span class="font-numeric-data font-bold text-tertiary-fixed-dim">السؤال 3</span>
+<span class="text-on-primary-container">من 5 أسئلة</span>
+</span>
+<span class="text-surface-container-high font-numeric-data">60% مكتمل</span>
+</div>
+<!-- Progress Track -->
+<div class="w-full h-2 bg-white/10 rounded-full overflow-hidden p-0.5">
+<div class="h-full bg-secondary-container rounded-full transition-all duration-500 ease-out" style="width: 60%"></div>
+</div>
+<!-- Question Bubbles Navigation -->
+<div class="flex items-center justify-between pt-1">
+<!-- Q1 Completed -->
+<button class="flex flex-col items-center gap-1 group focus:outline-none" onclick="jumpToQuestion(1)">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest text-secondary flex items-center justify-center font-numeric-data text-label-md shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-sm text-[10px] text-surface-container-high">س1</span>
+</button>
+<!-- Q2 Completed -->
+<button class="flex flex-col items-center gap-1 group focus:outline-none" onclick="jumpToQuestion(2)">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest text-secondary flex items-center justify-center font-numeric-data text-label-md shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-sm text-[10px] text-surface-container-high">س2</span>
+</button>
+<!-- Q3 Active -->
+<button class="flex flex-col items-center gap-1 group focus:outline-none scale-105" onclick="jumpToQuestion(3)">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-numeric-data text-label-md shadow-md shadow-secondary/40">
+            3
+          </div>
+<span class="font-label-sm text-[10px] text-surface-bright font-bold">الحالي</span>
+</button>
+<!-- Q4 Unsolved -->
+<button class="flex flex-col items-center gap-1 group focus:outline-none opacity-80 hover:opacity-100" onclick="jumpToQuestion(4)">
+<div class="w-8 h-8 rounded-full bg-white/15 text-surface-bright flex items-center justify-center font-numeric-data text-label-md">
+            4
+          </div>
+<span class="font-label-sm text-[10px] text-on-primary-container">س4</span>
+</button>
+<!-- Q5 Unsolved -->
+<button class="flex flex-col items-center gap-1 group focus:outline-none opacity-80 hover:opacity-100" onclick="jumpToQuestion(5)">
+<div class="w-8 h-8 rounded-full bg-white/15 text-surface-bright flex items-center justify-center font-numeric-data text-label-md">
+            5
+          </div>
+<span class="font-label-sm text-[10px] text-on-primary-container">س5</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Question Body Content -->
+<div class="px-margin -mt-2 space-y-space-md">
+<!-- Question Card -->
+<div class="bg-surface-container-lowest rounded-DEFAULT p-space-md shadow-sm space-y-space-md">
+<!-- Question meta badges -->
+<div class="flex items-center justify-between gap-space-xs flex-wrap">
+<div class="flex items-center gap-space-xs">
+<span class="bg-surface-container-high text-on-surface px-2.5 py-1 rounded-full font-label-sm text-label-sm font-semibold">
+            اختيار من متعدد
+          </span>
+<span class="bg-surface-container-low text-secondary px-2.5 py-1 rounded-full font-label-sm text-label-sm font-semibold">
+            درجتان (2 pts)
+          </span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px] text-secondary">cloud_done</span>
+<span>محفوظ تلقائياً</span>
+</div>
+</div>
+<!-- Question Text -->
+<div class="space-y-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-relaxed">
+          ما هي الخوارزمية المسؤولة عن تصنيف البيانات وتدريب نماذج التعلم الآلي الخاضعة للإشراف (Supervised Learning) الأكثر فاعلية في معالجة الصور الرقمية والتعرف البصري؟
+        </h3>
+</div>
+<!-- Code / Visual Architecture Snippet -->
+<div class="bg-primary-container text-surface-bright rounded-DEFAULT p-space-sm space-y-2 overflow-x-auto shadow-inner">
+<div class="flex items-center justify-between text-on-primary-container font-label-sm text-[11px] pb-1">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim">terminal</span>
+<span>نموذج بنية الطبقات (Layer Structure)</span>
+</span>
+<span class="font-label-sm text-[10px] text-tertiary-fixed-dim">Python / PyTorch</span>
+</div>
+<pre class="font-mono text-body-sm text-surface-container-high leading-5 dir-ltr text-left"><code><span class="text-tertiary-fixed-dim">model</span> = Sequential([
+  Conv2D(<span class="text-secondary-fixed">32</span>, (<span class="text-secondary-fixed">3</span>,<span class="text-secondary-fixed">3</span>), activation=<span class="text-secondary-fixed">'relu'</span>),
+  MaxPooling2D(pool_size=(<span class="text-secondary-fixed">2</span>,<span class="text-secondary-fixed">2</span>)),
+  Dense(<span class="text-secondary-fixed">10</span>, activation=<span class="text-secondary-fixed">'softmax'</span>)
+])</code></pre>
+</div>
+<!-- Interactive Multiple Choice Options -->
+<div class="space-y-space-sm pt-1" id="optionsGroup">
+<!-- Option 1: Selected state -->
+<label class="block relative cursor-pointer" onclick="selectOption('opt1')">
+<input checked="" class="peer sr-only" id="opt1" name="quiz_q3" type="radio"/>
+<div class="p-space-md rounded-DEFAULT bg-surface-container-high text-on-surface transition-all flex items-start gap-space-sm shadow-sm peer-checked:bg-surface-container-highest peer-checked:shadow-md">
+<div class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-secondary font-bold">الخيار (أ)</span>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container-lowest px-2 py-0.5 rounded-full font-semibold">إجابتك المختارة</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mt-1 font-medium">
+                الشبكات العصبية الالتفافية (Convolutional Neural Networks - CNN)
+              </p>
+</div>
+</div>
+</label>
+<!-- Option 2: Default state -->
+<label class="block relative cursor-pointer" onclick="selectOption('opt2')">
+<input class="peer sr-only" id="opt2" name="quiz_q3" type="radio"/>
+<div class="p-space-md rounded-DEFAULT bg-surface-container-low text-on-surface hover:bg-surface-container transition-all flex items-start gap-space-sm peer-checked:bg-surface-container-highest">
+<div class="w-6 h-6 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center shrink-0 mt-0.5 font-numeric-data text-label-sm">
+              ب
+            </div>
+<div class="flex-1 min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface-variant">الخيار (ب)</span>
+<p class="font-body-md text-body-md text-on-surface mt-1">
+                خوارزمية البحث الخطي البسيط (Linear Search Algorithm)
+              </p>
+</div>
+</div>
+</label>
+<!-- Option 3: Default state -->
+<label class="block relative cursor-pointer" onclick="selectOption('opt3')">
+<input class="peer sr-only" id="opt3" name="quiz_q3" type="radio"/>
+<div class="p-space-md rounded-DEFAULT bg-surface-container-low text-on-surface hover:bg-surface-container transition-all flex items-start gap-space-sm peer-checked:bg-surface-container-highest">
+<div class="w-6 h-6 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center shrink-0 mt-0.5 font-numeric-data text-label-sm">
+              ج
+            </div>
+<div class="flex-1 min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface-variant">الخيار (ج)</span>
+<p class="font-body-md text-body-md text-on-surface mt-1">
+                مصفوفة التوزيع العشوائي بدون توجيه (Random Unsupervised Array)
+              </p>
+</div>
+</div>
+</label>
+<!-- Option 4: Default state -->
+<label class="block relative cursor-pointer" onclick="selectOption('opt4')">
+<input class="peer sr-only" id="opt4" name="quiz_q3" type="radio"/>
+<div class="p-space-md rounded-DEFAULT bg-surface-container-low text-on-surface hover:bg-surface-container transition-all flex items-start gap-space-sm peer-checked:bg-surface-container-highest">
+<div class="w-6 h-6 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center shrink-0 mt-0.5 font-numeric-data text-label-sm">
+              د
+            </div>
+<div class="flex-1 min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface-variant">الخيار (د)</span>
+<p class="font-body-md text-body-md text-on-surface mt-1">
+                بروتوكول التوجيه الشبكي الافتراضي (Routing Protocol Gateway)
+              </p>
+</div>
+</div>
+</label>
+</div>
+<!-- Mark for Review Feature -->
+<div class="pt-space-xs">
+<button class="w-full flex items-center justify-center gap-space-xs py-2.5 px-space-md rounded-DEFAULT bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-colors min-h-[44px]" id="reviewBtn" onclick="toggleReviewState()">
+<span class="material-symbols-outlined text-[19px] text-on-surface-variant" id="reviewIcon">flag</span>
+<span class="font-label-md text-label-md" id="reviewLabel">وضع علامة للمراجعة قبل التسليم النهائي</span>
+</button>
+</div>
+</div>
+<!-- Navigation & Bottom Actions -->
+<div class="space-y-space-sm">
+<div class="flex items-center gap-space-sm">
+<!-- Previous Question -->
+<button class="flex-1 bg-surface-container-lowest hover:bg-surface-container-low text-on-surface rounded-full py-3 px-space-md shadow-sm flex items-center justify-center gap-1 min-h-[48px] font-label-lg text-label-lg active:scale-95 transition-transform" onclick="navigateQuestion(-1)">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+<span>السؤال السابق</span>
+</button>
+<!-- Next / Save Question -->
+<button class="flex-[1.4] bg-secondary text-on-secondary rounded-full py-3 px-space-md shadow-md flex items-center justify-center gap-1 min-h-[48px] font-label-lg text-label-lg active:scale-95 transition-transform" onclick="navigateQuestion(1)">
+<span>حفظ والتالي</span>
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+</div>
+<!-- Final Submit Banner Button -->
+<button class="w-full bg-surface-container-lowest hover:bg-surface-container text-secondary rounded-DEFAULT p-space-md shadow-sm flex items-center justify-between min-h-[48px] transition-colors" onclick="promptFinalSubmission()">
+<div class="flex items-center gap-space-xs text-right">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">تسليم الاختبار النهائي</span>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-secondary">
+<span class="font-numeric-data">3 من 5 مكتملة</span>
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</div>
+</button>
+</div>
+<!-- Academic Integrity & Sync Security Card -->
+<div class="bg-surface-container-low rounded-DEFAULT p-space-md shadow-sm flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-secondary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<div class="space-y-0.5">
+<h4 class="font-label-md text-label-md text-on-surface font-bold">نظام الرقابة والانضباط الأكاديمي النشط</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          يتم مزامنة الإجابات فورياً مع خادم مدرسة عبق. مغادرة شاشة الاختبار أو تبديل التطبيق سيتم تسجيله في تقرير النزاهة التلقائي للأستاذ المشرف.
+        </p>
+</div>
+</div>
+</div>
+<!-- Interactive Feedback Toast -->
+<div class="fixed bottom-6 left-4 right-4 z-50 transform translate-y-32 transition-transform duration-300 pointer-events-none" id="toastNotification">
+<div class="bg-primary text-on-primary p-space-md rounded-DEFAULT shadow-xl flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-[20px]" id="toastIcon">check_circle</span>
+<span class="font-label-md text-label-md" id="toastMessage">تم حفظ الإجابة بنجاح</span>
+</div>
+<span class="font-label-sm text-label-sm text-surface-container-high font-numeric-data">سحابة عبق ✓</span>
+</div>
+</div>
+</div>
+</main>

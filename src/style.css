@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --c-primary: 0 42 126;
+  --c-primary-container: 28 65 159;
+  --c-on-primary-container: 160 181 255;
+  --c-surface: 250 248 255;
+  --c-surface-bright: 250 248 255;
+  --c-surface-container-low: 244 243 251;
+  --c-surface-container-highest: 226 225 234;
+  --c-surface-variant: 226 225 234;
+  --c-on-surface: 26 27 33;
+  --c-background: 250 248 255;
+  --c-on-background: 26 27 33;
+  --c-inverse-on-surface: 241 240 248;
+  --c-on-secondary-container: 79 90 128;
+  --c-on-secondary-fixed: 14 25 60;
+  --c-on-secondary-fixed-variant: 59 69 106;
+  --c-tertiary: 90 31 0;
+  --c-tertiary-container: 127 47 0;
+  --c-on-tertiary-container: 255 160 117;
+}
+
+.screen-13 {
+  --c-primary: 53 86 179;
+  --c-primary-container: 80 111 206;
+  --c-on-primary-container: 254 251 255;
+  --c-surface: 251 248 255;
+  --c-surface-bright: 251 248 255;
+  --c-surface-container-low: 244 242 252;
+  --c-surface-container-highest: 227 225 234;
+  --c-surface-variant: 227 225 234;
+  --c-on-surface: 26 27 34;
+  --c-background: 251 248 255;
+  --c-on-background: 26 27 34;
+  --c-inverse-on-surface: 241 240 249;
+  --c-on-secondary-container: 79 90 127;
+  --c-on-secondary-fixed: 13 26 59;
+  --c-on-secondary-fixed-variant: 58 69 105;
+  --c-tertiary: 153 66 19;
+  --c-tertiary-container: 184 89 42;
+  --c-on-tertiary-container: 255 251 255;
+}
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  input, textarea {
+    user-select: auto;
+    -webkit-user-select: auto;
+  }
+
+  html,
+  body {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  body {
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+    min-height: max(884px, 100dvh);
+  }
+
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.font-numbers {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Global toast for interactive actions */
+#abaq-toast {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}

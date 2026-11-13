@@ -1,0 +1,341 @@
+<header class="fixed top-0 w-full z-50 pt-safe bg-primary-container text-on-primary rounded-b-xl shadow-[0_10px_25px_-5px_rgba(15,23,42,0.18)]"><div class="h-48 px-margin flex flex-col justify-between py-space-sm"><div class="flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Abaq Logo" class="h-8 w-auto object-contain" src="./assets/images/img-1.jpg"/><div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-lowest/10 backdrop-blur-md"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span><span class="font-label-sm text-label-sm text-on-primary">متصل</span></div></div><div class="flex items-center gap-space-xs"><button class="min-w-[44px] min-h-[44px] px-2 flex items-center justify-center gap-1 text-on-primary-container hover:text-on-primary bg-surface-container-lowest/10 rounded-full transition-colors font-label-sm text-label-sm"><span class="material-symbols-outlined text-[18px]">notifications_active</span></button><button class="relative min-w-[44px] min-h-[44px] flex items-center justify-center text-on-primary-container hover:text-on-primary transition-colors"><span class="material-symbols-outlined">notifications</span><span class="absolute top-2 left-2 flex h-4 w-4 items-center justify-center rounded-full bg-error text-on-error font-label-sm text-[10px]">3</span></button><button class="min-w-[44px] min-h-[44px] flex items-center justify-center text-on-primary-container hover:text-on-primary transition-colors"><span class="material-symbols-outlined">menu</span></button></div></div><div class="flex items-center justify-between bg-surface-container-lowest/10 backdrop-blur-md p-space-sm rounded-DEFAULT"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-secondary" src="./assets/images/img-2.jpg"/><div class="flex flex-col"><div class="flex items-center gap-1.5"><span class="font-headline-sm text-headline-sm text-on-primary leading-tight">عبدالرحمن محمد العتيبي</span><span class="hidden">الواجبات والاختبارات   بوابة عبق</span></div><span class="font-label-sm text-label-sm text-on-primary-container">الصف الثالث المتوسط - أ • مدارس النور الأهلية</span></div></div><button class="min-h-[44px] px-3 flex items-center gap-1 bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 rounded-full text-on-primary font-label-sm text-label-sm transition-colors"><span class="material-symbols-outlined text-[16px]">sync_alt</span><span>سارة (ابتدائي)</span></button></div></div></header><main class="flex flex-col relative w-full pt-48 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full pb-10 space-y-space-lg px-margin text-on-surface select-none">
+<!-- Interactive Child Pill Switcher & Page Header Context -->
+<section class="flex flex-col space-y-space-sm">
+<!-- Active Child Capsule Switcher Bar -->
+<div class="flex items-center justify-between p-1 bg-surface-container-low rounded-full shadow-sm">
+<div class="flex items-center gap-space-sm px-space-sm py-1 bg-surface-container-lowest rounded-full shadow-xs">
+<span class="flex h-2.5 w-2.5 rounded-full bg-secondary animate-pulse"></span>
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="font-label-lg text-label-lg">عبدالرحمن العتيبي</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">(3 متوسط - أ)</span>
+</div>
+</div>
+<button class="flex items-center gap-1 px-3 py-1 text-on-surface-variant hover:text-on-surface transition-colors font-label-sm text-label-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">swap_horiz</span>
+<span>التبديل إلى سارة (ابتدائي)</span>
+</button>
+</div>
+<!-- Section Title & Telemetry Counters -->
+<div class="flex flex-col gap-2 pt-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="p-1.5 rounded-DEFAULT bg-secondary/10 text-secondary">
+<span class="material-symbols-outlined text-[20px]">assignment_turned_in</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">الواجبات والاختبارات المدرسية</h1>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">الفصل الدراسي الثاني</span>
+</div>
+<!-- Live telemetry badges -->
+<div class="flex flex-wrap items-center gap-2">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md">3 واجبات قيد التسليم</span>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container text-on-error-container">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-error"></span>
+</span>
+<span class="font-label-md text-label-md">1 اختبار نشط وموقّت الآن</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Segmented Primary Navigation Tabs -->
+<section class="flex flex-col space-y-space-sm">
+<div class="grid grid-cols-2 p-1 bg-surface-container rounded-DEFAULT">
+<button class="py-2.5 px-3 rounded-DEFAULT font-label-lg text-label-lg transition-all flex items-center justify-center gap-2 bg-surface-container-lowest text-on-surface shadow-sm" id="tab-hw" onclick="switchSection('hw')" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">menu_book</span>
+<span>الواجبات المدرسية</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-numeric-data text-label-sm">3</span>
+</button>
+<button class="py-2.5 px-3 rounded-DEFAULT font-label-lg text-label-lg transition-all flex items-center justify-center gap-2 text-on-surface-variant hover:text-on-surface" id="tab-quizzes" onclick="switchSection('quizzes')" type="button">
+<span class="material-symbols-outlined text-[18px]">quiz</span>
+<span>الاختبارات القصيرة</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-numeric-data text-label-sm">2</span>
+</button>
+</div>
+<!-- Horizontal Scrolling Filter Chips for Subjects & Status -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+<button class="px-3.5 py-1.5 rounded-full bg-primary-container text-on-primary font-label-md text-label-md whitespace-nowrap shadow-xs">
+        الكل (5)
+      </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors">
+        الرياضيات
+      </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors">
+        العلوم الطبيعية
+      </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors">
+        لغتي الخالدة
+      </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors">
+        الحاسب وتقنية المعلومات
+      </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors">
+        اللغة الإنجليزية
+      </button>
+</div>
+</section>
+<!-- FEATURED CARD: Active Interactive Quiz Card (Hero/Urgent Banner) -->
+<section class="relative overflow-hidden rounded-lg bg-primary-container text-on-primary p-space-md shadow-md">
+<!-- Ambient subtle background glow -->
+<div class="absolute -top-12 -left-12 w-44 h-44 rounded-full bg-secondary/30 blur-2xl pointer-events-none"></div>
+<div class="absolute -bottom-10 -right-10 w-36 h-36 rounded-full bg-tertiary-fixed-dim/20 blur-xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col space-y-space-sm">
+<!-- Subject tag and teacher info -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-lowest/15 backdrop-blur-md text-on-primary font-label-sm text-label-sm">
+            الحاسب وتقنية المعلومات
+          </span>
+<span class="font-label-sm text-label-sm text-on-primary-container">م. سلطان القرني</span>
+</div>
+<div class="flex items-center gap-1 text-secondary-fixed-dim bg-secondary/30 px-2 py-0.5 rounded-full font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">timer</span>
+<span class="font-numeric-data">ينتهي خلال ساعتين</span>
+</div>
+</div>
+<!-- Quiz Title -->
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-primary">
+          اختبار قصير نشط: مبادئ الذكاء الاصطناعي والبرمجة
+        </h2>
+<p class="font-body-sm text-body-sm text-on-primary-container mt-1">
+          الوحدة الرابعة: الخوارزميات وبنية معالجة البيانات المنطقية.
+        </p>
+</div>
+<!-- Meta stats row: duration, questions, attempts -->
+<div class="grid grid-cols-3 gap-2 py-2">
+<div class="flex flex-col items-center justify-center p-2 rounded-DEFAULT bg-surface-container-lowest/10 backdrop-blur-xs text-center">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]">schedule</span>
+<span class="font-numeric-data text-label-md text-on-primary mt-1">15 دقيقة</span>
+<span class="font-label-sm text-[10px] text-on-primary-container">المدة المقررة</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2 rounded-DEFAULT bg-surface-container-lowest/10 backdrop-blur-xs text-center">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]">fact_check</span>
+<span class="font-numeric-data text-label-md text-on-primary mt-1">5 أسئلة</span>
+<span class="font-label-sm text-[10px] text-on-primary-container">اختيار من متعدد</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2 rounded-DEFAULT bg-surface-container-lowest/10 backdrop-blur-xs text-center">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]">verified_user</span>
+<span class="font-numeric-data text-label-md text-on-primary mt-1">محاولة واحدة</span>
+<span class="font-label-sm text-[10px] text-on-primary-container">مسموحة فقط</span>
+</div>
+</div>
+<!-- Quick Action CTA -->
+<button class="w-full py-3 px-4 rounded-full bg-secondary hover:bg-secondary-container text-on-secondary font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-sm transition-transform active:scale-[0.98]" onclick="openQuizModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+<span>بدء الاختبار التفاعلي الآن</span>
+</button>
+</div>
+</section>
+<!-- HOMEWORK LIST (قائمة الواجبات المدرسية) -->
+<section class="flex flex-col space-y-space-md">
+<div class="flex items-center justify-between px-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">قائمة المهام والواجبات</h3>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span>فرز حسب الأحدث</span>
+<span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</div>
+</div>
+<!-- CARD 1: PENDING / URGENT (الرياضيات) -->
+<article class="flex flex-col rounded-lg bg-surface-container-lowest p-space-md shadow-sm space-y-space-sm">
+<!-- Top info line: Subject & Urgent Pill -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-2 h-8 rounded-full bg-error"></div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">الرياضيات • أ. خالد الشهري</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">حل تمارين المتطابقات المثلثية صفحة 64</h4>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">alarm</span>
+<span class="font-numeric-data">متبقي 6 ساعات</span>
+</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        المطلوب: إنجاز المسائل من رقم 1 إلى 8 مع توضيح خطوات الحل التفصيلية وقوانين جيب التمام.
+      </p>
+<!-- Download Attachment Pill Container -->
+<div class="flex items-center justify-between p-space-sm rounded-DEFAULT bg-surface-container-low">
+<div class="flex items-center gap-2.5">
+<div class="p-2 rounded-DEFAULT bg-surface-container text-error">
+<span class="material-symbols-outlined text-[22px]">picture_as_pdf</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">أوراق عمل الوحدة الثالثة.pdf</span>
+<span class="font-numeric-data text-label-sm text-on-surface-variant">1.2 MB • ملف تمارين مساند</span>
+</div>
+</div>
+<button class="min-w-[36px] min-h-[36px] flex items-center justify-center rounded-full bg-surface-container-lowest text-on-surface hover:text-secondary shadow-xs transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</div>
+<!-- Action Buttons for Submitting HW -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="py-2.5 px-3 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md flex items-center justify-center gap-1.5 transition-colors hover:bg-secondary-fixed-dim" onclick="showSubmissionToast('photo')" type="button">
+<span class="material-symbols-outlined text-[18px]">add_a_photo</span>
+<span>تصوير / رفع الحل 📎</span>
+</button>
+<button class="py-2.5 px-3 rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container font-label-md text-label-md flex items-center justify-center gap-1.5 transition-colors" onclick="showSubmissionToast('text')" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+<span>إرسال إجابة نصية</span>
+</button>
+</div>
+<span class="text-center font-label-sm text-[10px] text-on-surface-variant">يدعم التطبيق ضغط صور الكاميرا تلقائياً بصيغة WebP لتسريع الرفع</span>
+</article>
+<!-- CARD 2: GRADED & COMPLETED (العلوم الطبيعية) -->
+<article class="flex flex-col rounded-lg bg-surface-container-lowest p-space-md shadow-sm space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-2 h-8 rounded-full bg-secondary-container"></div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">العلوم الطبيعية • أ. ماجد الغامدي</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">تجربة التفاعل الكيميائي وتحديد نواتج الاحتراق</h4>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">verified</span>
+<span class="font-numeric-data">10 / 10 ممتاز 🌟</span>
+</span>
+</div>
+<!-- Teacher Feedback Callout -->
+<div class="p-space-sm rounded-DEFAULT bg-surface-container-low flex flex-col space-y-1">
+<div class="flex items-center gap-1.5 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">record_voice_over</span>
+<span>ملاحظة المعلم الموجهة للطالب:</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface pr-1">
+          "إجابة نموذجية ورسومات بيانية واضحة تعكس استيعاباً رائعاً لخطوات التجربة، بارك الله فيك ومستواك متميز يا عبدالرحمن."
+        </p>
+</div>
+<!-- Action: View Submission -->
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">تم التسليم: الإثنين 2:15 م (في الموعد)</span>
+<button class="py-1.5 px-3 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>عرض الحل والمرفقات</span>
+</button>
+</div>
+</article>
+<!-- CARD 3: PENDING REGULAR (لغتي الخالدة) -->
+<article class="flex flex-col rounded-lg bg-surface-container-lowest p-space-md shadow-sm space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-2 h-8 rounded-full bg-surface-variant"></div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">لغتي الخالدة • أ. فهد السالم</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">كتابة نص وصفي عن معالم المملكة التاريخية</h4>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+          بانتظار التسليم
+        </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        صياغة فقرتين وصفيّتين حول موقع مدائن صالح أو الدرعية التاريخية مع ضبط الكلمات بالشكل واستخراج ثلاث صور جمالية.
+      </p>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">event</span>
+<span>الموعد النهائي: الخميس القادم (متبقي يومان)</span>
+</div>
+<button class="py-1.5 px-3 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm flex items-center gap-1" onclick="showSubmissionToast('photo')" type="button">
+<span class="material-symbols-outlined text-[16px]">upload_file</span>
+<span>تسليم الواجب</span>
+</button>
+</div>
+</article>
+</section>
+<!-- INTERACTIVE MINI-QUIZ MODAL SHEET (Modal Simulation for active Quiz) -->
+<div class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-inverse-surface/40 backdrop-blur-sm transition-opacity hidden" id="quiz-sheet">
+<div class="w-full max-w-lg bg-surface-container-lowest rounded-t-xl sm:rounded-xl shadow-xl flex flex-col max-h-[795px] overflow-hidden">
+<!-- Sheet Header Bar -->
+<div class="flex items-center justify-between p-space-md bg-primary-container text-on-primary">
+<div class="flex items-center gap-2">
+<div class="p-1 rounded bg-secondary text-on-secondary">
+<span class="material-symbols-outlined text-[18px]">quiz</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg">اختبار الذكاء الاصطناعي والحاسب</h4>
+<span class="font-label-sm text-label-sm text-on-primary-container">السؤال 1 من 5 أسئلة</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/15 font-numeric-data text-label-sm text-on-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">timer</span>
+<span id="quiz-timer">14:52</span>
+</span>
+<button class="w-8 h-8 rounded-full bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 flex items-center justify-center text-on-primary" onclick="closeQuizModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- Sheet Progress Track -->
+<div class="w-full h-1.5 bg-surface-container-high">
+<div class="h-full bg-secondary w-1/5 rounded-full transition-all"></div>
+</div>
+<!-- Question & Radio Options -->
+<div class="p-space-md overflow-y-auto space-y-space-md">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-secondary">سؤال موضوعي اختيار من متعدد (درجتان)</span>
+<p class="font-headline-sm text-headline-sm text-on-surface leading-relaxed">
+            ما هي الوحدة المسؤولة عن معالجة الأوامر الحسابية والمنطقية الأساسية وتنفيذ البرامج في جهاز الحاسب الآلي؟
+          </p>
+</div>
+<!-- Options Container -->
+<fieldset class="space-y-2.5">
+<legend class="sr-only">اختر الإجابة الصحيحة</legend>
+<label class="flex items-center justify-between p-3.5 rounded-DEFAULT bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors has-[:checked]:bg-secondary/10 has-[:checked]:text-secondary">
+<div class="flex items-center gap-3">
+<input checked="" class="w-4 h-4 text-secondary accent-secondary" name="quiz-q1" type="radio" value="cpu"/>
+<span class="font-body-md text-body-md text-on-surface font-medium">وحدة المعالجة المركزية (CPU)</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-numeric-data">خيار أ</span>
+</label>
+<label class="flex items-center justify-between p-3.5 rounded-DEFAULT bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors has-[:checked]:bg-secondary/10 has-[:checked]:text-secondary">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 text-secondary accent-secondary" name="quiz-q1" type="radio" value="ram"/>
+<span class="font-body-md text-body-md text-on-surface">ذاكرة الوصول العشوائي (RAM)</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-numeric-data">خيار ب</span>
+</label>
+<label class="flex items-center justify-between p-3.5 rounded-DEFAULT bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors has-[:checked]:bg-secondary/10 has-[:checked]:text-secondary">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 text-secondary accent-secondary" name="quiz-q1" type="radio" value="ssd"/>
+<span class="font-body-md text-body-md text-on-surface">قرص التخزين الصلب (SSD / HDD)</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-numeric-data">خيار ج</span>
+</label>
+</fieldset>
+<!-- Help Notice -->
+<div class="p-3 rounded-DEFAULT bg-surface-container-low text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">info</span>
+<span class="font-label-sm text-label-sm">يتم حفظ إجابتك تلقائياً في خوادم المدرسة عند الانتقال للسؤال التالي.</span>
+</div>
+</div>
+<!-- Sheet Footer Actions -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between gap-3">
+<button class="py-2.5 px-4 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" onclick="closeQuizModal()" type="button">
+          حفظ وخروج مؤقت
+        </button>
+<div class="flex items-center gap-2">
+<button class="py-2.5 px-5 rounded-full bg-secondary hover:bg-secondary-container text-on-secondary font-label-md text-label-md flex items-center gap-1.5 shadow-sm transition-transform active:scale-95" onclick="alert('تم حفظ الإجابة! الانتقال للسؤال رقم 2');" type="button">
+<span>السؤال التالي</span>
+<span class="material-symbols-outlined text-[16px] rotate-180">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Toast Notification Simulator for Micro-interactions -->
+<div class="hidden fixed bottom-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-inverse-surface text-inverse-on-surface font-label-md text-label-md shadow-lg flex items-center gap-2" id="toast">
+<span class="material-symbols-outlined text-[18px] text-emerald-400">check_circle</span>
+<span id="toast-text">تم تنفيذ طلبك بنجاح</span>
+</div>
+</div>
+<!-- Client-side Interactive Logic for Navigation, Modal and State -->
+</main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)]" data-active-classes="text-secondary"><div class="flex justify-around items-center h-16 px-space-sm"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] w-14 text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="#"><span class="material-symbols-outlined text-[22px]">cottage</span><span class="font-label-sm text-label-sm mt-0.5">الرئيسية</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] w-14 text-on-surface-variant hover:text-on-surface transition-colors" data-path="homework-and-quizzes" href="#"><span class="material-symbols-outlined text-[22px]">assignment</span><span class="font-label-sm text-label-sm mt-0.5">الواجبات</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] w-14 text-on-surface-variant hover:text-on-surface transition-colors" data-path="grades-reports" href="#"><span class="material-symbols-outlined text-[22px]">bar_chart</span><span class="font-label-sm text-label-sm mt-0.5">التقارير</span></a><a class="relative flex flex-col items-center justify-center min-w-[44px] min-h-[44px] w-14 text-on-surface-variant hover:text-on-surface transition-colors" data-path="notifications" href="#"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 left-3.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-error text-on-error font-label-sm text-[9px]">3</span><span class="font-label-sm text-label-sm mt-0.5">الإشعارات</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] w-14 text-on-surface-variant hover:text-on-surface transition-colors" data-path="more-menu" href="#"><span class="material-symbols-outlined text-[22px]">widgets</span><span class="font-label-sm text-label-sm mt-0.5">المزيد</span></a></div></nav>

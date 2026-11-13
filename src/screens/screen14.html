@@ -1,0 +1,356 @@
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-md flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><button aria-label="العودة إلى تسجيل الدخول" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container active:bg-surface-container-high transition-colors" onclick="window.location.href='#login'" type="button"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><div class="flex items-center gap-space-xs"><div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-primary text-[18px]">school</span></div><div class="flex flex-col"><span class="text-[11px] font-label text-on-surface-variant leading-none">بوابة عبق التعليمية</span><span class="text-[9px] font-label text-secondary leading-tight">مدارس النور الأهلية</span></div></div></div><h1 class="text-sm md:text-base font-headline font-bold text-on-surface truncate text-center flex-1 px-space-xs">Student Basic Details</h1><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full pb-safe">
+<!-- Stepper & Progress Tracker -->
+<div class="px-space-md pt-4 pb-2">
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary text-on-primary text-xs font-bold">1</span>
+<span class="text-sm font-headline font-bold text-on-surface">البيانات الأساسية والأكاديمية</span>
+</div>
+<span class="text-xs font-label text-secondary font-medium">الخطوة 1 من 4 (25%)</span>
+</div>
+<!-- Segmented Bar Progress -->
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden flex">
+<div class="bg-primary h-full w-1/4 rounded-full transition-all duration-300"></div>
+<div class="bg-surface-container h-full w-3/4"></div>
+</div>
+<!-- Steps Overview -->
+<div class="grid grid-cols-4 gap-1 mt-3 text-center">
+<div class="flex flex-col items-center">
+<span class="text-[10px] font-label font-bold text-primary">البيانات</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-1"></span>
+</div>
+<div class="flex flex-col items-center opacity-60">
+<span class="text-[10px] font-label text-on-surface-variant">المسار والفرع</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant mt-1"></span>
+</div>
+<div class="flex flex-col items-center opacity-60">
+<span class="text-[10px] font-label text-on-surface-variant">المستندات</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant mt-1"></span>
+</div>
+<div class="flex flex-col items-center opacity-60">
+<span class="text-[10px] font-label text-on-surface-variant">المراجعة والرسوم</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant mt-1"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Admission Header Banner -->
+<div class="px-space-md py-2">
+<div class="bg-gradient-to-l from-primary-container to-primary rounded-2xl p-space-md text-on-primary shadow-sm relative overflow-hidden">
+<div class="absolute -left-6 -bottom-6 w-24 h-24 bg-surface-container-lowest/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/20 backdrop-blur-sm text-[11px] font-label font-semibold text-primary-fixed">
+          العام الدراسي 1446 - 1447هـ
+        </span>
+<span class="inline-flex items-center gap-1 text-[11px] font-label text-secondary-fixed bg-surface-container-lowest/15 px-2.5 py-1 rounded-full">
+<span class="w-2 h-2 rounded-full bg-inverse-primary animate-pulse"></span>
+          القبول والتسجيل متاح
+        </span>
+</div>
+<h2 class="text-base font-headline font-extrabold mb-1">تسجيل طالب جديد في مدارس النور</h2>
+<p class="text-xs font-body text-primary-fixed leading-relaxed">
+        يسعدنا انضمام ابنكم/ابنتكم إلى مسيرتنا التعليمية. يتطلب ملء الطلب قرابة 3 دقائق عبر الربط الذكي المباشر.
+      </p>
+</div>
+</div>
+<!-- Nafath / Noor Instant Sync Action Card -->
+<div class="px-space-md py-2">
+
+</div>
+<!-- Form Section: Student Identity -->
+<div class="px-space-md py-2 flex flex-col gap-4">
+<!-- Student Photo & Identification Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">badge</span>
+<h3 class="text-sm font-headline font-bold text-on-surface">الهوية والمعلومات الشخصية</h3>
+</div>
+<span class="text-[11px] font-label text-secondary font-medium">مطلوب</span>
+</div>
+<!-- Photo Upload & Guide -->
+<div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-xl">
+<div class="relative w-16 h-20 rounded-xl bg-surface-container-high overflow-hidden shrink-0 flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Portrait photography frame with clean plain white studio background for Saudi student school identification badge, professional lighting, centered clear headshot" src="./assets/images/img-16.jpg">
+<button class="absolute bottom-1 right-1 w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center shadow" type="button">
+<span class="material-symbols-outlined text-[14px]">photo_camera</span>
+</button>
+</div>
+<div class="flex-1">
+<span class="text-xs font-headline font-bold text-on-surface block">صورة الطالب الشخصية</span>
+<span class="text-[11px] font-body text-on-surface-variant block mt-0.5 leading-snug">خلفية بيضاء حديثة، مقاس 4×6، بصيغة JPG أو PNG</span>
+<button class="mt-2 text-[11px] font-label font-bold text-primary flex items-center gap-1 hover:underline" type="button">
+<span class="material-symbols-outlined text-[14px]">file_upload</span>
+<span>اختيار صورة من الاستوديو</span>
+</button>
+</div>
+</div>
+<!-- Nationality Radio Group -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-label font-bold text-on-surface">الجنسية</label>
+<div class="grid grid-cols-2 gap-2">
+<label class="flex items-center justify-center gap-2 p-2.5 rounded-xl bg-primary-fixed text-on-primary-fixed cursor-pointer font-headline text-xs font-bold transition-colors">
+<input checked="" class="hidden" name="nationality" type="radio" value="saudi">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>سعودي الجنسية</span>
+</label>
+<label class="flex items-center justify-center gap-2 p-2.5 rounded-xl bg-surface-container text-on-surface-variant cursor-pointer font-headline text-xs font-bold transition-colors">
+<input class="hidden" name="nationality" type="radio" value="expat">
+<span class="material-symbols-outlined text-[16px]">circle</span>
+<span>مقيم / زياره&nbsp;&nbsp;</span>
+</label>
+</div>
+</div>
+<!-- National ID / Iqama -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<label class="text-xs font-label font-bold text-on-surface" for="studentId">رقم الهوية الوطنية / الإقامة</label>
+
+</div>
+<div class="relative flex items-center">
+<input class="w-full bg-surface-container-low text-on-surface text-sm font-headline font-semibold px-3 py-2.5 rounded-xl outline-none focus:bg-surface-container transition-all" id="studentId" type="text" value="1128943201">
+<span class="absolute left-3 text-secondary text-xs font-label">10 أرقام</span>
+</div>
+</div>
+<!-- Full Name -->
+<div class="flex flex-col gap-1">
+<label class="text-xs font-label font-bold text-on-surface" for="studentName">الاسم الرباعي للطالب (كما في بطاقة الهوية)</label>
+<input class="w-full bg-surface-container-low text-on-surface text-sm font-headline font-semibold px-3 py-2.5 rounded-xl outline-none focus:bg-surface-container transition-all" id="studentName" type="text" value="ريان محمد بن عبدالرحمن العتيبي">
+</div>
+<!-- DOB & Blood Type Grid -->
+<div class="grid grid-cols-2 gap-3">
+<!-- Date of birth -->
+<div class="flex flex-col gap-1">
+<label class="text-xs font-label font-bold text-on-surface">تاريخ الميلاد</label>
+<div class="flex items-center bg-surface-container-low px-3 py-2.5 rounded-xl">
+<span class="material-symbols-outlined text-secondary text-[18px] ml-2">calendar_today</span>
+<input class="w-full bg-transparent text-xs font-headline font-medium outline-none text-on-surface" type="text" value="1439/04/18هـ">
+</div>
+<span class="text-[10px] font-label text-on-surface-variant">الموافق 05/01/2018م (6 سنوات)</span>
+</div>
+<!-- Blood Type -->
+<div class="flex flex-col gap-1">
+<label class="text-xs font-label font-bold text-on-surface">فصيلة الدم</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low text-xs font-headline font-bold text-on-surface px-3 py-2.5 rounded-xl outline-none appearance-none">
+<option value="O+">O+ (موجب)</option>
+<option value="A+">A+ (موجب)</option>
+<option value="B+">B+ (موجب)</option>
+<option value="AB+">AB+ (موجب)</option>
+<option value="O-">O- (سالب)</option>
+</select>
+<span class="material-symbols-outlined absolute left-2.5 top-2.5 text-secondary text-[18px] pointer-events-none">expand_more</span>
+</div>
+<span class="text-[10px] font-label text-on-surface-variant">للسجل الصحي المدرسي</span>
+</div>
+</div>
+<!-- Gender Segmented Toggle -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-label font-bold text-on-surface">النوع (الجنس)</label>
+<div class="grid grid-cols-2 gap-2 bg-surface-container-low p-1 rounded-xl">
+<button class="py-2 rounded-lg bg-surface-container-lowest font-headline font-bold text-xs text-primary shadow-sm flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">boy</span>
+<span>ذكر (طالب)</span>
+</button>
+<button class="py-2 rounded-lg font-headline font-medium text-xs text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">girl</span>
+<span>أنثي (طالبة)</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Academic Level, Grade & Campus Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance</span>
+<h3 class="text-sm font-headline font-bold text-on-surface">المرحلة الأكاديمية واختيار الفرع</h3>
+</div>
+<!-- Campus Branch Selection -->
+<div class="flex flex-col gap-1">
+<label class="text-xs font-label font-bold text-on-surface">الفرع والمجمع المدرسي</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low text-xs font-headline font-semibold text-on-surface px-3 py-2.5 rounded-xl outline-none appearance-none">
+<option>مجمع النور التعليمي - حي الياسمين (بنين)</option>
+<option>مجمع النور النموذجي - حي النرجس (بنات وبنين أولى)</option>
+<option>مدارس النور الدولية - فرع العليا</option>
+</select>
+<span class="material-symbols-outlined absolute left-2.5 top-2.5 text-secondary text-[18px] pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Grade Stage Selector Pills -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-label font-bold text-on-surface">المرحلة التعليمية</label>
+<div class="grid grid-cols-4 gap-1.5 text-center">
+<div class="p-2 rounded-xl bg-surface-container text-on-surface-variant text-xs font-headline font-medium">
+            رياض أطفال
+          </div>
+<div class="p-2 rounded-xl bg-primary text-on-primary text-xs font-headline font-bold shadow-sm">
+            الابتدائية
+          </div>
+<div class="p-2 rounded-xl bg-surface-container text-on-surface-variant text-xs font-headline font-medium">
+            المتوسطة
+          </div>
+<div class="p-2 rounded-xl bg-surface-container text-on-surface-variant text-xs font-headline font-medium">
+            الثانوية
+          </div>
+</div>
+</div>
+<!-- Specific Class & Program Track -->
+<div class="grid grid-cols-2 gap-3">
+<div class="flex flex-col gap-1">
+<label class="text-xs font-label font-bold text-on-surface">الصف الدراسي</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low text-xs font-headline font-bold text-on-surface px-3 py-2.5 rounded-xl outline-none appearance-none">
+<option selected="">الصف الأول الابتدائي</option>
+<option>الصف الثاني الابتدائي</option>
+<option>الصف الثالث الابتدائي</option>
+<option>الصف الرابع الابتدائي</option>
+</select>
+<span class="material-symbols-outlined absolute left-2.5 top-2.5 text-secondary text-[18px] pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-xs font-label font-bold text-on-surface">المسار والمنهج</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low text-xs font-headline font-bold text-on-surface px-3 py-2.5 rounded-xl outline-none appearance-none">
+<option selected="">الأهلي العام المطور</option>
+<option>المسار الدولي (American)</option>
+<option>مسار موهبة والذكاء الاصطناعي</option>
+</select>
+<span class="material-symbols-outlined absolute left-2.5 top-2.5 text-secondary text-[18px] pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Bus Transport Add-on Snippet -->
+<div class="p-3 bg-surface-container-low rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container-lowest text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">directions_bus</span>
+</div>
+<div>
+<span class="text-xs font-headline font-bold text-on-surface block">خدمة النقل المدرسي الذكي</span>
+<span class="text-[10px] font-body text-secondary block">تتبع مباشر عبر GPS ومرافقة إشرافية</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Health & Special Needs Check -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[20px]">health_and_safety</span>
+<h3 class="text-sm font-headline font-bold text-on-surface">السجل الصحي وملاحظات الرعاية</h3>
+</div>
+<span class="text-[11px] font-label text-secondary">اختياري</span>
+</div>
+<div class="p-3 bg-surface-container-low rounded-xl flex items-center justify-between">
+<div class="flex-1 pr-1">
+<span class="text-xs font-headline font-bold text-on-surface block">هل يعاني الطالب من أي حساسية أو احتياجات صحية؟</span>
+<span class="text-[10px] font-body text-secondary block mt-0.5">حساسية طعام، ربو، سكري أطفال، أو متابعة خاصة</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0 mr-2">
+<input class="sr-only peer" id="healthToggle" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="hidden flex-col gap-1" id="healthDetailsBox">
+<label class="text-xs font-label font-bold text-on-surface">التفاصيل والتوجيهات للعيادة المدرسية</label>
+<textarea class="w-full bg-surface-container-low text-xs font-body text-on-surface p-2.5 rounded-xl outline-none focus:bg-surface-container" placeholder="اذكر نوع الحساسية، والأدوية الإسعافية اللازمة إن وجدت..." rows="2"></textarea>
+</div>
+</div>
+<!-- Parent / Guardian Information -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">family_restroom</span>
+<h3 class="text-sm font-headline font-bold text-on-surface">بيانات ولي الأمر المرتبط بالطلب</h3>
+</div>
+<button class="text-xs font-label font-bold text-primary hover:underline" type="button">تعديل</button>
+</div>
+<div class="p-3 bg-surface-container-low rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-headline font-bold text-sm">
+            م.ع
+          </div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-headline font-bold text-on-surface">محمد بن عبدالرحمن العتيبي</span>
+<span class="text-[10px] font-label px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold">أب / ولي أمر رئيسي</span>
+</div>
+<div class="flex items-center gap-3 text-[11px] font-label text-secondary mt-1">
+<span>هوية: 1045981240</span>
+<span>•</span>
+<span dir="ltr">+966 50 123 4567</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 text-[11px] font-label text-secondary px-1">
+<span class="material-symbols-outlined text-[16px] text-primary">mark_email_read</span>
+<span>سيتم إرسال إشعارات حالة القبول وتأكيد الحجز على هذا الرقم والبريد المسجل.</span>
+</div>
+</div>
+<!-- Required Documents Checklist Preview -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">folder_open</span>
+<h3 class="text-sm font-headline font-bold text-on-surface">جاهزية المستندات المطلوبة (الخطوة التالية)</h3>
+</div>
+<span class="text-[11px] font-label text-secondary font-semibold">2 من 3 مرفوعة</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2.5 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+<span class="text-xs font-headline font-semibold text-on-surface">رقم اقامة / هوية الطالب</span>
+</div>
+<span class="text-[11px] font-label font-bold text-primary bg-primary-fixed px-2 py-0.5 rounded-full">تم الرفع ✓</span>
+</div>
+<div class="flex items-center justify-between p-2.5 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+<span class="text-xs font-headline font-semibold text-on-surface">شهادة التطعيمات&nbsp;</span>
+</div>
+<span class="text-[11px] font-label font-bold text-primary bg-primary-fixed px-2 py-0.5 rounded-full">مستورد آلياً ✓</span>
+</div>
+<div class="flex items-center justify-between p-2.5 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">pending</span>
+<span class="text-xs font-headline font-semibold text-on-surface">شهادة آخر مرحلة دراسية أو روضة</span>
+</div>
+<span class="text-[11px] font-label font-bold text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-full">في الخطوة القادمة</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Controls & Privacy Footer -->
+<div class="sticky bottom-0 z-40 bg-surface/95 backdrop-blur-md px-space-md pt-3 pb-safe shadow-[0_-4px_16px_rgba(0,0,0,0.06)] mt-4">
+<div class="flex flex-col gap-2 max-w-lg mx-auto pb-3">
+<button class="w-full py-3.5 px-4 rounded-xl bg-primary hover:bg-primary/95 text-on-primary text-sm font-headline font-bold flex items-center justify-center gap-2 shadow-md active:scale-[0.99] transition-all" id="nextStepBtn" type="button">
+<span>متابعة إلى خطوة المرفقات والمستندات</span>
+<span class="material-symbols-outlined text-[20px] rtl:rotate-180">arrow_forward</span>
+</button>
+<div class="flex items-center justify-between gap-2">
+<button class="flex-1 py-2.5 px-3 rounded-xl bg-surface-container-lowest text-on-surface text-xs font-headline font-semibold hover:bg-surface-container transition-all flex items-center justify-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">bookmark_border</span>
+<span>حفظ كمسودة والرجوع لاحقاً</span>
+</button>
+<button class="py-2.5 px-3 rounded-xl bg-surface-container-lowest text-secondary text-xs font-headline font-semibold hover:bg-surface-container transition-all flex items-center justify-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">help_outline</span>
+<span>مساعدة</span>
+</button>
+</div>
+<div class="flex items-center justify-center gap-1 text-[10px] font-label text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-[12px] text-secondary">lock</span>
+<span>جميع البيانات مشفرة وتخضع لسياسة خصوصية وزارة التعليم وبوابة عبق المدرسية</span>
+</div>
+</div>
+</div>
+</div>
+</main>

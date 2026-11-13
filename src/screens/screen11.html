@@ -1,0 +1,205 @@
+<main class="flex flex-col relative w-full bg-surface min-h-screen"><div class="flex flex-col w-full pb-8">
+<!-- Hero Branding Header -->
+<header class="relative bg-primary-container text-surface rounded-b-3xl px-6 pt-7 pb-10 shadow-xl overflow-hidden">
+<!-- Ambient Tech Grid Overlay -->
+<div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#89ceff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<div class="absolute -top-12 -left-12 w-48 h-48 bg-secondary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<!-- Abaq Emblem & Glow -->
+<div class="relative mb-3 flex items-center justify-center">
+<div class="absolute inset-0 bg-tertiary-fixed-dim/20 rounded-full blur-md animate-pulse"></div>
+<div class="relative w-16 h-16 rounded-2xl bg-surface-container-lowest/10 backdrop-blur-md p-2 flex items-center justify-center shadow-inner">
+<img alt="شعار عبق للتعليم الذكي" class="w-full h-full object-contain drop-shadow" src="./assets/images/img-1.jpg"/>
+</div>
+</div>
+<!-- System Identity Titles -->
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-tight text-surface-bright flex items-center gap-1.5 justify-center">
+<span>منظومة عبق لإدارة المدارس</span>
+<span class="inline-block w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-ping"></span>
+</h1>
+<div class="mt-1 flex items-center gap-2 px-3 py-1 bg-surface-container-lowest/10 rounded-full backdrop-blur-sm">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size: 16px;">verified</span>
+<p class="font-label-md text-label-md text-surface-dim font-medium tracking-wide">مدارس النور الأهلية النموذجية</p>
+</div>
+</div>
+</header>
+<!-- Main Login Card Container -->
+<div class="px-4 -mt-5 relative z-20">
+<div class="bg-surface-container-lowest rounded-2xl shadow-xl p-5 md:p-6 transition-all"><!-- Segmented Navigation Tabs: Guardian/Student vs Teacher/Staff -->
+<div class="grid grid-cols-2 gap-1.5 p-1 bg-surface-container-low rounded-xl mb-6">
+<button class="py-2.5 px-3 rounded-lg font-label-lg text-label-lg transition-all text-on-surface bg-surface-container-lowest shadow-sm flex items-center justify-center gap-1.5" id="tab-login" onclick="switchTab('student')" type="button">
+<span class="material-symbols-outlined" style="font-size: 18px; font-variation-settings: 'FILL' 1;">school</span>
+<span>ولي الأمر / الطالب</span>
+</button>
+<button class="py-2.5 px-3 rounded-lg font-label-lg text-label-lg transition-all text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-1.5" id="tab-teacher" onclick="switchTab('teacher')" type="button">
+<span class="material-symbols-outlined" style="font-size: 18px;">badge</span>
+<span>المعلم والكادر التعليمي</span>
+</button>
+</div>
+<!-- View 1: Student / Guardian Login -->
+<div class="flex flex-col gap-4" id="view-student">
+<!-- Field 1: National ID / Academic No. with Integrated Barcode/QR Scanner -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant flex justify-between items-center" for="student-identifier">
+<span>الرقم الأكاديمي / الهوية - الاقامة / الجوال</span>
+<span class="text-secondary font-label-sm text-label-sm font-semibold">مطلوب</span>
+</label>
+<div class="relative flex items-center">
+<span class="absolute inset-y-0 start-0 flex items-center ps-3 text-outline pointer-events-none">
+<span class="material-symbols-outlined" style="font-size: 20px;">badge</span>
+</span>
+<input class="w-full bg-surface-container-low text-on-surface rounded-xl ps-10 pe-28 py-3 outline-none focus:bg-surface-container-lowest transition-colors" id="student-identifier" placeholder="مثال: 1089248291 أو NOOR-4521" style="font-size: 16px;" type="text"/>
+<button class="absolute inset-y-1 end-1 px-3 bg-surface-container text-on-surface font-label-sm text-label-sm rounded-lg flex items-center gap-1.5 hover:bg-surface-container-high transition-colors shadow-sm active:scale-95" onclick="triggerQrScan()" type="button">
+<span class="material-symbols-outlined text-secondary" style="font-size: 18px;">qr_code_scanner</span>
+<span>مسح الكود</span>
+</button>
+</div>
+</div>
+<!-- Field 2: Password with Reveal Toggle -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface-variant" for="portal-password">كلمة المرور</label>
+<a class="font-label-sm text-label-sm text-secondary hover:underline" href="#reset">استعادة الحساب أو كلمة المرور؟</a>
+</div>
+<div class="relative flex items-center">
+<span class="absolute inset-y-0 start-0 flex items-center ps-3 text-outline pointer-events-none">
+<span class="material-symbols-outlined" style="font-size: 20px;">lock</span>
+</span>
+<input class="w-full bg-surface-container-low text-on-surface rounded-xl ps-10 pe-11 py-3 outline-none focus:bg-surface-container-lowest transition-colors" id="portal-password" placeholder="أدخل كلمة المرور الخاصة بك" style="font-size: 16px;" type="password"/>
+<button aria-label="إظهار كلمة المرور" class="absolute inset-y-0 end-0 flex items-center pe-3 text-outline hover:text-on-surface transition-colors" onclick="togglePasswordVisibility('portal-password', 'eye-icon-student')" type="button">
+<span class="material-symbols-outlined" id="eye-icon-student" style="font-size: 20px;">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Field 3: School Code (Optional / Default Noor) -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center justify-between" for="school-code">
+<span>كود المدرسة (School Code)</span>
+<span class="text-outline font-label-sm text-label-sm">اختياري</span>
+</label>
+<div class="relative flex items-center">
+<span class="absolute inset-y-0 start-0 flex items-center ps-3 text-outline pointer-events-none">
+<span class="material-symbols-outlined" style="font-size: 20px;">domain</span>
+</span>
+<input class="w-full bg-surface-container-low text-on-surface rounded-xl ps-10 pe-16 py-3 font-numeric-data text-numeric-data outline-none focus:bg-surface-container-lowest transition-colors" id="school-code" style="font-size: 16px;" type="text" value="NOOR-2025"/>
+<span class="absolute end-3 font-label-sm text-label-sm text-on-tertiary-container bg-tertiary-fixed/30 px-2 py-0.5 rounded-full">افتراضي</span>
+</div>
+</div>
+<!-- Primary Action Button -->
+<button class="mt-2 w-full bg-secondary text-on-secondary font-label-lg text-label-lg font-bold py-3.5 rounded-xl shadow-md flex items-center justify-center gap-2 hover:bg-secondary/95 active:scale-[0.98] transition-all" id="btn-login-submit" type="button">
+<span>تسجيل دخول الطالب / ولي الأمر</span>
+<span class="material-symbols-outlined" style="font-size: 20px;">arrow_back</span>
+</button>
+<!-- Divider -->
+<div class="relative flex py-1 items-center justify-center">
+<div class="flex-grow bg-surface-variant h-px"></div>
+<span class="flex-shrink mx-3 text-outline font-label-sm text-label-sm">أو عبر</span>
+<div class="flex-grow bg-surface-variant h-px"></div>
+</div>
+<!-- Biometric Authentication Button -->
+<button class="w-full bg-surface-container-low text-on-surface hover:bg-surface-container rounded-xl p-3.5 flex items-center justify-center gap-3 transition-colors active:scale-[0.98]" onclick="authenticateBiometric('student')" type="button">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined" style="font-size: 20px;">fingerprint</span>
+</div>
+<div class="flex flex-col text-start">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">الدخول السريع عبر البصمة / Face ID</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">مفعل على هذا الجهاز للوصول الآمن</span>
+</div>
+<span class="material-symbols-outlined text-outline ms-auto" style="font-size: 18px;">keyboard_arrow_left</span>
+</button>
+</div>
+<!-- View 2: Teacher & Staff Login -->
+<div class="hidden flex-col gap-4" id="view-teacher">
+<!-- Field 1: Teacher Academic Email or Employee ID -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant flex justify-between items-center" for="teacher-identifier">
+<span>الرقم الوظيفي / البريد الأكاديمي أو الهوية</span>
+<span class="text-secondary font-label-sm text-label-sm font-semibold">معتمد</span>
+</label>
+<div class="relative flex items-center">
+<span class="absolute inset-y-0 start-0 flex items-center ps-3 text-outline pointer-events-none">
+<span class="material-symbols-outlined" style="font-size: 20px;">assignment_ind</span>
+</span>
+<input class="w-full bg-surface-container-low text-on-surface rounded-xl ps-10 pe-4 py-3 outline-none focus:bg-surface-container-lowest transition-colors" id="teacher-identifier" placeholder="مثال: T-9082 أو teacher@alnoor.edu.sa" style="font-size: 16px;" type="text"/>
+</div>
+</div>
+<!-- Field 2: Teacher Password -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface-variant" for="teacher-password">كلمة المرور الأكاديمية</label>
+<a class="font-label-sm text-label-sm text-secondary hover:underline" href="#reset-staff">استعادة حساب الكادر الأكاديمي؟</a>
+</div>
+<div class="relative flex items-center">
+<span class="absolute inset-y-0 start-0 flex items-center ps-3 text-outline pointer-events-none">
+<span class="material-symbols-outlined" style="font-size: 20px;">lock_clock</span>
+</span>
+<input class="w-full bg-surface-container-low text-on-surface rounded-xl ps-10 pe-11 py-3 outline-none focus:bg-surface-container-lowest transition-colors" id="teacher-password" placeholder="أدخل كلمة المرور للكادر" style="font-size: 16px;" type="password"/>
+<button aria-label="إظهار كلمة المرور" class="absolute inset-y-0 end-0 flex items-center pe-3 text-outline hover:text-on-surface transition-colors" onclick="togglePasswordVisibility('teacher-password', 'eye-icon-teacher')" type="button">
+<span class="material-symbols-outlined" id="eye-icon-teacher" style="font-size: 20px;">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Field 3: Campus / School Code -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center justify-between" for="teacher-school-code">
+<span>كود المجمع التعليمي / المدرسة</span>
+<span class="text-outline font-label-sm text-label-sm">تلقائي</span>
+</label>
+<div class="relative flex items-center">
+<span class="absolute inset-y-0 start-0 flex items-center ps-3 text-outline pointer-events-none">
+<span class="material-symbols-outlined" style="font-size: 20px;">domain_verification</span>
+</span>
+<input class="w-full bg-surface-container-low text-on-surface rounded-xl ps-10 pe-16 py-3 font-numeric-data text-numeric-data outline-none focus:bg-surface-container-lowest transition-colors" id="teacher-school-code" style="font-size: 16px;" type="text" value="NOOR-ACAD-01"/>
+<span class="absolute end-3 font-label-sm text-label-sm text-on-tertiary-container bg-tertiary-fixed/30 px-2 py-0.5 rounded-full">مجمع النور</span>
+</div>
+</div>
+<!-- Primary Teacher Action Button -->
+<button class="mt-2 w-full bg-secondary text-on-secondary font-label-lg text-label-lg font-bold py-3.5 rounded-xl shadow-md flex items-center justify-center gap-2 hover:bg-secondary/95 active:scale-[0.98] transition-all" id="btn-teacher-submit" type="button">
+<span>تسجيل دخول الكادر التعليمي</span>
+<span class="material-symbols-outlined" style="font-size: 20px;">arrow_back</span>
+</button>
+<!-- Biometric Fast Login for Teachers -->
+<button class="w-full bg-surface-container-low text-on-surface hover:bg-surface-container rounded-xl p-3 flex items-center justify-between transition-colors active:scale-[0.98]" onclick="authenticateBiometric('teacher')" type="button">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined" style="font-size: 20px;">fingerprint</span>
+</div>
+<div class="flex flex-col text-start">
+<span class="font-label-md text-label-md text-on-surface font-semibold">بصمة المدرس / Face ID</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">تسجيل الحضور والدخول الآمن</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline ms-auto" style="font-size: 18px;">keyboard_arrow_left</span>
+</button>
+</div></div>
+<!-- Active Application Tracker Pill Badge -->
+<div class="mt-4 bg-surface-container-lowest rounded-xl p-3.5 shadow-sm flex items-center justify-between transition-all hover:bg-surface-container-low"><div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">headset_mic</span>
+<span>الدعم الفني وشؤون المعلمين</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="font-numeric-data text-numeric-data text-on-surface font-bold">920088412</span>
+<span class="text-outline">|</span>
+<span class="text-secondary font-label-sm text-label-sm">تحويلة 104</span>
+</div></div>
+<!-- School Support & Security Guarantee -->
+<div class="mt-4 flex items-center justify-between px-2 text-on-surface-variant font-label-sm text-label-sm"><div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">headset_mic</span>
+<span>الدعم الفني وشؤون المعلمين</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="font-numeric-data text-numeric-data text-on-surface font-bold">920088412</span>
+<span class="text-outline">|</span>
+<span class="text-secondary font-label-sm text-label-sm">تحويلة 104</span>
+</div></div>
+</div>
+<!-- Trust & Cloud Security Footer -->
+<footer class="mt-8 flex flex-col items-center justify-center gap-1 px-4 text-center">
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container rounded-full text-on-surface-variant">
+<span class="material-symbols-outlined text-on-tertiary-container" style="font-size: 16px; font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-label-sm text-label-sm font-medium tracking-tight">نظام عبق المحمي والمشفر سحابياً</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline tracking-wider mt-1">Cloudflare Multi-Tenant Security 256-bit AES</p>
+</footer>
+</div>
+</main>

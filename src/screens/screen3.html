@@ -1,0 +1,314 @@
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><button class="min-w-[44px] min-h-[44px] flex items-center justify-center text-on-surface hover:text-secondary transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward_ios</span></button><img alt="Abaq Logo" class="h-8 w-auto object-contain" src="./assets/images/img-1.jpg"/><h1 class="font-headline-sm text-headline-sm text-on-surface">Subject Details</h1></div><div class="flex items-center gap-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="./assets/images/img-2.jpg"/></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface min-h-screen"><div class="flex flex-col w-full pb-10">
+<div class="bg-primary-container text-on-primary-container px-margin pt-4 pb-12 rounded-b-xl relative shadow-md">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shadow-sm">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim uppercase tracking-wider block">العام الدراسي 1445-1446هـ</span>
+<h2 class="font-headline-sm text-headline-sm text-surface-container-lowest">الملف المالي والأقساط</h2>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-surface-container-highest/20 text-tertiary-fixed font-label-md text-label-md flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed-dim animate-pulse"></span>
+        مُحدَّث تلقائياً
+      </span>
+</div>
+<!-- Student Switcher Mini Pill -->
+<div class="flex items-center gap-space-sm bg-on-primary-fixed/40 backdrop-blur-md p-1.5 rounded-full w-fit">
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container-lowest rounded-full text-on-surface shadow-sm">
+<div class="w-5 h-5 rounded-full bg-secondary flex items-center justify-center text-on-secondary text-[10px] font-bold">
+          ع
+        </div>
+<span class="font-label-md text-label-md">عبدالرحمن أحمد</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant/80">| الصف التاسع</span>
+</div>
+<button class="px-2.5 py-1 text-primary-fixed-dim hover:text-surface-container-lowest text-label-sm font-label-sm flex items-center gap-1 transition-colors">
+<span>سارة (الرابع)</span>
+<span class="material-symbols-outlined text-[14px]">swap_horiz</span>
+</button>
+</div>
+</div>
+<!-- Content Body Overlapping Container -->
+<div class="px-margin -mt-8 flex flex-col gap-space-lg">
+<!-- 1. 3 Financial Summary Cards -->
+<div class="grid grid-cols-3 gap-2.5">
+<!-- Card 1: Total -->
+<div class="bg-surface-container-lowest rounded-DEFAULT p-3.5 shadow-sm flex flex-col justify-between">
+<div class="flex items-center gap-1 text-on-surface-variant mb-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">receipt_long</span>
+<span class="font-label-sm text-label-sm truncate">إجمالي الرسوم</span>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm font-numeric-data text-on-surface block leading-tight">12,000</span>
+<span class="font-label-sm text-label-sm text-outline">ريال سعودي</span>
+</div>
+</div>
+<!-- Card 2: Paid -->
+<div class="bg-surface-container-lowest rounded-DEFAULT p-3.5 shadow-sm flex flex-col justify-between">
+<div class="flex items-center gap-1 text-on-surface-variant mb-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span class="font-label-sm text-label-sm truncate">المتحصل والمدفوع</span>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm font-numeric-data text-secondary block leading-tight">10,800</span>
+<span class="font-label-sm text-label-sm text-secondary/70">90% تم سداده</span>
+</div>
+</div>
+<!-- Card 3: Due -->
+<div class="bg-surface-container-lowest rounded-DEFAULT p-3.5 shadow-sm flex flex-col justify-between">
+<div class="flex items-center gap-1 text-on-surface-variant mb-1">
+<span class="material-symbols-outlined text-[16px] text-error">pending</span>
+<span class="font-label-sm text-label-sm truncate">المتبقي والمستحق</span>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm font-numeric-data text-error block leading-tight">1,200</span>
+<span class="font-label-sm text-label-sm text-error/80">مستحق حالياً</span>
+</div>
+</div>
+</div>
+<!-- 2. Payment Progress Bar -->
+<div class="bg-surface-container-lowest p-4 rounded-DEFAULT shadow-sm flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">trending_up</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">مؤشر سداد العام الدراسي</span>
+</div>
+<span class="font-numeric-data text-headline-sm font-bold text-secondary">90%</span>
+</div>
+<!-- Progress Bar Track -->
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden p-0.5">
+<div class="h-full bg-secondary rounded-full transition-all duration-700 ease-out" style="width: 90%;"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<p class="font-body-sm text-body-sm">تم سداد 90% من الرسوم الدراسية للعام الحالي</p>
+<span class="font-label-sm text-label-sm text-outline">المتبقي: قسط جزئي</span>
+</div>
+</div>
+<!-- 3. School Bank Account & IBAN Card -->
+<div class="bg-primary-container text-on-primary-container rounded-lg p-5 shadow-lg relative overflow-hidden">
+<!-- Ambient background decoration -->
+<div class="absolute -right-8 -bottom-8 w-36 h-36 bg-secondary-container/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-DEFAULT bg-surface-container-lowest/10 backdrop-blur-md flex items-center justify-center text-surface-container-lowest">
+<span class="material-symbols-outlined text-[22px]">account_balance</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-surface-container-lowest leading-snug">مصرف الراجحي</h3>
+<p class="font-body-sm text-body-sm text-primary-fixed-dim">شركة مدارس النور التعليمية</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/10 text-surface-container-lowest font-label-sm text-label-sm">حساب رسمي</span>
+</div>
+<!-- Account Info Fields -->
+<div class="space-y-3 pt-1">
+<!-- IBAN -->
+<div class="bg-on-primary-fixed/50 backdrop-blur-sm rounded-DEFAULT p-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary-fixed-dim">رقم الآيبان (IBAN)</span>
+<span class="font-numeric-data font-body-md text-surface-container-lowest tracking-wider text-left dir-ltr select-all" id="iban-val">SA44 8000 0204 6080 1009 8812</span>
+</div>
+<button class="px-3 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md flex items-center gap-1 hover:opacity-90 active:scale-95 transition-all" onclick="navigator.clipboard.writeText('SA4480000204608010098812'); alert('تم نسخ رقم الآيبان بنجاح');">
+<span>نسخ الآيبان</span>
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<!-- Account Number -->
+<div class="bg-on-primary-fixed/50 backdrop-blur-sm rounded-DEFAULT p-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary-fixed-dim">رقم الحساب</span>
+<span class="font-numeric-data font-body-md text-surface-container-lowest tracking-wider text-left dir-ltr">204608010098812</span>
+</div>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-lowest/15 text-surface-container-lowest font-label-md text-label-md flex items-center gap-1 hover:bg-surface-container-lowest/25 active:scale-95 transition-all" onclick="navigator.clipboard.writeText('204608010098812'); alert('تم نسخ رقم الحساب بنجاح');">
+<span>نسخ</span>
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Navigation Tabs -->
+<div class="flex items-center gap-2 p-1 bg-surface-container rounded-full">
+<button class="flex-1 py-2 rounded-full bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm text-center">
+        جدول الأقساط والدفع
+      </button>
+<button class="flex-1 py-2 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md text-center transition-colors">
+        كشف الحساب التفصيلي
+      </button>
+<button class="flex-1 py-2 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md text-center transition-colors flex items-center justify-center gap-1">
+<span>سندات القبض</span>
+<span class="w-4 h-4 rounded-full bg-secondary-container text-on-secondary-container text-[10px] flex items-center justify-center font-bold">3</span>
+</button>
+</div>
+<!-- 4. Tuition Installments Table / Cards -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">جدول الأقساط المقررة</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">3 دفعات سنوية</span>
+</div>
+<!-- Installment 1: Paid -->
+<div class="bg-surface-container-lowest rounded-DEFAULT p-4 shadow-sm flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-surface">القسط الأول (بداية الفصل الأول)</h4>
+<p class="font-body-sm text-body-sm text-outline">تاريخ الاستحقاق: 15 سبتمبر 2023</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span>مسدد بالكامل</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="font-label-md text-label-md text-on-surface-variant">المبلغ المقيد:</span>
+<span class="font-numeric-data font-label-lg text-label-lg text-on-surface font-bold">4,000 ر.س</span>
+</div>
+</div>
+<!-- Installment 2: Paid -->
+<div class="bg-surface-container-lowest rounded-DEFAULT p-4 shadow-sm flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-surface">القسط الثاني (منتصف العام)</h4>
+<p class="font-body-sm text-body-sm text-outline">تاريخ الاستحقاق: 10 ديسمبر 2023</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span>مسدد بالكامل</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="font-label-md text-label-md text-on-surface-variant">المبلغ المقيد:</span>
+<span class="font-numeric-data font-label-lg text-label-lg text-on-surface font-bold">4,000 ر.س</span>
+</div>
+</div>
+<!-- Installment 3: Due with Active Action -->
+<div class="bg-surface-container-lowest rounded-DEFAULT p-4 shadow-md flex flex-col gap-3 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1.5 h-full bg-error"></div>
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">notification_important</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-surface">القسط الثالث (الفصل الأخير)</h4>
+<p class="font-body-sm text-body-sm text-outline">تاريخ الاستحقاق: 01 مارس 2024</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">
+            مستحق السداد
+          </span>
+</div>
+<div class="bg-surface-container-low p-3 rounded-DEFAULT flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-outline block">إجمالي القسط: 4,000 ر.س</span>
+<span class="font-body-sm text-body-sm text-on-surface">مدفوع: 2,800 ر.س</span>
+</div>
+<div class="text-left">
+<span class="font-label-sm text-label-sm text-error block font-semibold">المتبقي المطلوب:</span>
+<span class="font-numeric-data font-headline-sm text-headline-sm text-error font-bold">1,200 ر.س</span>
+</div>
+</div>
+<!-- Instant Pay Button -->
+<button class="w-full py-3 px-4 bg-secondary text-on-secondary rounded-full font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-sm hover:opacity-95 active:scale-98 transition-all">
+<span class="material-symbols-outlined text-[20px]">credit_card</span>
+<span>دفع الآن 1,200 ر.س (مدى / Apple Pay)</span>
+</button>
+</div>
+</div>
+<!-- 5. Bank Transfer Receipt Upload Form -->
+<div class="bg-surface-container-lowest rounded-DEFAULT p-4 shadow-sm flex flex-col gap-4">
+<div class="flex items-center gap-2.5 pb-2">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">رفع إيصال تحويل بنكي</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">للتحقق والاعتماد المباشر من قسم المحاسبة</p>
+</div>
+</div>
+<form class="flex flex-col gap-3" onsubmit="event.preventDefault(); alert('تم إرسال الإيصال بنجاح وجارٍ مراجعته من الإدارة المالية');">
+<!-- Dashed Slip Upload Box -->
+<label class="w-full h-32 rounded-DEFAULT bg-surface-container-low flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-surface-container transition-colors">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined text-[22px]">cloud_upload</span>
+</div>
+<div class="text-center">
+<span class="font-label-md text-label-md text-on-surface font-semibold block">اسحب وأفلت صورة الإيصال أو انقر للاختيار</span>
+<span class="font-label-sm text-label-sm text-outline">صيغ مدعومة: JPG, PNG, PDF (أقصى حجم 5 ميجابايت)</span>
+</div>
+<input accept="image/*,application/pdf" class="hidden" type="file"/>
+</label>
+<!-- Amount and Bank Fields -->
+<div class="grid grid-cols-2 gap-3">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">المبلغ المحول (ر.س)</label>
+<input class="w-full px-3 py-2.5 rounded-DEFAULT bg-surface text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest outline-none transition-all" placeholder="1200" type="number" value="1200"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">البنك المحول منه</label>
+<select class="w-full px-3 py-2.5 rounded-DEFAULT bg-surface text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest outline-none transition-all">
+<option>مصرف الراجحي</option>
+<option>البنك الأهلي السعودي</option>
+<option>بنك الرياض</option>
+<option>بنك الإنماء</option>
+<option>بنك آخر</option>
+</select>
+</div>
+</div>
+<!-- Transfer Date & Notes -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">تاريخ التحويل واسم المحوّل</label>
+<input class="w-full px-3 py-2.5 rounded-DEFAULT bg-surface text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest outline-none transition-all" placeholder="مثال: اليوم - أحمد عبدالعزيز" type="text"/>
+</div>
+<!-- Submit Button -->
+<button class="w-full mt-2 py-3 px-4 bg-primary-container text-surface-container-lowest rounded-full font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-sm hover:opacity-95 active:scale-98 transition-all" type="submit">
+<span class="material-symbols-outlined text-[20px]">send</span>
+<span>إرسال الإيصال للاعتماد </span>
+</button>
+</form>
+</div>
+<!-- Verified Invoices Mini List -->
+<div class="bg-surface-container-lowest rounded-DEFAULT p-4 shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<h4 class="font-label-lg text-label-lg text-on-surface">سندات القبض المعتمدة الأخيرة</h4>
+<span class="font-label-sm text-label-sm text-secondary">عرض الكل</span>
+</div>
+<div class="divide-y divide-surface-container flex flex-col">
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">picture_as_pdf</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-medium">سند رقم #REC-2023-881</p>
+<span class="font-body-sm text-body-sm text-outline">12 ديسمبر 2023 - 4,000 ر.س</span>
+</div>
+</div>
+<button class="p-1.5 text-on-surface-variant hover:text-secondary rounded-full">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</div>
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">picture_as_pdf</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-medium">سند رقم #REC-2023-104</p>
+<span class="font-body-sm text-body-sm text-outline">18 سبتمبر 2023 - 4,000 ر.س</span>
+</div>
+</div>
+<button class="p-1.5 text-on-surface-variant hover:text-secondary rounded-full">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div></main>
