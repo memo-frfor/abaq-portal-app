@@ -16,6 +16,9 @@ import { renderAccountView } from './views/accountView.js';
 import { renderRegisterView, renderAdmissionView } from './views/registerView.js';
 import { renderTeacherHomeView } from './views/teacherHomeView.js';
 import { renderTeacherTaskView } from './views/teacherTaskView.js';
+import { renderLibraryView } from './views/libraryView.js';
+import { renderBehaviorView } from './views/behaviorView.js';
+import { renderVirtualClassroomsView } from './views/virtualClassroomsView.js';
 
 export const ROUTES = {
   '/login': { render: renderLoginView, role: 'public', hasHeader: false, hasNav: false },
@@ -28,6 +31,9 @@ export const ROUTES = {
   '/student-id': { render: renderStudentIdView, role: 'parent', hasHeader: false, hasNav: false },
   '/schedule': { render: renderScheduleView, role: 'parent', hasHeader: true, hasNav: true },
   '/account': { render: renderAccountView, role: 'parent', hasHeader: true, hasNav: true },
+  '/library': { render: renderLibraryView, role: 'parent', hasHeader: false, hasNav: true },
+  '/behavior': { render: renderBehaviorView, role: 'parent', hasHeader: false, hasNav: true },
+  '/virtual-classes': { render: renderVirtualClassroomsView, role: 'parent', hasHeader: false, hasNav: true },
   '/register': { render: renderRegisterView, role: 'parent', hasHeader: false, hasNav: false },
   '/admission': { render: renderAdmissionView, role: 'parent', hasHeader: false, hasNav: false },
   '/teacher': { render: renderTeacherHomeView, role: 'teacher', hasHeader: false, hasNav: false },

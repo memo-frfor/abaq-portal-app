@@ -84,79 +84,77 @@ export function renderHomeView(container, navigate) {
           <span class="text-xs text-slate-400">الوصول المباشر</span>
         </div>
 
-        <div class="grid grid-cols-3 gap-2.5">
+        <div class="grid grid-cols-4 sm:grid-cols-4 gap-2">
           <!-- 1: Financials -->
-          <button type="button" data-route="/financials" class="flex flex-col items-center text-center p-3 rounded-2xl bg-white border border-slate-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:border-blue-400 press-snappy transition-all group">
-            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform">
-              <span class="material-symbols-outlined text-[22px]">account_balance_wallet</span>
+          <button type="button" data-route="/financials" class="flex flex-col items-center text-center p-2.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-blue-400 press-snappy transition-all group">
+            <div class="w-9 h-9 rounded-xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-1 group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
             </div>
-            <span class="text-xs font-bold text-slate-800">الرسوم والمالية</span>
-            <span class="text-[10px] text-slate-400 mt-0.5">سداد الأقساط</span>
-            <span class="mt-2 px-2 py-0.5 rounded-full font-numbers text-[10px] font-bold ${
-              student.dueTuition > 0 ? 'bg-rose-50 text-rose-600 border border-rose-200' : 'bg-emerald-50 text-emerald-700'
-            }">
-              ${student.dueTuition > 0 ? `مستحق ${student.dueTuition.toLocaleString('en-US')} ر.س` : 'مسدد بالكامل ✓'}
-            </span>
+            <span class="text-[11px] font-bold text-slate-800 dark:text-white leading-tight">المالية</span>
+            <span class="text-[9px] text-slate-400 mt-0.5 font-numbers">${student.dueTuition > 0 ? `${student.dueTuition} ر.س` : 'خالص ✓'}</span>
           </button>
 
           <!-- 2: Grades -->
-          <button type="button" data-route="/grades" class="flex flex-col items-center text-center p-3 rounded-2xl bg-white border border-slate-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:border-blue-400 press-snappy transition-all group">
-            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform">
-              <span class="material-symbols-outlined text-[22px]">workspace_premium</span>
+          <button type="button" data-route="/grades" class="flex flex-col items-center text-center p-2.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-blue-400 press-snappy transition-all group">
+            <div class="w-9 h-9 rounded-xl bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-1 group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[20px]">workspace_premium</span>
             </div>
-            <span class="text-xs font-bold text-slate-800">الدرجات والشهادات</span>
-            <span class="text-[10px] text-slate-400 mt-0.5">نتائج الشهور</span>
-            <span class="mt-2 px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 font-numbers text-[10px] font-bold border border-blue-200">
-              المعدل ${student.gpa}%
-            </span>
+            <span class="text-[11px] font-bold text-slate-800 dark:text-white leading-tight">الدرجات</span>
+            <span class="text-[9px] text-slate-400 mt-0.5 font-numbers">${student.gpa}%</span>
           </button>
 
           <!-- 3: Schedule -->
-          <button type="button" data-route="/schedule" class="flex flex-col items-center text-center p-3 rounded-2xl bg-white border border-slate-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:border-blue-400 press-snappy transition-all group">
-            <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform">
-              <span class="material-symbols-outlined text-[22px]">calendar_month</span>
+          <button type="button" data-route="/schedule" class="flex flex-col items-center text-center p-2.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-blue-400 press-snappy transition-all group">
+            <div class="w-9 h-9 rounded-xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-1 group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[20px]">calendar_month</span>
             </div>
-            <span class="text-xs font-bold text-slate-800">الجدول والخطة</span>
-            <span class="text-[10px] text-slate-400 mt-0.5">الحصص الأسبوعية</span>
-            <span class="mt-2 px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-numbers text-[10px] font-bold border border-indigo-200">
-              اليوم ${student.todayClassesCount} حصص
-            </span>
+            <span class="text-[11px] font-bold text-slate-800 dark:text-white leading-tight">الجدول والخطة</span>
+            <span class="text-[9px] text-slate-400 mt-0.5 font-numbers">${student.todayClassesCount} حصص</span>
           </button>
 
-          <!-- 4: Attendance -->
-          <button type="button" data-route="/grades" class="flex flex-col items-center text-center p-3 rounded-2xl bg-white border border-slate-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:border-blue-400 press-snappy transition-all group">
-            <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform">
-              <span class="material-symbols-outlined text-[22px]">fact_check</span>
+          <!-- 4: Homework -->
+          <button type="button" data-route="/homework" class="flex flex-col items-center text-center p-2.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-blue-400 press-snappy transition-all group">
+            <div class="w-9 h-9 rounded-xl bg-violet-50 dark:bg-violet-950 text-violet-600 dark:text-violet-400 flex items-center justify-center mb-1 group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[20px]">assignment</span>
             </div>
-            <span class="text-xs font-bold text-slate-800">الحضور والانضباط</span>
-            <span class="text-[10px] text-slate-400 mt-0.5">سجل الغياب</span>
-            <span class="mt-2 px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 font-numbers text-[10px] font-bold border border-teal-200">
-              ${student.attendanceRate} انضباط
-            </span>
+            <span class="text-[11px] font-bold text-slate-800 dark:text-white leading-tight">الواجبات</span>
+            <span class="text-[9px] text-slate-400 mt-0.5 font-numbers">${pendingHw.length} مطلوب</span>
           </button>
 
-          <!-- 5: Behavior -->
-          <button type="button" data-route="/grades" class="flex flex-col items-center text-center p-3 rounded-2xl bg-white border border-slate-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:border-blue-400 press-snappy transition-all group">
-            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform">
-              <span class="material-symbols-outlined text-[22px]">military_tech</span>
+          <!-- 5: Library & Books -->
+          <button type="button" data-route="/library" class="flex flex-col items-center text-center p-2.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-blue-400 press-snappy transition-all group">
+            <div class="w-9 h-9 rounded-xl bg-cyan-50 dark:bg-cyan-950 text-cyan-600 dark:text-cyan-400 flex items-center justify-center mb-1 group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[20px]">local_library</span>
             </div>
-            <span class="text-xs font-bold text-slate-800">الأنشطة والسلوك</span>
-            <span class="text-[10px] text-slate-400 mt-0.5">شارات الشرف</span>
-            <span class="mt-2 px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 font-numbers text-[10px] font-bold border border-amber-200">
-              ${student.behaviorPoints} نقطة
-            </span>
+            <span class="text-[11px] font-bold text-slate-800 dark:text-white leading-tight">الكتب والمناهج</span>
+            <span class="text-[9px] text-slate-400 mt-0.5">نسخ PDF</span>
           </button>
 
-          <!-- 6: Transport -->
-          <button type="button" data-route="/bus" class="flex flex-col items-center text-center p-3 rounded-2xl bg-white border border-slate-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:border-blue-400 press-snappy transition-all group">
-            <div class="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform">
-              <span class="material-symbols-outlined text-[22px]">directions_bus</span>
+          <!-- 6: Virtual Classrooms -->
+          <button type="button" data-route="/virtual-classes" class="flex flex-col items-center text-center p-2.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-blue-400 press-snappy transition-all group">
+            <div class="w-9 h-9 rounded-xl bg-rose-50 dark:bg-rose-950 text-rose-600 dark:text-rose-400 flex items-center justify-center mb-1 group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[20px]">video_call</span>
             </div>
-            <span class="text-xs font-bold text-slate-800">النقل المدرسي</span>
-            <span class="text-[10px] text-slate-400 mt-0.5">تتبع الحافلة</span>
-            <span class="mt-2 px-2 py-0.5 rounded-full bg-orange-50 text-orange-700 font-numbers text-[10px] font-bold border border-orange-200">
-              حافلة ${student.busNumber}
-            </span>
+            <span class="text-[11px] font-bold text-slate-800 dark:text-white leading-tight">الفصول الحية</span>
+            <span class="text-[9px] text-rose-500 font-bold mt-0.5">بث مباشر</span>
+          </button>
+
+          <!-- 7: Behavior & Points -->
+          <button type="button" data-route="/behavior" class="flex flex-col items-center text-center p-2.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-blue-400 press-snappy transition-all group">
+            <div class="w-9 h-9 rounded-xl bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-1 group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[20px]">military_tech</span>
+            </div>
+            <span class="text-[11px] font-bold text-slate-800 dark:text-white leading-tight">السلوك</span>
+            <span class="text-[9px] text-amber-600 font-bold mt-0.5 font-numbers">${student.behaviorPoints}</span>
+          </button>
+
+          <!-- 8: Transport -->
+          <button type="button" data-route="/bus" class="flex flex-col items-center text-center p-2.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-blue-400 press-snappy transition-all group">
+            <div class="w-9 h-9 rounded-xl bg-orange-50 dark:bg-orange-950 text-orange-600 dark:text-orange-400 flex items-center justify-center mb-1 group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[20px]">directions_bus</span>
+            </div>
+            <span class="text-[11px] font-bold text-slate-800 dark:text-white leading-tight">الحافلة</span>
+            <span class="text-[9px] text-slate-400 mt-0.5 font-numbers">حافلة ${student.busNumber}</span>
           </button>
         </div>
       </div>
@@ -307,6 +305,6 @@ export function renderHomeView(container, navigate) {
   });
 
   container.querySelector('#btn-join-live')?.addEventListener('click', () => {
-    showToast('جاري فتح غرفة الفصل الافتراضي المباشر...');
+    navigate('/virtual-classes');
   });
 }
