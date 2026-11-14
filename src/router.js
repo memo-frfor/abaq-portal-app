@@ -19,6 +19,7 @@ import { renderTeacherTaskView } from './views/teacherTaskView.js';
 import { renderLibraryView } from './views/libraryView.js';
 import { renderBehaviorView } from './views/behaviorView.js';
 import { renderVirtualClassroomsView } from './views/virtualClassroomsView.js';
+import { setupPullToRefresh } from './utils/pullToRefresh.js';
 
 export const ROUTES = {
   '/login': { render: renderLoginView, role: 'public', hasHeader: false, hasNav: false },
@@ -119,6 +120,7 @@ export function renderRoute(path) {
   appRoot.appendChild(main);
 
   routeDef.render(main, navigate);
+  setupPullToRefresh(main);
 
   // Render Bottom Nav if required
   if (routeDef.hasNav) {
@@ -142,7 +144,13 @@ export function initRouter() {
     }
   });
 
-  if (!window.location.hash) {
+  // Persistent Auto-login check
+  if (!window.location.hash || window.location.hash === '#/login') {
+    if (portalStore.session && portalStore.session.role) {
+      const dest = portalStore.session.role === 'teacher' ? '/teacher' : '/home';
+      navigate(dest, { replace: true });
+      return;
+    }
     window.location.hash = '#/login';
   } else {
     renderRoute(getCurrentRoute());

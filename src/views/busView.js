@@ -123,10 +123,11 @@ export function renderBusView(container, navigate) {
   container.querySelector('#btn-bus-back').addEventListener('click', () => navigate('/home'));
 
   container.querySelector('#btn-call-driver')?.addEventListener('click', () => {
-    showToast(`الاتصال بالسائق: ${student.busDriverPhone}`);
+    window.location.href = `tel:${student.busDriverPhone}`;
   });
 
   container.querySelector('#btn-chat-driver')?.addEventListener('click', () => {
-    showToast('فتح محادثة سريعة مع مشرف الحافلة');
+    const cleanPhone = student.busDriverPhone.startsWith('0') ? student.busDriverPhone.slice(1) : student.busDriverPhone;
+    window.open(`https://wa.me/966${cleanPhone}?text=${encodeURIComponent(`السلام عليكم، استفسار بخصوص حافلة الطالب ${student.fullName}`)}`, '_blank');
   });
 }

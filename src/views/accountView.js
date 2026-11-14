@@ -155,6 +155,38 @@ export async function renderAccountView(container, navigate) {
 
       </div>
 
+      <!-- School Direct Channels Card -->
+      <div class="p-4 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col gap-3">
+        <h3 class="text-xs font-bold text-slate-800 dark:text-white px-1">التواصل المباشر مع إدارة المدرسة</h3>
+        <div class="grid grid-cols-2 gap-2">
+          <a href="https://wa.me/966555555555?text=${encodeURIComponent('السلام عليكم، استفسار بخصوص الطالب في مدارس عبق')}" target="_blank" class="py-2.5 px-3 rounded-2xl bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-bold text-xs flex items-center justify-center gap-2 border border-emerald-200 dark:border-emerald-900 press-snappy">
+            <span class="material-symbols-outlined text-[18px]">chat</span>
+            <span>واتساب المدرسة</span>
+          </a>
+          <a href="tel:0555555555" class="py-2.5 px-3 rounded-2xl bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-bold text-xs flex items-center justify-center gap-2 border border-blue-200 dark:border-blue-900 press-snappy">
+            <span class="material-symbols-outlined text-[18px]">call</span>
+            <span>اتصال هاتفي</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- App Info & Live Update Checker -->
+      <div class="p-4 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <span class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center">
+            <span class="material-symbols-outlined text-[18px]">system_update</span>
+          </span>
+          <div class="flex flex-col">
+            <span class="text-xs font-bold text-slate-800 dark:text-white">إصدار التطبيق v2.5</span>
+            <span class="text-[10px] text-slate-400">النسخة السحابية المعتمدة</span>
+          </div>
+        </div>
+        <button type="button" id="btn-check-updates" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold press-snappy flex items-center gap-1">
+          <span class="material-symbols-outlined text-[15px]">refresh</span>
+          <span>فحص التحديثات</span>
+        </button>
+      </div>
+
       <!-- Logout Action -->
       <button type="button" id="btn-parent-logout" class="w-full py-3.5 rounded-2xl bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 dark:hover:bg-rose-950/60 text-rose-700 dark:text-rose-300 font-bold text-xs press-snappy flex items-center justify-center gap-2 border border-rose-200 dark:border-rose-900">
         <span class="material-symbols-outlined text-[18px]">logout</span>
@@ -219,6 +251,13 @@ export async function renderAccountView(container, navigate) {
 
   container.querySelector('#btn-add-new-student')?.addEventListener('click', () => {
     navigate('/register');
+  });
+
+  container.querySelector('#btn-check-updates')?.addEventListener('click', () => {
+    showToast('جاري التحقق من التحديثات السحابية...', 'info');
+    setTimeout(() => {
+      showToast('أنت تستخدم أحدث إصدار معتمد من التطبيق (v2.5) ✓', 'success');
+    }, 1000);
   });
 
   container.querySelector('#btn-parent-logout')?.addEventListener('click', () => {

@@ -141,12 +141,16 @@ export const portalStore = {
         icon: a.category === 'homework' ? 'assignment' : 'campaign',
         route: a.category === 'homework' ? '/homework' : '/home',
       }));
+    } else {
+      this.state.announcement = { visible: false };
+      this.state.notifications = [];
     }
 
     // 2. Hydrate Homework
     if (Array.isArray(db.homeworkAssignments) && db.homeworkAssignments.length > 0) {
       this.state.homework = db.homeworkAssignments.map((h) => ({
         id: h.id,
+        studentId: h.studentId || null,
         subject: h.subject || 'المادة',
         teacher: h.teacherName || 'معلم المادة',
         title: h.title,
@@ -156,17 +160,15 @@ export const portalStore = {
         score: h.score || null,
         attachmentName: h.attachments?.[0]?.name || null,
       }));
+    } else {
+      this.state.homework = [];
     }
 
     // 3. Hydrate Grades
-    if (Array.isArray(db.grades)) {
-      this.state.grades = db.grades;
-    }
+    this.state.grades = Array.isArray(db.grades) ? db.grades : [];
 
     // 4. Hydrate Attendance
-    if (Array.isArray(db.attendance)) {
-      this.state.attendance = db.attendance;
-    }
+    this.state.attendance = Array.isArray(db.attendance) ? db.attendance : [];
 
     // 5. Hydrate Students
     const rawStudents = Array.isArray(db.students) && db.students.length > 0
@@ -175,6 +177,21 @@ export const portalStore = {
 
     const studentsMap = {};
     if (rawStudents.length > 0) {
+      const activeVc = Array.isArray(db.virtualClassrooms)
+        ? db.virtualClassrooms.find((vc) => vc.status === 'live' || vc.isActive)
+        : null;
+
+      const liveClassData = activeVc
+        ? {
+            active: true,
+            subject: activeVc.subject || 'بث مباشر',
+            title: activeVc.title || 'حصة افتراضية مباشرة',
+            teacher: activeVc.teacherName || 'معلم المادة',
+            attendees: activeVc.attendeesCount || 24,
+            meetUrl: activeVc.meetUrl || 'https://meet.jit.si/abaq-live-room',
+          }
+        : { active: false };
+
       rawStudents.forEach((s, idx) => {
         const sid = s.id || `std-${idx + 1}`;
         const total = s.tuitionTotal || 8000;
@@ -206,14 +223,7 @@ export const portalStore = {
           dueTuition: remaining,
           todayClassesCount: 6,
           unreadNotificationsCount: 2,
-          liveClass: {
-            active: true,
-            subject: 'الرياضيات',
-            title: 'حصة الرياضيات التفاعلية: مراجعة وحل تمارين البوابة',
-            teacher: 'أ. أحمد المعلم',
-            attendees: 28,
-            meetUrl: 'https://meet.jit.si/abaq-live-classroom',
-          },
+          liveClass: liveClassData,
         };
       });
 

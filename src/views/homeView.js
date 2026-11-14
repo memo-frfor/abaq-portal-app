@@ -7,7 +7,7 @@ export function renderHomeView(container, navigate) {
   const isSara = portalStore.state.activeStudentId === 'sara';
 
   const pendingHw = portalStore.state.homework.filter(
-    (h) => h.studentId === student.id && h.status === 'pending'
+    (h) => (!h.studentId || h.studentId === student.id) && h.status === 'pending'
   );
 
   container.innerHTML = `

@@ -3,7 +3,7 @@ import { showToast } from '../utils/toast.js';
 
 export function renderHomeworkView(container, navigate) {
   const student = portalStore.getActiveStudent();
-  const allHw = portalStore.state.homework.filter((h) => h.studentId === student.id);
+  const allHw = portalStore.state.homework.filter((h) => !h.studentId || h.studentId === student.id);
   let activeFilter = 'all';
 
   function renderList() {

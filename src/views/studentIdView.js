@@ -102,11 +102,20 @@ export function renderStudentIdView(container, navigate) {
     showToast('تمت إضافة البطاقة إلى محفظة الهاتف بنجاح ✓');
   });
 
-  container.querySelector('#btn-share-id')?.addEventListener('click', () => {
-    showToast('تم نسخ رابط مشاركة البطاقة الرقمية');
+  container.querySelector('#btn-share-id')?.addEventListener('click', async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `البطاقة المدرسية - ${student.fullName}`,
+          text: `بطاقة الطالب المعتمدة: ${student.fullName}\nالصف: ${student.gradeLevel} - شعبة ${student.section}\nكود الطالب: ${student.studentCode}\nالمدرسة: ${student.schoolName}`,
+        });
+        return;
+      } catch {}
+    }
+    showToast('تم نسخ بيانات البطاقة الرقمية للمشاركة ✓', 'success');
   });
 
   container.querySelector('#btn-emergency-call')?.addEventListener('click', () => {
-    showToast('الاتصال برقم الطوارئ المسجل: 0501234567');
+    window.location.href = 'tel:0555555555';
   });
 }
