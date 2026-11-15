@@ -37,21 +37,32 @@ jobs:
       - name: Setup Gradle cache
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Build Debug APK
+      - name: Generate Release Keystore
+        run: |
+          keytool -genkeypair -v -keystore android/app/release-key.jks \
+            -alias abaqkey \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 10000 \
+            -storepass abaqportal123 \
+            -keypass abaqportal123 \
+            -dname "CN=AbaqPortal, OU=Mobile, O=Abaq, L=Riyadh, ST=Riyadh, C=SA"
+
+      - name: Build Signed Release APK
         working-directory: android
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug --no-daemon
+          ./gradlew assembleRelease --no-daemon
 
       - name: Copy APK for release
         run: |
           mkdir -p output
-          cp android/app/build/outputs/apk/debug/app-debug.apk output/abaq-portal-app.apk
+          cp android/app/build/outputs/apk/release/app-release.apk output/abaq-portal-app.apk
 
-      - name: Upload Debug APK Artifact
+      - name: Upload Signed Release APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: abaq-portal-debug-apk
+          name: abaq-portal-release-apk
           path: output/abaq-portal-app.apk
           retention-days: 30
 
@@ -59,8 +70,8 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v1.0.0
-          name: "Abaq Portal Android App v1.0.0"
-          body: "تطبيق بوابة عبق للأندرويد بتصميم الشاشات الـ 14 الحديث وبدون أي شريط متصفح."
+          name: "Abaq Portal Android App v1.1.0 (Signed Release)"
+          body: "تطبيق بوابة عبق للأندرويد - نسخة Release رسمية موقعة رقمياً ومحدثة بالتصميم الجديد لكيو للمقاضي."
           files: output/abaq-portal-app.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
