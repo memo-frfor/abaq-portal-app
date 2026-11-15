@@ -69,7 +69,7 @@ export function renderScheduleView(container, navigate) {
   );
 
   container.innerHTML = `
-    <div class="flex flex-col w-full max-w-lg mx-auto px-4 py-4 gap-4 pb-28">
+    <div class="flex flex-col w-full max-w-lg mx-auto px-4 py-4 gap-4 pb-32">
 
       <!-- Header -->
       <div class="flex items-center justify-between">
@@ -119,7 +119,7 @@ export function renderScheduleView(container, navigate) {
           ${periods
             .map(
               (p) => `
-            <div class="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex items-center justify-between gap-3 transition-all hover:border-blue-400">
+            <div class="p-4 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs flex items-center justify-between gap-3 transition-all hover:border-blue-400 press-tactile">
               <div class="flex items-center gap-3 min-w-0">
                 <div class="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 flex flex-col items-center justify-center shrink-0 border border-blue-100 dark:border-blue-900">
                   <span class="text-[11px] font-bold">${p.period}</span>

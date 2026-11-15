@@ -9,36 +9,38 @@ export function renderSharedParentBottomNav(activeRoute, navigate) {
     { route: '/schedule', icon: 'calendar_month', label: t('schedule') },
     { route: '/account', icon: 'person', label: t('account') },
   ];
-  const student = portalStore.getActiveStudent();
+
   const nav = document.createElement('nav');
   nav.className =
-    'fixed bottom-0 w-full z-40 pb-safe glass-nav shadow-[0_-4px_24px_rgba(15,23,42,0.06)] transition-all';
+    'fixed bottom-3 inset-x-0 z-40 px-3 pointer-events-none transition-all duration-300';
   nav.setAttribute('data-shared-nav', 'parent');
 
   const itemsHtml = PARENT_TABS.map((tab) => {
     const isActive = activeRoute === tab.route;
-    const colorClass = isActive ? 'text-blue-600 font-bold' : 'text-slate-400 hover:text-slate-600';
-    const fillStyle = isActive ? `style="font-variation-settings: 'FILL' 1;"` : '';
-
     return `
       <button type="button" data-nav-route="${tab.route}"
-        class="relative flex flex-col items-center justify-center min-w-[52px] min-h-[52px] py-1 transition-all press-snappy ${colorClass} ${
-      isActive ? '-translate-y-0.5' : ''
-    }">
-        <span class="material-symbols-outlined text-[23px] transition-transform ${
-          isActive ? 'scale-110' : ''
-        }" ${fillStyle}>${tab.icon}</span>
-        <span class="text-[11px] mt-0.5 leading-tight">${tab.label}</span>
+        class="relative flex items-center justify-center py-2 px-3 rounded-2xl transition-all duration-200 press-tactile ${
+          isActive
+            ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold scale-[1.02]'
+            : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white hover:bg-slate-100/60 dark:hover:bg-slate-800/60'
+        }">
+        <span class="material-symbols-outlined text-[20px] shrink-0" ${
+          isActive ? `style="font-variation-settings: 'FILL' 1;"` : ''
+        }>${tab.icon}</span>
         ${
           isActive
-            ? '<span class="w-1.5 h-1.5 rounded-full bg-blue-600 absolute -bottom-0.5"></span>'
+            ? `<span class="text-xs font-bold mr-1.5 whitespace-nowrap">${tab.label}</span>`
             : ''
         }
       </button>
     `;
   }).join('');
 
-  nav.innerHTML = `<div class="flex justify-around items-center h-16 max-w-lg mx-auto px-3">${itemsHtml}</div>`;
+  nav.innerHTML = `
+    <div class="max-w-sm mx-auto pointer-events-auto floating-glass-nav rounded-3xl p-1.5 shadow-[0_12px_32px_rgba(15,23,42,0.12)] flex items-center justify-around gap-1">
+      ${itemsHtml}
+    </div>
+  `;
 
   nav.querySelectorAll('[data-nav-route]').forEach((btn) => {
     btn.addEventListener('click', (e) => {

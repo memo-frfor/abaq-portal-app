@@ -12,7 +12,7 @@ export function renderSharedHeader(navigate, currentRoute = '/home') {
   header.setAttribute('data-shared-header', 'true');
 
   header.innerHTML = `
-    <div class="px-4 py-2.5 flex items-center justify-between gap-3">
+    <div class="max-w-lg mx-auto px-4 py-2.5 flex items-center justify-between gap-3">
       <!-- Right: Brand Logo + Student Switcher Pill -->
       <div class="flex items-center gap-2.5 min-w-0">
         <button type="button" id="btn-header-school" class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center p-1 press-snappy shrink-0 border border-white/15">

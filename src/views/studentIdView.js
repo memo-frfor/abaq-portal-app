@@ -5,7 +5,7 @@ export function renderStudentIdView(container, navigate) {
   const student = portalStore.getActiveStudent();
 
   container.innerHTML = `
-    <div class="flex flex-col w-full max-w-lg mx-auto px-4 py-4 gap-4 pb-28">
+    <div class="flex flex-col w-full max-w-lg mx-auto px-4 py-4 gap-4 pb-32">
 
       <!-- Header -->
       <div class="flex items-center justify-between">

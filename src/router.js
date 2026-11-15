@@ -116,7 +116,7 @@ export function renderRoute(path) {
 
   // Render Main Scrollable Content Container
   const main = document.createElement('main');
-  main.className = 'w-full flex-1 flex flex-col min-h-screen';
+  main.className = 'w-full flex-1 flex flex-col min-h-screen page-fade-in';
   appRoot.appendChild(main);
 
   routeDef.render(main, navigate);

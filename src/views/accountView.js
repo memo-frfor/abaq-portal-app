@@ -17,7 +17,7 @@ export async function renderAccountView(container, navigate) {
   const userPhone = session?.user?.phone || '0555555555';
 
   container.innerHTML = `
-    <div class="flex flex-col w-full max-w-lg mx-auto px-4 py-4 gap-4 pb-28">
+    <div class="flex flex-col w-full max-w-lg mx-auto px-4 py-4 gap-4 pb-32">
 
       <!-- Parent Profile Card -->
       <div class="p-5 rounded-3xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white shadow-md flex items-center justify-between">
