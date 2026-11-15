@@ -21,7 +21,7 @@ export function renderSharedParentBottomNav(activeRoute, navigate) {
       <button type="button" data-nav-route="${tab.route}"
         class="relative flex items-center justify-center py-2 px-3 rounded-2xl transition-all duration-200 press-tactile ${
           isActive
-            ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold scale-[1.02]'
+            ? 'bg-gradient-to-l from-[#0E9CAC] to-[#0a7a8b] text-white shadow-md shadow-[#0E9CAC]/35 font-bold scale-[1.02]'
             : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white hover:bg-slate-100/60 dark:hover:bg-slate-800/60'
         }">
         <span class="material-symbols-outlined text-[20px] shrink-0" ${

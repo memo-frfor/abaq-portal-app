@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --c-primary: 15 43 102; /* #0f2b66 - Deep Executive Navy */
-  --c-primary-container: 28 65 159; /* #1c419f */
+  --c-primary: 14 156 172; /* #0E9CAC - Vibrant Q Teal */
+  --c-primary-container: 11 138 158; /* #0b8a9e */
   --c-on-primary-container: 254 251 255;
-  --c-surface: 248 250 252; /* slate-50 */
+  --c-surface: 247 251 252; /* #f7fbfc - Q Ice Crisp Surface */
   --c-surface-bright: 255 255 255;
-  --c-surface-container-low: 241 245 249; /* slate-100 */
-  --c-surface-container-highest: 226 232 240; /* slate-200 */
-  --c-surface-variant: 226 232 240;
+  --c-surface-container-low: 241 249 250;
+  --c-surface-container-highest: 226 238 240;
+  --c-surface-variant: 226 238 240;
   --c-on-surface: 15 23 42; /* slate-900 */
-  --c-background: 248 250 252;
+  --c-background: 247 251 252;
   --c-on-background: 15 23 42;
   --c-inverse-on-surface: 241 240 248;
   --c-on-secondary-container: 79 90 128;
@@ -129,22 +129,24 @@
 
 /* Glassmorphism navigation & headers */
 .glass-header {
-  background: rgba(15, 43, 102, 0.96);
+  background: linear-gradient(135deg, #094752 0%, #0E9CAC 100%);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .floating-glass-nav {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(226, 232, 240, 0.85);
+  border: 1px solid rgba(14, 156, 172, 0.18);
+  box-shadow: 0 14px 36px rgba(14, 156, 172, 0.12);
 }
 
 html.dark .floating-glass-nav {
-  background: rgba(15, 23, 42, 0.92);
-  border: 1px solid rgba(30, 41, 59, 0.85);
+  background: rgba(10, 34, 40, 0.94);
+  border: 1px solid rgba(14, 156, 172, 0.25);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
 }
 
 /* Bottom Sheet Modal animation */
