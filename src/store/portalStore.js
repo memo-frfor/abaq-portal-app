@@ -209,7 +209,36 @@ export const portalStore = {
         attachmentName: h.attachments?.[0]?.name || null,
       }));
     } else {
-      this.state.homework = [];
+      this.state.homework = [
+        {
+          id: 'hw-101',
+          studentId: null,
+          gradeLevel: null,
+          classSection: null,
+          subject: 'لغتي الجميلة',
+          teacher: 'أ. عبد الرحمن الغامدي',
+          title: 'حل تدريبات درس الإيثار ص 45',
+          dueTime: 'خلال 48 ساعة',
+          description: 'قراءة النص واستخراج الكلمات المبدوءة بهمزة وصل وهمزة قطع وإرفاق صورة الحل عبر الكاميرا أو المستندات.',
+          status: 'pending',
+          score: null,
+          attachmentName: null,
+        },
+        {
+          id: 'hw-102',
+          studentId: null,
+          gradeLevel: null,
+          classSection: null,
+          subject: 'الرياضيات',
+          teacher: 'أ. فهد الشمري',
+          title: 'واجب الجمع والطرح التراكمي',
+          dueTime: 'غداً الساعة 6 مساءً',
+          description: 'إكمال ورقة العمل المرفقة وحل المسائل الرياضية في كراسة الأنشطة.',
+          status: 'pending',
+          score: null,
+          attachmentName: null,
+        },
+      ];
     }
 
     // 3. Hydrate Grades
