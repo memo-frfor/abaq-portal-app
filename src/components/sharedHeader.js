@@ -1,10 +1,10 @@
 import { portalStore } from '../store/portalStore.js';
 import { showToast } from '../utils/toast.js';
+import { t } from '../services/i18n.js';
 
 export function renderSharedHeader(navigate, currentRoute = '/home') {
   const student = portalStore.getActiveStudent();
   const state = portalStore.state;
-  const isSara = state.activeStudentId === 'sara';
 
   const header = document.createElement('header');
   header.className =
@@ -22,7 +22,7 @@ export function renderSharedHeader(navigate, currentRoute = '/home') {
         <button type="button" id="btn-student-selector" class="flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 rounded-full py-1 pe-3 ps-1 press-snappy transition-all min-w-0">
           <img src="${student.avatar}" alt="${student.fullName}" class="w-7 h-7 rounded-full object-cover ring-1 ring-white/40 shrink-0" />
           <div class="flex flex-col text-start leading-tight min-w-0">
-            <span class="text-xs font-bold text-white truncate max-w-[120px]">${student.fullName.split(' ')[0]}</span>
+            <span class="text-xs font-bold text-white truncate max-w-[130px]">${student.fullName.split(' ')[0]}</span>
             <span class="text-[10px] text-blue-200 truncate">${student.gradeLevel.replace('الصف ', '')}</span>
           </div>
           <span class="material-symbols-outlined text-[16px] text-blue-200">keyboard_arrow_down</span>
@@ -80,15 +80,15 @@ export function openStudentSwitchSheet(navigate) {
   modal.className = 'fixed inset-0 z-50 flex flex-col justify-end sheet-backdrop';
   modal.innerHTML = `
     <div class="fixed inset-0" id="sheet-overlay"></div>
-    <div class="relative bg-white rounded-t-3xl p-5 shadow-2xl flex flex-col gap-4 max-w-lg mx-auto w-full sheet-panel pb-safe">
-      <div class="w-12 h-1 bg-slate-200 rounded-full mx-auto mb-1"></div>
+    <div class="relative bg-white dark:bg-slate-900 rounded-t-3xl p-5 shadow-2xl flex flex-col gap-4 max-w-lg mx-auto w-full sheet-panel pb-safe">
+      <div class="w-12 h-1 bg-slate-200 dark:bg-slate-700 rounded-full mx-auto mb-1"></div>
       
-      <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+      <div class="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
         <div>
-          <h3 class="text-base font-bold text-slate-800">الأبناء والملفات المرتبطة</h3>
-          <p class="text-xs text-slate-400">اختر الملف الأكاديمي لعرض بياناته فوراً</p>
+          <h3 class="text-base font-bold text-slate-800 dark:text-white">${t('linkedProfiles')}</h3>
+          <p class="text-xs text-slate-400">${t('selectProfileHint')}</p>
         </div>
-        <button type="button" id="close-sheet-btn" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center press-snappy">
+        <button type="button" id="close-sheet-btn" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 flex items-center justify-center press-snappy">
           <span class="material-symbols-outlined text-[18px]">close</span>
         </button>
       </div>
@@ -103,28 +103,28 @@ export function openStudentSwitchSheet(navigate) {
           return `
             <button type="button" data-switch-to="${s.id}" class="w-full flex items-center justify-between p-3.5 rounded-2xl border transition-all press-snappy ${
               isSelected
-                ? 'bg-blue-50/80 border-blue-500 ring-2 ring-blue-500/20 text-slate-900'
-                : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                ? 'bg-blue-50/80 dark:bg-blue-950/40 border-blue-500 ring-2 ring-blue-500/20 text-slate-900 dark:text-white'
+                : 'bg-slate-50 dark:bg-slate-800/60 hover:bg-slate-100 dark:hover:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
             }">
               <div class="flex items-center gap-3">
                 <img src="${s.avatar}" alt="${s.fullName}" class="w-11 h-11 rounded-full object-cover ring-2 ${
-                  isSelected ? 'ring-blue-500' : 'ring-slate-300'
+                  isSelected ? 'ring-blue-500' : 'ring-slate-300 dark:ring-slate-600'
                 }" />
                 <div class="flex flex-col text-start">
-                  <span class="text-sm font-bold text-slate-800">${s.fullName}</span>
-                  <span class="text-xs text-slate-500">${s.gradeLevel} - ${s.section} • كود: ${s.studentCode}</span>
+                  <span class="text-sm font-bold text-slate-800 dark:text-white">${s.fullName}</span>
+                  <span class="text-xs text-slate-500 dark:text-slate-400">${s.gradeLevel} - ${s.section} • ${s.studentCode}</span>
                 </div>
               </div>
               <div class="flex items-center gap-2">
                 ${
                   pendingHw > 0
-                    ? `<span class="px-2 py-0.5 rounded-full bg-rose-50 text-rose-600 text-[10px] font-bold border border-rose-200">${pendingHw} واجبات معلقة</span>`
+                    ? `<span class="px-2 py-0.5 rounded-full bg-rose-50 text-rose-600 text-[10px] font-bold border border-rose-200">${pendingHw} ${t('pendingHwBadge')}</span>`
                     : ''
                 }
                 ${
                   isSelected
                     ? '<span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-600 text-white"><span class="material-symbols-outlined text-[16px]">check</span></span>'
-                    : '<span class="text-xs text-slate-400 font-medium">اختيار</span>'
+                    : `<span class="text-xs text-slate-400 font-medium">${t('switchProfile')}</span>`
                 }
               </div>
             </button>
@@ -132,9 +132,9 @@ export function openStudentSwitchSheet(navigate) {
         }).join('')}
       </div>
 
-      <button type="button" id="btn-add-dependent" class="w-full py-3 rounded-xl border border-dashed border-blue-400 hover:bg-blue-50/50 text-blue-600 font-bold text-xs flex items-center justify-center gap-1.5 press-snappy transition-colors">
+      <button type="button" id="btn-add-dependent" class="w-full py-3 rounded-xl border border-dashed border-blue-400 dark:border-blue-600 hover:bg-blue-50/50 text-blue-600 dark:text-blue-400 font-bold text-xs flex items-center justify-center gap-1.5 press-snappy transition-colors">
         <span class="material-symbols-outlined text-[18px]">person_add</span>
-        <span>إضافة تابع جديد / تسجيل طالب</span>
+        <span>${t('addDependent')}</span>
       </button>
     </div>
   `;
@@ -153,7 +153,7 @@ export function openStudentSwitchSheet(navigate) {
       portalStore.setActiveStudent(targetId);
       close();
       const updated = portalStore.getActiveStudent();
-      showToast(`تم التبديل إلى: ${updated.fullName}`);
+      showToast(`${t('activeProfileBadge')}: ${updated.fullName}`);
     });
   });
 
@@ -175,15 +175,15 @@ export function openNotificationsModal(navigate) {
 
   modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm';
   modal.innerHTML = `
-    <div class="bg-white rounded-3xl p-5 max-w-sm w-full shadow-2xl flex flex-col gap-3.5 border border-slate-100 animate-fadeIn">
-      <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-5 max-w-sm w-full shadow-2xl flex flex-col gap-3.5 border border-slate-100 dark:border-slate-800 animate-fadeIn">
+      <div class="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
         <div class="flex items-center gap-2">
-          <span class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center">
+          <span class="w-8 h-8 rounded-full bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center">
             <span class="material-symbols-outlined text-[18px]">notifications</span>
           </span>
-          <h3 class="text-base font-bold text-slate-800">التنبيهات المدرسية</h3>
+          <h3 class="text-base font-bold text-slate-800 dark:text-white">${t('schoolNotifs')}</h3>
         </div>
-        <button type="button" id="close-notif-modal" class="w-7 h-7 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center press-snappy">
+        <button type="button" id="close-notif-modal" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 flex items-center justify-center press-snappy">
           <span class="material-symbols-outlined text-[16px]">close</span>
         </button>
       </div>
@@ -193,9 +193,9 @@ export function openNotificationsModal(navigate) {
           .map(
             (n) => `
           <div data-notif-id="${n.id}" data-notif-route="${n.route}" class="p-3 rounded-2xl border transition-all flex items-start gap-3 cursor-pointer press-gentle ${
-              n.read ? 'bg-slate-50 border-slate-100 text-slate-500' : 'bg-blue-50/50 border-blue-200 text-slate-800'
+              n.read ? 'bg-slate-50 dark:bg-slate-800/40 border-slate-100 dark:border-slate-800 text-slate-500' : 'bg-blue-50/50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800 text-slate-800 dark:text-white'
             }">
-            <span class="w-8 h-8 rounded-xl bg-white shadow-sm flex items-center justify-center text-blue-600 shrink-0 mt-0.5">
+            <span class="w-8 h-8 rounded-xl bg-white dark:bg-slate-800 shadow-sm flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0 mt-0.5">
               <span class="material-symbols-outlined text-[18px]">${n.icon}</span>
             </span>
             <div class="flex-1 min-w-0">
@@ -209,8 +209,8 @@ export function openNotificationsModal(navigate) {
           .join('')}
       </div>
 
-      <button type="button" id="mark-all-read" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs press-snappy transition-colors text-center">
-        تحديد الكل كمقروء
+      <button type="button" id="mark-all-read" class="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs press-snappy transition-colors text-center">
+        ${t('markAllRead')}
       </button>
     </div>
   `;
@@ -234,6 +234,6 @@ export function openNotificationsModal(navigate) {
     portalStore.getActiveStudent().unreadNotificationsCount = 0;
     portalStore.notify();
     close();
-    showToast('تم تحديد جميع الإشعارات كمقروءة');
+    showToast(t('markAllRead'));
   });
 }

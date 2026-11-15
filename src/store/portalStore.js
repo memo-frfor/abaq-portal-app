@@ -283,25 +283,62 @@ export const portalStore = {
       }
     }
 
-    // 6. Hydrate Installments
+    // 6. Hydrate Installments & Payment Vouchers
     const active = this.getActiveStudent();
     if (active) {
       this.state.installments = [
         {
           id: 'inst-1',
           title: 'دفعة الفصل الدراسي الأول',
+          titleEn: 'First Term Installment',
           amount: Math.round(active.tuitionTotal * 0.5),
-          date: 'مستحقة في 2025-09-01',
+          date: '2025-09-01',
+          dueDate: '2025-09-01',
           status: 'paid',
           statusText: 'تم السداد بنجاح',
+          statusTextEn: 'Paid Successfully',
         },
         {
           id: 'inst-2',
           title: 'دفعة الفصل الدراسي الثاني',
+          titleEn: 'Second Term Installment',
           amount: Math.round(active.tuitionTotal * 0.5),
-          date: 'مستحقة في 2026-01-15',
+          date: '2026-01-15',
+          dueDate: '2026-01-15',
           status: active.dueTuition > 0 ? 'due' : 'paid',
           statusText: active.dueTuition > 0 ? `متبقي ${active.dueTuition.toLocaleString('en-US')} ر.س` : 'تم السداد بالكامل',
+          statusTextEn: active.dueTuition > 0 ? `Remaining: ${active.dueTuition.toLocaleString('en-US')} SAR` : 'Paid in Full',
+        },
+      ];
+
+      this.state.vouchers = [
+        {
+          id: 'REC-2025-0814',
+          voucherNumber: 'سند رقم 10842',
+          title: 'دفعة الرسوم الأولى (الفصل الأول)',
+          titleEn: '1st Term Tuition Installment',
+          amount: Math.round(active.tuitionTotal * 0.5),
+          date: '2025-09-01',
+          method: 'بطاقة مدى (Mada)',
+          methodEn: 'Mada Debit Card',
+          refNo: 'TXN-90248104',
+          status: 'معتمد رسمياً',
+          statusEn: 'Officially Verified',
+          studentId: active.id,
+        },
+        {
+          id: 'REC-2025-0512',
+          voucherNumber: 'سند رقم 09511',
+          title: 'رسوم النقل المدرسي (الحافلة)',
+          titleEn: 'School Bus Transportation Fee',
+          amount: 1500,
+          date: '2025-08-25',
+          method: 'تحويل بنكي (Al Rajhi)',
+          methodEn: 'Bank Transfer (Al Rajhi)',
+          refNo: 'TXN-87401928',
+          status: 'معتمد رسمياً',
+          statusEn: 'Officially Verified',
+          studentId: active.id,
         },
       ];
     }
@@ -482,7 +519,7 @@ export const portalStore = {
     return newExcuse;
   },
 
-  async submitTuitionPayment(amount) {
+  async submitTuitionPayment(amount, method = 'مدى (Mada Card)', receiptAttachment = null) {
     const active = this.getActiveStudent();
     const payAmount = Number(amount) || active.dueTuition;
     active.dueTuition = Math.max(0, active.dueTuition - payAmount);
@@ -493,10 +530,31 @@ export const portalStore = {
       if (active.dueTuition <= 0) {
         targetInstallment.status = 'paid';
         targetInstallment.statusText = 'تم السداد بنجاح';
+        targetInstallment.statusTextEn = 'Paid Successfully';
       } else {
         targetInstallment.statusText = `متبقي ${active.dueTuition.toLocaleString('en-US')} ر.س`;
+        targetInstallment.statusTextEn = `Remaining: ${active.dueTuition.toLocaleString('en-US')} SAR`;
       }
     }
+
+    if (!Array.isArray(this.state.vouchers)) this.state.vouchers = [];
+    const newVoucher = {
+      id: `REC-${Date.now()}`,
+      voucherNumber: `سند رقم ${Math.floor(10000 + Math.random() * 90000)}`,
+      title: 'سداد قسط دراسي إلكتروني',
+      titleEn: 'Electronic Tuition Installment',
+      amount: payAmount,
+      date: new Date().toISOString().split('T')[0],
+      method: method,
+      methodEn: method.includes('تحويل') ? 'Bank Transfer' : 'Mada Debit Card',
+      refNo: `TXN-${Math.floor(10000000 + Math.random() * 90000000)}`,
+      status: 'معتمد رسمياً',
+      statusEn: 'Officially Verified',
+      studentId: active.id,
+      attachment: receiptAttachment || null,
+    };
+    this.state.vouchers.unshift(newVoucher);
+
     this.notify();
 
     // Push payment mutation to cloud

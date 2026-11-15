@@ -20,6 +20,7 @@ import { renderLibraryView } from './views/libraryView.js';
 import { renderBehaviorView } from './views/behaviorView.js';
 import { renderVirtualClassroomsView } from './views/virtualClassroomsView.js';
 import { setupPullToRefresh } from './utils/pullToRefresh.js';
+import { onLanguageChange } from './services/i18n.js';
 
 export const ROUTES = {
   '/login': { render: renderLoginView, role: 'public', hasHeader: false, hasNav: false },
@@ -142,6 +143,12 @@ export function initRouter() {
     if (current !== '/login') {
       renderRoute(current);
     }
+  });
+
+  // Re-render when language switches (AR <-> EN)
+  onLanguageChange(() => {
+    const current = getCurrentRoute();
+    renderRoute(current);
   });
 
   // Persistent Auto-login check
