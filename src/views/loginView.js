@@ -1,5 +1,6 @@
 import { portalStore } from '../store/portalStore.js';
 import { showToast } from '../utils/toast.js';
+import { getSavedSchoolCode, saveSchoolCode } from '../services/abaqCloudSync.js';
 import { checkBiometricHardware, hasSavedBiometric, getSavedBiometricCredentials, saveBiometricCredentials, promptBiometricAuth } from '../services/biometrics.js';
 import { getStoredTheme, toggleTheme } from '../services/theme.js';
 import { getStoredLanguage, toggleLanguage, t } from '../services/i18n.js';
@@ -10,6 +11,7 @@ export async function renderLoginView(container, navigate) {
   const hasSavedBio = hasSavedBiometric();
   const currentLang = getStoredLanguage();
   const currentTheme = getStoredTheme();
+  const savedSchoolCode = getSavedSchoolCode();
 
   container.innerHTML = `
     <div class="flex flex-col w-full max-w-sm mx-auto px-4 py-6 min-h-screen justify-between pb-safe bg-slate-50 dark:bg-slate-950 transition-colors">
@@ -78,7 +80,7 @@ export async function renderLoginView(container, navigate) {
 
           <div class="flex flex-col gap-1">
             <label class="text-xs font-bold text-slate-700 dark:text-slate-300">${t('schoolCodeLabel')}</label>
-            <input type="text" id="school-code-parent" value="${portalStore.state.tenantId}" placeholder="${t('schoolCodePlaceholder')}" class="w-full px-3 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-800 text-xs font-numbers text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-900 outline-none focus:border-blue-600" />
+            <input type="text" id="school-code-parent" value="${savedSchoolCode || ''}" placeholder="${t('schoolCodePlaceholder')}" class="w-full px-3 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-800 text-xs font-numbers text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-900 outline-none focus:border-blue-600" />
           </div>
 
           <button type="button" id="btn-login-student" class="w-full py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs press-snappy shadow-md shadow-blue-600/25 flex items-center justify-center gap-2 mt-1">
@@ -122,7 +124,7 @@ export async function renderLoginView(container, navigate) {
 
           <div class="flex flex-col gap-1">
             <label class="text-xs font-bold text-slate-700 dark:text-slate-300">${t('schoolCodeLabel')}</label>
-            <input type="text" id="school-code-teacher" value="${portalStore.state.tenantId}" placeholder="${t('schoolCodePlaceholder')}" class="w-full px-3 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-800 text-xs font-numbers text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-900 outline-none focus:border-blue-600" />
+            <input type="text" id="school-code-teacher" value="${savedSchoolCode || ''}" placeholder="${t('schoolCodePlaceholder')}" class="w-full px-3 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-800 text-xs font-numbers text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-900 outline-none focus:border-blue-600" />
           </div>
 
           <button type="button" id="btn-login-teacher" class="w-full py-3.5 rounded-2xl bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 text-white font-bold text-xs press-snappy shadow-md flex items-center justify-center gap-2 mt-1">
@@ -222,7 +224,8 @@ export async function renderLoginView(container, navigate) {
   const btnLoginStudent = container.querySelector('#btn-login-student');
   btnLoginStudent.addEventListener('click', async () => {
     const ident = (container.querySelector('#student-ident').value || '').trim();
-    const schoolCode = (container.querySelector('#school-code-parent').value || 'abdo').trim();
+    const schoolCodeInput = (container.querySelector('#school-code-parent').value || '').trim();
+    const schoolCode = schoolCodeInput || savedSchoolCode || 'abdo';
 
     if (!ident) {
       showError('يرجى إدخال رقم الهوية الوطنية أو رقم الجوال أو الرقم الأكاديمي');
@@ -239,6 +242,7 @@ export async function renderLoginView(container, navigate) {
     txt.textContent = t('loginBtn');
 
     if (res.success) {
+      saveSchoolCode(schoolCode);
       showToast('تم تسجيل الدخول بنجاح', 'success');
       
       // If device has biometric hardware and not enrolled yet, ask user
@@ -291,7 +295,8 @@ export async function renderLoginView(container, navigate) {
   btnLoginTeacher.addEventListener('click', async () => {
     const user = (container.querySelector('#teacher-ident').value || '').trim();
     const pass = (container.querySelector('#teacher-pass').value || '').trim();
-    const schoolCode = (container.querySelector('#school-code-teacher').value || 'abdo').trim();
+    const schoolCodeInput = (container.querySelector('#school-code-teacher').value || '').trim();
+    const schoolCode = schoolCodeInput || savedSchoolCode || 'abdo';
 
     if (!user || !pass) {
       showError('يرجى إدخال اسم المستخدم وكلمة المرور');
@@ -308,6 +313,7 @@ export async function renderLoginView(container, navigate) {
     txt.textContent = t('loginBtn');
 
     if (res.success) {
+      saveSchoolCode(schoolCode);
       showToast('مرحباً بك في بوابة المعلم', 'success');
       navigate('/teacher');
     } else {

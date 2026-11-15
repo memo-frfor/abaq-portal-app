@@ -291,11 +291,13 @@ export function renderHomeView(container, navigate) {
   container.querySelector('#close-ann-detail-btn')?.addEventListener('click', closeAnn);
   container.querySelector('#ack-ann-btn')?.addEventListener('click', () => {
     closeAnn();
+    portalStore.dismissAnnouncement(ann.id);
+    container.querySelector('#banner-announcement')?.remove();
     showToast('تم تأكيد قراءة التعميم الإداري');
   });
 
   container.querySelector('#btn-dismiss-announcement')?.addEventListener('click', () => {
-    portalStore.dismissAnnouncement();
+    portalStore.dismissAnnouncement(ann.id);
     container.querySelector('#banner-announcement')?.remove();
     showToast('تم إخفاء التعميم');
   });

@@ -1,9 +1,27 @@
 // abaqCloudSync.js - Real 2-way Cloudflare D1 Edge Sync for Abaq Portal
 const WORKER_URL = 'https://abaq-api.to999sa.workers.dev';
 const AUTH_TOKEN = 'abaq-edge-d1-auth-token';
-const DEFAULT_TENANT = 'abdo';
 const CACHE_KEY = 'ABAQ_CLOUD_DATA_CACHE_V2';
 const SESSION_KEY = 'ABAQ_ACTIVE_SESSION_V2';
+const SCHOOL_CODE_KEY = 'ABAQ_USER_SCHOOL_CODE';
+
+export function getSavedSchoolCode() {
+  try {
+    return localStorage.getItem(SCHOOL_CODE_KEY) || '';
+  } catch {
+    return '';
+  }
+}
+
+export function saveSchoolCode(code) {
+  try {
+    if (code && code.trim()) {
+      localStorage.setItem(SCHOOL_CODE_KEY, code.trim().toLowerCase());
+    }
+  } catch {}
+}
+
+const DEFAULT_TENANT = getSavedSchoolCode() || 'abdo';
 
 function base64ToUint8Array(base64) {
   const binary = atob(base64);
@@ -361,13 +379,48 @@ export async function authenticateParentOrStudent({ identifier, tenantId = DEFAU
     };
   }
 
-  // Found match! Build user session
+  // Found match! Link all siblings belonging to the same family (by guardian phone)
   const primaryStudent = matchedStudents[0];
+  const primaryPhone = (primaryStudent.guardianPhone || '').replace(/\s+/g, '');
+  if (primaryPhone && primaryPhone.length >= 7) {
+    const searchTail = primaryPhone.slice(-7);
+    for (const s of allEnrolled) {
+      const sPhone = (s.guardianPhone || '').replace(/\s+/g, '');
+      if (sPhone && sPhone.endsWith(searchTail) && !matchedStudentIds.has(s.id)) {
+        matchedStudentIds.add(s.id);
+        matchedStudents.push(s);
+      }
+    }
+    for (const m of allMaster) {
+      const mPhone = (m.guardianPhone || '').replace(/\s+/g, '');
+      if (mPhone && mPhone.endsWith(searchTail) && !matchedStudentIds.has(m.id)) {
+        matchedStudentIds.add(m.id);
+        matchedStudents.push({
+          id: m.id,
+          studentCode: m.studentCode,
+          fullName: m.fullName,
+          nationalId: m.nationalId,
+          gender: m.gender || 'ذكر',
+          birthDate: m.birthDate,
+          guardianName: m.guardianName,
+          guardianPhone: m.guardianPhone,
+          avatarUrl: m.avatarUrl,
+          gradeLevel: m.enrollmentHistory?.[0]?.gradeLevel || 'الصف الأول الابتدائي',
+          classSection: m.enrollmentHistory?.[0]?.classSection || 'أ',
+          tuitionTotal: m.enrollmentHistory?.[0]?.tuitionTotal || 8000,
+          tuitionPaid: m.enrollmentHistory?.[0]?.tuitionPaid || 4000,
+          status: m.enrollmentHistory?.[0]?.status || 'نشط',
+        });
+      }
+    }
+  }
+
   const guardianName = primaryStudent.guardianName || `ولي أمر ${primaryStudent.fullName}`;
+  const effectiveTenant = (tenantId || getSavedSchoolCode() || 'abdo').trim().toLowerCase();
 
   const session = {
     role: 'parent',
-    tenantId: tenantId || DEFAULT_TENANT,
+    tenantId: effectiveTenant,
     user: {
       name: guardianName,
       phone: primaryStudent.guardianPhone || clean,
@@ -389,6 +442,7 @@ export async function authenticateParentOrStudent({ identifier, tenantId = DEFAU
     loginAt: new Date().toISOString(),
   };
 
+  saveSchoolCode(effectiveTenant);
   saveActiveSession(session);
   return { success: true, session };
 }
@@ -456,9 +510,10 @@ export async function authenticateTeacherOrStaff({ username, password, tenantId 
     return { success: false, error: 'كلمة المرور غير صحيحة، يرجى التأكد وإعادة المحاولة' };
   }
 
+  const effectiveTenant = (tenantId || getSavedSchoolCode() || 'abdo').trim().toLowerCase();
   const session = {
     role: 'teacher',
-    tenantId: tenantId || DEFAULT_TENANT,
+    tenantId: effectiveTenant,
     user: {
       id: matchedUser.id || 'usr-teacher',
       name: matchedUser.fullName || matchedUser.name || 'أ. عبده',
@@ -470,6 +525,7 @@ export async function authenticateTeacherOrStaff({ username, password, tenantId 
     loginAt: new Date().toISOString(),
   };
 
+  saveSchoolCode(effectiveTenant);
   saveActiveSession(session);
   return { success: true, session };
 }

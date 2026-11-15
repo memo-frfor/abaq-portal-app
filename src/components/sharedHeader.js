@@ -96,6 +96,10 @@ export function openStudentSwitchSheet(navigate) {
       <div class="flex flex-col gap-2.5 max-h-72 overflow-y-auto">
         ${Object.values(state.students).map((s) => {
           const isSelected = s.id === currentId;
+          const pendingHw = portalStore.state.homework.filter(
+            (h) => (h.studentId === s.id || h.gradeLevel === s.gradeLevel) && h.status === 'pending'
+          ).length;
+
           return `
             <button type="button" data-switch-to="${s.id}" class="w-full flex items-center justify-between p-3.5 rounded-2xl border transition-all press-snappy ${
               isSelected
@@ -111,11 +115,18 @@ export function openStudentSwitchSheet(navigate) {
                   <span class="text-xs text-slate-500">${s.gradeLevel} - ${s.section} • كود: ${s.studentCode}</span>
                 </div>
               </div>
-              ${
-                isSelected
-                  ? '<span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-600 text-white"><span class="material-symbols-outlined text-[16px]">check</span></span>'
-                  : '<span class="text-xs text-slate-400 font-medium">اختيار</span>'
-              }
+              <div class="flex items-center gap-2">
+                ${
+                  pendingHw > 0
+                    ? `<span class="px-2 py-0.5 rounded-full bg-rose-50 text-rose-600 text-[10px] font-bold border border-rose-200">${pendingHw} واجبات معلقة</span>`
+                    : ''
+                }
+                ${
+                  isSelected
+                    ? '<span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-600 text-white"><span class="material-symbols-outlined text-[16px]">check</span></span>'
+                    : '<span class="text-xs text-slate-400 font-medium">اختيار</span>'
+                }
+              </div>
             </button>
           `;
         }).join('')}

@@ -3,21 +3,34 @@ import { showToast } from '../utils/toast.js';
 
 export function renderHomeworkView(container, navigate) {
   const student = portalStore.getActiveStudent();
-  const allHw = portalStore.state.homework.filter((h) => !h.studentId || h.studentId === student.id);
+  // Filter homework strictly for the active student
+  const allHw = portalStore.state.homework.filter(
+    (h) =>
+      h.studentId === student.id ||
+      (h.gradeLevel && h.gradeLevel === student.gradeLevel) ||
+      (!h.studentId && !h.gradeLevel)
+  );
   let activeFilter = 'all';
+
+  const subjectFilters = ['all', ...new Set(allHw.map((h) => h.subject).filter(Boolean))];
 
   function renderList() {
     const listContainer = container.querySelector('#homework-items-list');
     if (!listContainer) return;
 
     const filtered =
-      activeFilter === 'all' ? allHw : allHw.filter((h) => h.subject.includes(activeFilter));
+      activeFilter === 'all' ? allHw : allHw.filter((h) => h.subject === activeFilter);
 
     if (filtered.length === 0) {
       listContainer.innerHTML = `
-        <div class="p-8 text-center text-slate-400 bg-white rounded-2xl border border-slate-100 flex flex-col items-center gap-2">
-          <span class="material-symbols-outlined text-[32px] text-slate-300">task_alt</span>
-          <p class="text-xs">لا توجد واجبات في هذا التصنيف حالياً</p>
+        <div class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center text-center gap-3 shadow-xs">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+            <span class="material-symbols-outlined text-[32px]">task_alt</span>
+          </div>
+          <h3 class="text-sm font-bold text-slate-800 dark:text-white">لا توجد واجبات في هذا التصنيف</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 max-w-xs leading-relaxed">
+            جميع التكليفات مسلّمة بالكامل أو لا توجد واجبات جديدة مسندة حالياً.
+          </p>
         </div>
       `;
       return;
@@ -26,23 +39,23 @@ export function renderHomeworkView(container, navigate) {
     listContainer.innerHTML = filtered
       .map(
         (hw) => `
-      <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-sm flex flex-col gap-3 transition-all hover:border-blue-400" data-hw-id="${
+      <div class="p-4 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col gap-3 transition-all hover:border-blue-400" data-hw-id="${
         hw.id
       }">
         <div class="flex items-start justify-between gap-2">
           <div>
             <div class="flex items-center gap-2">
-              <span class="text-xs font-bold text-slate-900">${hw.subject}</span>
+              <span class="text-xs font-bold text-blue-600 dark:text-blue-400">${hw.subject}</span>
               <span class="text-[10px] text-slate-400">• ${hw.teacher}</span>
             </div>
-            <h3 class="text-sm font-bold text-slate-800 mt-1 leading-snug">${hw.title}</h3>
+            <h3 class="text-sm font-bold text-slate-800 dark:text-white mt-1 leading-snug">${hw.title}</h3>
           </div>
           <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
             hw.status === 'graded'
-              ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+              ? 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800'
               : hw.status === 'submitted'
-              ? 'bg-blue-50 text-blue-700 border border-blue-200'
-              : 'bg-rose-50 text-rose-700 border border-rose-200'
+              ? 'bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800'
+              : 'bg-rose-50 dark:bg-rose-950 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800'
           }">
             ${
               hw.status === 'graded'
@@ -54,20 +67,20 @@ export function renderHomeworkView(container, navigate) {
           </span>
         </div>
 
-        <p class="text-xs text-slate-600 leading-relaxed">${hw.description}</p>
+        ${hw.description ? `<p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">${hw.description}</p>` : ''}
 
         ${
           hw.teacherNote
             ? `
-          <div class="p-2.5 rounded-xl bg-amber-50/70 border border-amber-200/60 text-amber-900 text-[11px] leading-relaxed flex items-start gap-2">
-            <span class="material-symbols-outlined text-amber-600 text-[16px] shrink-0 mt-0.5">record_voice_over</span>
+          <div class="p-2.5 rounded-xl bg-amber-50/70 dark:bg-amber-950/40 border border-amber-200/60 dark:border-amber-800 text-amber-900 dark:text-amber-200 text-[11px] leading-relaxed flex items-start gap-2">
+            <span class="material-symbols-outlined text-amber-600 dark:text-amber-400 text-[16px] shrink-0 mt-0.5">record_voice_over</span>
             <div><span class="font-bold">ملاحظة المعلم: </span>"${hw.teacherNote}"</div>
           </div>
         `
             : ''
         }
 
-        <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
+        <div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
           <span class="text-[11px] text-slate-400 flex items-center gap-1">
             <span class="material-symbols-outlined text-[14px]">event</span>
             <span>${hw.dueTime}</span>
@@ -82,7 +95,7 @@ export function renderHomeworkView(container, navigate) {
             </button>
           `
               : `
-            <span class="text-[11px] text-emerald-600 font-bold flex items-center gap-1">
+            <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1">
               <span class="material-symbols-outlined text-[15px]">check_circle</span>
               <span>مكتمل</span>
             </span>
@@ -104,54 +117,48 @@ export function renderHomeworkView(container, navigate) {
     });
   }
 
+  const pendingCount = allHw.filter((h) => h.status === 'pending').length;
+
   container.innerHTML = `
     <div class="flex flex-col w-full max-w-lg mx-auto px-4 py-4 gap-4 pb-28">
 
       <!-- Header Title & Stats -->
       <div class="flex items-center justify-between">
         <div>
-          <h1 class="text-base font-bold text-slate-900">الواجبات والاختبارات المدرسية</h1>
-          <p class="text-xs text-slate-400">متابعة التكليفات الأكاديمية وتسليم الإجابات</p>
+          <h1 class="text-base font-bold text-slate-900 dark:text-white">الواجبات والتكليفات المدرسية</h1>
+          <p class="text-xs text-slate-400">${student.fullName} • ${student.gradeLevel}</p>
         </div>
-        <span class="px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold font-numbers border border-blue-200">
-          ${allHw.filter((h) => h.status === 'pending').length} واجب متبقي
+        <span class="px-2.5 py-1 rounded-full ${
+          pendingCount > 0
+            ? 'bg-rose-50 dark:bg-rose-950 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-900'
+            : 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900'
+        } text-xs font-bold font-numbers">
+          ${pendingCount > 0 ? `${pendingCount} واجب معلق` : 'لا توجد معلقات ✓'}
         </span>
       </div>
 
-      <!-- Quick Quiz Hero Banner -->
-      <div class="p-4 rounded-2xl bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white shadow-md flex items-center justify-between gap-3">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-amber-300 shrink-0">
-            <span class="material-symbols-outlined text-[24px]">timer</span>
-          </div>
-          <div>
-            <div class="flex items-center gap-1.5">
-              <span class="text-xs font-bold text-white">اختبار قصير نشط</span>
-              <span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold">12 دقيقة</span>
-            </div>
-            <p class="text-[11px] text-slate-300 mt-0.5">مبادئ الذكاء الاصطناعي والبرمجة</p>
-          </div>
+      <!-- Filter Tabs (Dynamic based on real assignments) -->
+      ${
+        subjectFilters.length > 2
+          ? `
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar text-xs">
+          ${subjectFilters
+            .map(
+              (sub) => `
+            <button type="button" data-filter="${sub}" class="filter-tab px-3 py-1.5 rounded-full font-bold transition-all press-snappy ${
+                sub === activeFilter
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300'
+              }">
+              ${sub === 'all' ? `الكل (${allHw.length})` : sub}
+            </button>
+          `
+            )
+            .join('')}
         </div>
-        <button type="button" id="btn-hero-quiz" class="px-3.5 py-2 rounded-xl bg-blue-500 hover:bg-blue-400 text-white text-xs font-bold press-snappy shrink-0 shadow-sm">
-          بدء الاختبار
-        </button>
-      </div>
-
-      <!-- Filter Tabs -->
-      <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar text-xs">
-        <button type="button" data-filter="all" class="filter-tab px-3 py-1.5 rounded-full font-bold transition-all press-snappy bg-blue-600 text-white shadow-sm">
-          الكل (${allHw.length})
-        </button>
-        <button type="button" data-filter="الرياضيات" class="filter-tab px-3 py-1.5 rounded-full font-bold transition-all press-snappy bg-white border border-slate-200 text-slate-600">
-          الرياضيات
-        </button>
-        <button type="button" data-filter="العلوم" class="filter-tab px-3 py-1.5 rounded-full font-bold transition-all press-snappy bg-white border border-slate-200 text-slate-600">
-          العلوم الطبيعية
-        </button>
-        <button type="button" data-filter="لغتي" class="filter-tab px-3 py-1.5 rounded-full font-bold transition-all press-snappy bg-white border border-slate-200 text-slate-600">
-          لغتي
-        </button>
-      </div>
+      `
+          : ''
+      }
 
       <!-- Items List -->
       <div id="homework-items-list" class="flex flex-col gap-3"></div>
@@ -160,27 +167,27 @@ export function renderHomeworkView(container, navigate) {
 
     <!-- Homework Submission Modal -->
     <div id="hw-submit-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
-      <div class="bg-white rounded-3xl p-5 max-w-sm w-full shadow-2xl flex flex-col gap-3.5 border border-slate-100">
-        <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+      <div class="bg-white dark:bg-slate-900 rounded-3xl p-5 max-w-sm w-full shadow-2xl flex flex-col gap-3.5 border border-slate-100 dark:border-slate-800">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
           <div>
-            <h3 class="text-sm font-bold text-slate-900" id="submit-modal-title">تسليم الواجب</h3>
+            <h3 class="text-sm font-bold text-slate-900 dark:text-white" id="submit-modal-title">تسليم الواجب</h3>
             <span class="text-[11px] text-slate-400" id="submit-modal-subject"></span>
           </div>
-          <button type="button" id="close-hw-modal-btn" class="w-7 h-7 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center press-snappy">
+          <button type="button" id="close-hw-modal-btn" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 flex items-center justify-center press-snappy">
             <span class="material-symbols-outlined text-[16px]">close</span>
           </button>
         </div>
 
         <div class="flex flex-col gap-2">
-          <label class="text-xs font-bold text-slate-700">إجابة نصية أو ملاحظة للمعلم</label>
-          <textarea id="hw-answer-text" rows="3" placeholder="اكتب إجابتك أو أي استفسار هنا..." class="w-full p-3 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-blue-500 outline-none resize-none"></textarea>
+          <label class="text-xs font-bold text-slate-700 dark:text-slate-300">إجابة نصية أو ملاحظة للمعلم</label>
+          <textarea id="hw-answer-text" rows="3" placeholder="اكتب إجابتك أو أي استفسار هنا..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs focus:ring-2 focus:ring-blue-500 outline-none resize-none"></textarea>
         </div>
 
         <div class="flex flex-col gap-2">
-          <label class="text-xs font-bold text-slate-700">إرفاق ملف أو تصوير الحل</label>
-          <div class="border-2 border-dashed border-slate-200 hover:border-blue-400 rounded-xl p-4 text-center cursor-pointer flex flex-col items-center gap-1.5 transition-colors" id="hw-file-zone">
-            <span class="material-symbols-outlined text-blue-600 text-[26px]">cloud_upload</span>
-            <span class="text-xs font-semibold text-slate-700" id="hw-file-name-label">اضغط لاختيار صورة أو مستند PDF</span>
+          <label class="text-xs font-bold text-slate-700 dark:text-slate-300">إرفاق ملف أو تصوير الحل</label>
+          <div class="border-2 border-dashed border-slate-200 dark:border-slate-700 hover:border-blue-400 rounded-xl p-4 text-center cursor-pointer flex flex-col items-center gap-1.5 transition-colors" id="hw-file-zone">
+            <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-[26px]">cloud_upload</span>
+            <span class="text-xs font-semibold text-slate-700 dark:text-slate-300" id="hw-file-name-label">اضغط لاختيار صورة أو مستند PDF</span>
             <span class="text-[10px] text-slate-400">الحد الأقصى 15 ميجابايت</span>
           </div>
         </div>
@@ -189,7 +196,7 @@ export function renderHomeworkView(container, navigate) {
           <button type="button" id="confirm-submit-hw-btn" class="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs press-snappy shadow-sm text-center">
             تأكيد التسليم الرسمي
           </button>
-          <button type="button" id="cancel-submit-hw-btn" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs press-snappy">
+          <button type="button" id="cancel-submit-hw-btn" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-600 dark:text-slate-300 font-bold text-xs press-snappy">
             إلغاء
           </button>
         </div>
@@ -204,7 +211,7 @@ export function renderHomeworkView(container, navigate) {
     tab.addEventListener('click', () => {
       container.querySelectorAll('.filter-tab').forEach((t) => {
         t.className =
-          'filter-tab px-3 py-1.5 rounded-full font-bold transition-all press-snappy bg-white border border-slate-200 text-slate-600';
+          'filter-tab px-3 py-1.5 rounded-full font-bold transition-all press-snappy bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300';
       });
       tab.className =
         'filter-tab px-3 py-1.5 rounded-full font-bold transition-all press-snappy bg-blue-600 text-white shadow-sm';
@@ -212,8 +219,6 @@ export function renderHomeworkView(container, navigate) {
       renderList();
     });
   });
-
-  container.querySelector('#btn-hero-quiz')?.addEventListener('click', () => navigate('/quiz'));
 
   // Wire Submit Modal
   const modal = container.querySelector('#hw-submit-modal');
@@ -233,14 +238,14 @@ export function renderHomeworkView(container, navigate) {
   container.querySelector('#cancel-submit-hw-btn')?.addEventListener('click', closeModal);
 
   container.querySelector('#hw-file-zone')?.addEventListener('click', () => {
-    container.querySelector('#hw-file-name-label').textContent = 'تم إرفاق: حل_التمارين_ص64.pdf ✓';
+    container.querySelector('#hw-file-name-label').textContent = 'تم إرفاق: حل_الواجب_المعتمد.pdf ✓';
     showToast('تم إرفاق ملف الحل بنجاح');
   });
 
   container.querySelector('#confirm-submit-hw-btn')?.addEventListener('click', () => {
     if (!currentTargetHw) return;
     const txt = container.querySelector('#hw-answer-text').value;
-    portalStore.submitHomework(currentTargetHw.id, txt, 'حل_التمارين_ص64.pdf');
+    portalStore.submitHomework(currentTargetHw.id, txt, 'حل_الواجب_المعتمد.pdf');
     closeModal();
     renderList();
     showToast('تم تسليم الواجب للمعلم بنجاح! ✓');

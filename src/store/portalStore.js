@@ -8,6 +8,8 @@ import {
   saveActiveSession,
   clearActiveSession,
   getCachedSchoolData,
+  getSavedSchoolCode,
+  saveSchoolCode,
 } from '../services/abaqCloudSync.js';
 import { getStoredTheme, toggleTheme as switchTheme } from '../services/theme.js';
 import { getStoredLanguage, toggleLanguage as switchLang, t } from '../services/i18n.js';
@@ -23,7 +25,7 @@ export const portalStore = {
   subscribers: [],
 
   state: {
-    tenantId: 'abdo',
+    tenantId: getSavedSchoolCode() || 'abdo',
     schoolName: 'مدارس عبق الأهلية',
     activeStudentId: 'std-1',
     students: {},
@@ -46,6 +48,44 @@ export const portalStore = {
     timetable: [],
     busRoutes: [],
     schoolBooks: [],
+  },
+
+  getDismissedAnnouncements() {
+    try {
+      const raw = localStorage.getItem('ABAQ_DISMISSED_ANNOUNCEMENTS_V2');
+      return raw ? JSON.parse(raw) : [];
+    } catch {
+      return [];
+    }
+  },
+
+  dismissAnnouncement(id) {
+    const annId = id || this.state.announcement?.id;
+    if (this.state.announcement) {
+      this.state.announcement.visible = false;
+    }
+    if (annId) {
+      const dismissed = this.getDismissedAnnouncements();
+      if (!dismissed.includes(annId)) {
+        dismissed.push(annId);
+        try {
+          localStorage.setItem('ABAQ_DISMISSED_ANNOUNCEMENTS_V2', JSON.stringify(dismissed));
+        } catch {}
+      }
+    }
+    this.notify();
+  },
+
+  markNotificationRead(notifId) {
+    const target = this.state.notifications.find((n) => n.id === notifId);
+    if (target) {
+      target.read = true;
+      const active = this.getActiveStudent();
+      if (active && active.unreadNotificationsCount > 0) {
+        active.unreadNotificationsCount = Math.max(0, active.unreadNotificationsCount - 1);
+      }
+      this.notify();
+    }
   },
 
   async init() {
@@ -121,23 +161,29 @@ export const portalStore = {
     if (!db) return;
 
     // 1. Hydrate Announcements
+    const dismissed = this.getDismissedAnnouncements();
     if (Array.isArray(db.announcements) && db.announcements.length > 0) {
-      const topAnn = db.announcements[0];
-      this.state.announcement = {
-        id: topAnn.id || 'ann-live',
-        visible: true,
-        title: topAnn.title || 'إعلان من إدارة المدرسة',
-        summary: topAnn.content ? topAnn.content.slice(0, 80) + '...' : 'تنبيه مدرسي هام',
-        content: topAnn.content || 'لا يوجد تفاصيل إضافية.',
-        number: topAnn.id || '45/1090',
-        date: topAnn.publishDate || topAnn.date || 'اليوم',
-      };
+      const availableAnn = db.announcements.filter((a) => !dismissed.includes(a.id));
+      if (availableAnn.length > 0) {
+        const topAnn = availableAnn[0];
+        this.state.announcement = {
+          id: topAnn.id || 'ann-live',
+          visible: true,
+          title: topAnn.title || 'إعلان من إدارة المدرسة',
+          summary: topAnn.content ? topAnn.content.slice(0, 80) + '...' : 'تنبيه مدرسي هام',
+          content: topAnn.content || 'لا يوجد تفاصيل إضافية.',
+          number: topAnn.id || '45/1090',
+          date: topAnn.publishDate || topAnn.date || 'اليوم',
+        };
+      } else {
+        this.state.announcement = { visible: false };
+      }
 
       this.state.notifications = db.announcements.map((a, idx) => ({
         id: a.id || `notif-${idx}`,
         title: a.title,
         time: a.publishDate || 'اليوم',
-        read: idx > 1,
+        read: idx > 1 || dismissed.includes(a.id),
         icon: a.category === 'homework' ? 'assignment' : 'campaign',
         route: a.category === 'homework' ? '/homework' : '/home',
       }));
@@ -151,8 +197,10 @@ export const portalStore = {
       this.state.homework = db.homeworkAssignments.map((h) => ({
         id: h.id,
         studentId: h.studentId || null,
+        gradeLevel: h.gradeLevel || h.grade_level || null,
+        classSection: h.classSection || h.class_section || null,
         subject: h.subject || 'المادة',
-        teacher: h.teacherName || 'معلم المادة',
+        teacher: h.teacherName || h.teacher_name || 'معلم المادة',
         title: h.title,
         dueTime: h.dueDate ? `تاريخ التسليم: ${h.dueDate}` : 'خلال 48 ساعة',
         description: h.description || '',
@@ -284,6 +332,27 @@ export const portalStore = {
   setActiveStudent(studentId) {
     if (this.state.students[studentId]) {
       this.state.activeStudentId = studentId;
+      const active = this.getActiveStudent();
+      if (active) {
+        this.state.installments = [
+          {
+            id: 'inst-1',
+            title: 'دفعة الفصل الدراسي الأول',
+            amount: Math.round(active.tuitionTotal * 0.5),
+            date: 'مستحقة في 2025-09-01',
+            status: 'paid',
+            statusText: 'تم السداد بنجاح',
+          },
+          {
+            id: 'inst-2',
+            title: 'دفعة الفصل الدراسي الثاني',
+            amount: Math.round(active.tuitionTotal * 0.5),
+            date: 'مستحقة في 2026-01-15',
+            status: active.dueTuition > 0 ? 'due' : 'paid',
+            statusText: active.dueTuition > 0 ? `متبقي ${active.dueTuition.toLocaleString('en-US')} ر.س` : 'تم السداد بالكامل',
+          },
+        ];
+      }
       this.notify();
     }
   },
@@ -297,8 +366,10 @@ export const portalStore = {
     return this.getActiveStudent();
   },
 
-  async loginParent(identifier, tenantId = 'abdo') {
-    this.state.tenantId = tenantId || 'abdo';
+  async loginParent(identifier, tenantId) {
+    const code = (tenantId || getSavedSchoolCode() || 'abdo').trim().toLowerCase();
+    this.state.tenantId = code;
+    saveSchoolCode(code);
     const res = await authenticateParentOrStudent({
       identifier,
       tenantId: this.state.tenantId,
@@ -331,8 +402,10 @@ export const portalStore = {
     return { success: false, error: res.error || 'بيانات الدخول غير صحيحة' };
   },
 
-  async loginTeacher(username, password, tenantId = 'abdo') {
-    this.state.tenantId = tenantId || 'abdo';
+  async loginTeacher(username, password, tenantId) {
+    const code = (tenantId || getSavedSchoolCode() || 'abdo').trim().toLowerCase();
+    this.state.tenantId = code;
+    saveSchoolCode(code);
     const res = await authenticateTeacherOrStaff({
       username,
       password,
